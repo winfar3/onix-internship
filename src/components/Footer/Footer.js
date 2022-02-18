@@ -16,7 +16,7 @@ export function Footer() {
                     <img src={gitIcon} alt="Link to github" />
                 </a>
                 <a 
-                    href="https://github.com/winfar3/onix-internshiphttps://www.figma.com/file/tGrUfiGxJo6Ahku54c7l5f/Fashion-Blog-Template?node-id=0%3A1"
+                    href="https://www.figma.com/file/tGrUfiGxJo6Ahku54c7l5f/Fashion-Blog-Template?node-id=0%3A1"
                     className="footer-socials__item"
                 >
                     <img src={figmaIcon} alt="Link to desing" />
