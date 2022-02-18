@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "/onix-internship/static/css/main.3265e5af.css",
+    "main.js": "/onix-internship/static/js/main.20eb4829.js",
+    "static/js/787.80dd0e3c.chunk.js": "/onix-internship/static/js/787.80dd0e3c.chunk.js",
+    "static/media/08.png": "/onix-internship/static/media/08.ee830c6b59ec7d9482ba.png",
+    "static/media/02.png": "/onix-internship/static/media/02.267f836f7e05dfe21bbb.png",
+    "static/media/07.png": "/onix-internship/static/media/07.cb0987331ff144d32662.png",
+    "static/media/14.png": "/onix-internship/static/media/14.bd688a3270e2ad0c0fcb.png",
+    "static/media/12.png": "/onix-internship/static/media/12.81abf2126bc1949e3f8c.png",
+    "static/media/11.png": "/onix-internship/static/media/11.b253881ee95456151a06.png",
+    "static/media/04.png": "/onix-internship/static/media/04.bd6422bf2faef11fed1d.png",
+    "static/media/03.png": "/onix-internship/static/media/03.7444c46e4a9654ec1268.png",
+    "static/media/06.png": "/onix-internship/static/media/06.78aa6316c721798c8a57.png",
+    "static/media/09.png": "/onix-internship/static/media/09.174e199dcf995cbb121f.png",
+    "static/media/05.png": "/onix-internship/static/media/05.67a8a49597848710c84d.png",
+    "static/media/01.png": "/onix-internship/static/media/01.af535e4e1589c1e58f7c.png",
+    "static/media/10.png": "/onix-internship/static/media/10.abe96f4f4a13f7206f73.png",
+    "static/media/hero-bg.jpg": "/onix-internship/static/media/hero-bg.223ad1f8e8b89cf14f4c.jpg",
+    "static/media/13.png": "/onix-internship/static/media/13.6ae076be340625f4e0cb.png",
+    "static/media/photo.jpg": "/onix-internship/static/media/photo.5f7d17d8c80233d1dece.jpg",
+    "static/media/youtube.svg": "/onix-internship/static/media/youtube.3ac5e2e4aa6019efe69268fa8dc7724d.svg",
+    "static/media/dribbble.svg": "/onix-internship/static/media/dribbble.78d360c417024a1b8122004f58abc586.svg",
+    "static/media/pinterest.svg": "/onix-internship/static/media/pinterest.3d1914740648ad9a728f4258ff65b403.svg",
+    "static/media/google.svg": "/onix-internship/static/media/google.8084aa54a8c7122a7f748ba417f76ffa.svg",
+    "static/media/instagram.svg": "/onix-internship/static/media/instagram.cd971d4d4157a7908cdd29f9d0fb6aad.svg",
+    "static/media/behance.svg": "/onix-internship/static/media/behance.3901ea4c6655f59d7cac80016b72bec1.svg",
+    "static/media/twitter.svg": "/onix-internship/static/media/twitter.dbd2ee86a6913d929bc973cccf370b48.svg",
+    "static/media/figma.svg": "/onix-internship/static/media/figma.c6b6ae1d3c7b27804e4e8ad4b14d4760.svg",
+    "static/media/iconmonstr-github-1.svg": "/onix-internship/static/media/iconmonstr-github-1.fdb9d7a3a6c1d3384c684e39534b6fc8.svg",
+    "static/media/facebook.svg": "/onix-internship/static/media/facebook.5c4fbdd19bd0fbafc7cc2597b28eec76.svg",
+    "index.html": "/onix-internship/index.html",
+    "static/media/vimeo.svg": "/onix-internship/static/media/vimeo.28984d271028c5d8952b15ca4a7d0543.svg",
+    "main.3265e5af.css.map": "/onix-internship/static/css/main.3265e5af.css.map",
+    "main.20eb4829.js.map": "/onix-internship/static/js/main.20eb4829.js.map",
+    "787.80dd0e3c.chunk.js.map": "/onix-internship/static/js/787.80dd0e3c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3265e5af.css",
+    "static/js/main.20eb4829.js"
+  ]
+}
