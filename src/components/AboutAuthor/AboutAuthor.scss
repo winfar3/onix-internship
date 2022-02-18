@@ -1,0 +1,66 @@
+@import "../../helperStyles/colors.scss";
+
+.about-author-block {
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+
+    padding: 0 15px;
+
+    text-align: center;
+
+    &__image {
+    }
+
+    &__img {
+        width: calc(100% + 30px);
+        height: 100%;
+        margin-left: -15px;
+        object-fit: cover;
+    }
+
+    &__title {
+        margin-top: 20px;
+        
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1.31;
+
+        &:hover {
+            color: $logo-bg;
+        }
+    }
+
+    &__subtitle {
+        margin-top: 4px;
+
+        font-size: 14px;
+        font-style: italic;
+        line-height: 1.35;
+        color: $light-grey;
+    }
+
+    &__desc {
+        margin-top: 14px;
+
+        font-family: 'PT Sans', sans-serif;
+        font-size: 14px;
+        line-height: 1.71;
+        color: $primary;
+    }
+
+    &__link {
+        display: block;
+        margin-top: 14px;
+        padding: 12px 0;
+        border-top: 1px solid $sidebar-border;
+    }
+}
+
+a.about-author-block__link {
+    font-size: 12px;
+    line-height: 1.33;
+    color: $logo-bg;
+
+    &:hover {
+        color: $light-grey;
+    }
+}

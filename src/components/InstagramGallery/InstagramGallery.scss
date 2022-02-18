@@ -1,0 +1,38 @@
+@import "../../helperStyles/colors.scss";
+
+.instagram-gallery {
+
+    &__title {
+        font-size: 2.4rem;
+        line-height: 1.35;
+        text-align: center;
+        margin-bottom: 39px;
+    }
+
+    &__link {
+        &:hover {
+            color: $logo-bg;
+        }
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(200px, 320px));
+        grid-template-rows: 1fr;
+        gap: 20px;
+        overflow: hidden;
+    }
+
+    &__item {
+        height: 300px;
+        background-color: #000;
+    }
+    
+    &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+        filter: saturate(60%);
+    }
+}

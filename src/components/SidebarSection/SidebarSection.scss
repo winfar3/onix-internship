@@ -1,0 +1,28 @@
+@import "../../helperStyles/colors.scss";
+
+.sidebar-section {
+    
+    &__title {
+        display: block;
+        margin-bottom: 20px;
+        padding: 15px 0;
+        
+        border: 1px solid $sidebar-border;
+
+        font-size: 16px;
+        line-height: 1.31;
+        text-align: center;
+    }
+
+    &_about-author {
+        @media (min-width: 600px) and (max-width: 1023px) {
+            grid-column: span 2;
+        }
+    }
+
+    &_featured-posts {
+        @media (min-width: 600px) and (max-width: 1023px) {
+            grid-column: span 2;
+        }
+    }
+}
