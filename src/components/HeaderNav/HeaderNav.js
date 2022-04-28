@@ -1,6 +1,7 @@
 import "./HeaderNav.scss";
 
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export function HeaderNav() {
     const [menuActive, setMenuActive] = useState(false);
@@ -29,12 +30,12 @@ function Menu({active, setActive}) {
                         key={item}
                         className="header-nav__item"
                     >
-                        <a 
-                            href={item}
+                        <NavLink 
+                            to={item}
                             className="header-nav__link capitalize" 
                         >
                             {item}
-                        </a>
+                        </NavLink>
                     </li>
                 )}
             </ul>

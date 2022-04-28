@@ -2,11 +2,12 @@ import { HeaderNav } from "../HeaderNav/HeaderNav";
 import "./Footer.scss";
 import gitIcon from "../../assets/icons/iconmonstr-github-1.svg";
 import figmaIcon from "../../assets/icons/figma.svg";
+import { NavLink } from "react-router-dom";
 
 export function Footer() {
     return(
         <footer className="footer">
-            <a className="footer__logo uppercase" href="/">fashion</a>
+            <NavLink className="footer__logo uppercase" to="/">fashion</NavLink>
             {(window.innerWidth > 767 && <HeaderNav/>)}
             <div className="footer__socials">
                 <a 
