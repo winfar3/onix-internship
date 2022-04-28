@@ -6,7 +6,7 @@ import figmaIcon from "../../assets/icons/figma.svg";
 export function Footer() {
     return(
         <footer className="footer">
-            <a className="footer__logo uppercase" href="#">fashion</a>
+            <a className="footer__logo uppercase" href="/">fashion</a>
             {(window.innerWidth > 767 && <HeaderNav/>)}
             <div className="footer__socials">
                 <a 

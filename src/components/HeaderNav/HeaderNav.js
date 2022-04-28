@@ -19,7 +19,7 @@ export function HeaderNav() {
 }
 
 function Menu({active, setActive}) {
-    const navData = ["Home", "Recipes", "Article", "Contact", "Purchase"]
+    const navData = ["home", "recipes", "article", "contact", "purchase"]
     if (active ? document.body.style.overflow = "hidden" : document.body.style.overflow = "auto");
     return(
         <nav className="header__nav header-nav">
@@ -30,8 +30,8 @@ function Menu({active, setActive}) {
                         className="header-nav__item"
                     >
                         <a 
-                            href="#"
-                            className="header-nav__link" 
+                            href={item}
+                            className="header-nav__link capitalize" 
                         >
                             {item}
                         </a>
