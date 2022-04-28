@@ -31,7 +31,7 @@ function Menu({active, setActive}) {
                         className="header-nav__item"
                     >
                         <NavLink 
-                            to={"/onix-reactinternship/" + item}
+                            to={"/onix-internship/" + item}
                             className="header-nav__link capitalize" 
                         >
                             {item}
