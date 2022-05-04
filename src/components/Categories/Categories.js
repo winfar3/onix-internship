@@ -1,20 +1,26 @@
 import "./Categories.scss";
+import {CategoriesItem} from '../CategoriesItem/CategoriesItem.js';
 
 export function Categories() {
     const categoriesData = [{
         title: "Fashion",
+        url: "fashion",
         number: 23
     }, {
         title: "Style & clothes",
+        url: "style-and-clothes",
         number: 7
     }, {
         title: "Minimalism",
+        url: "minimalism",
         number: 16
     }, {
         title: "Black & White",
+        url: "black-and-white",
         number: 5
     }, {
         title: "Modern clothes",
+        url: "modern-clothes",
         number: 12
     }]
     return(
@@ -28,11 +34,3 @@ export function Categories() {
     );
 }
 
-function CategoriesItem(props) {
-    return(
-        <li className="categoris__item">
-            <a href="#" className="categoris__link">{props.title}</a>
-            <p>({props.number})</p>
-        </li>
-    );
-}

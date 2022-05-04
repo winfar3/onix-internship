@@ -1,34 +1,27 @@
 import "./Tags.scss";
+import { TagsItem } from "../TagsItem/TagsItem";
 
 export function Tags() {
     const tagsData = [{
-        id: "Business"}, {
-        id: "Freelance"}, {
-        id: "Money"}, {
-        id: "Experience"}, {
-        id: "Lifestyle"}, {
+        id: "business"}, {
+        id: "freelance"}, {
+        id: "money"}, {
+        id: "experience"}, {
+        id: "lifestyle"}, {
         id: "SEO"}, {
-        id: "Wordpress"}, {
-        id: "Marketing"}, {
+        id: "wordpress"}, {
+        id: "marketing"}, {
         id: "UX"}, {
-        id: "Modern"}, {
-        id: "Success"}, {
-        id: "Nature"
+        id: "modern"}, {
+        id: "success"}, {
+        id: "nature"
     }]
 
     return(
         <div className="tags__wrapper">
             {tagsData.map(tagsDataItem =>
-                <SocialItem {...tagsDataItem} key={tagsDataItem.id} />
+                <TagsItem {...tagsDataItem} key={tagsDataItem.id} />
             )}
         </div>
-    );
-}
-
-function SocialItem(props) {
-    return(
-        <a href="#" className="tags__item">
-            {props.id}
-        </a>
     );
 }

@@ -8,6 +8,7 @@ import behance from "../../assets/images/socials/behance.svg";
 import instagram from "../../assets/images/socials/instagram.svg";
 import youtube from "../../assets/images/socials/youtube.svg";
 import google from "../../assets/images/socials/google.svg";
+import { SocialItem } from "../SocialItem/SocialItem";
 
 export function SocialMedia() {
     const socialMediaData = [{
@@ -63,15 +64,5 @@ export function SocialMedia() {
                 <SocialItem {...socialMediaDataItem} key={socialMediaDataItem.id} />
             )}
         </div>
-    );
-}
-
-function SocialItem(props) {
-    return(
-        <a href="#" className="socials__item">
-            <img src={props.imageUrl} className="socials__img" />
-            <p className="socials__text">{props.number}</p>
-            <p className="socials__text">{props.popularity}</p>
-        </a>
     );
 }

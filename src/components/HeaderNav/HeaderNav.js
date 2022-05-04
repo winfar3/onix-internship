@@ -1,7 +1,8 @@
 import "./HeaderNav.scss";
 
-import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
+
+import { Menu } from "../Menu/Menu.js";
 
 export function HeaderNav() {
     const [menuActive, setMenuActive] = useState(false);
@@ -16,29 +17,5 @@ export function HeaderNav() {
             </div>
             <Menu active={menuActive} setActive={setMenuActive}/>
         </div>
-    );
-}
-
-function Menu({active, setActive}) {
-    const navData = ["home", "recipes", "article", "contact", "purchase"]
-    if (active ? document.body.style.overflow = "hidden" : document.body.style.overflow = "auto");
-    return(
-        <nav className="header__nav header-nav">
-            <ul className={active ? "header-nav__list header-nav__list_active" : "header-nav__list"} >
-                {navData.map(item => 
-                    <li 
-                        key={item}
-                        className="header-nav__item"
-                    >
-                        <NavLink 
-                            to={"/onix-internship/" + item}
-                            className="header-nav__link capitalize" 
-                        >
-                            {item}
-                        </NavLink>
-                    </li>
-                )}
-            </ul>
-        </nav>
     );
 }

@@ -7,19 +7,5 @@
         color: $primary;
     }
 
-    &__item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        padding: 15px 0;
-        
-        &:not(:last-child) {
-            border-bottom: 1px solid $sidebar-border;
-        }
-    }
-
-    &__link:hover {
-        color: $logo-bg;
-    }
+    
 }

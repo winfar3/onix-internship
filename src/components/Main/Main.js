@@ -134,12 +134,12 @@ export function Main() {
         )}
         <div className="pagination">
             <p className="pagination__item pagination__item_prev uppercase">older post</p>
-            <a href="#" className="pagination__item uppercase">1</a>
-            {/* <a href="#" className="pagination__item uppercase">2</a>
-            <a href="#" className="pagination__item uppercase">3</a>
+            <button className="pagination__item uppercase">2</button>
+            <button className="pagination__item uppercase">3</button>
+            <button className="pagination__item uppercase">1</button>
             <p className="pagination__item uppercase">...</p>
-            <a href="#" className="pagination__item uppercase">8</a> */}
-            <a href="#" className="pagination__item pagination__item_next uppercase">next post</a>
+            <button className="pagination__item uppercase">8</button>
+            <button className="pagination__item pagination__item_next uppercase">next post</button>
         </div>
         </main>
     );

@@ -8,30 +8,4 @@
         gap: 3px;
 
     }
-
-    &__item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        padding: 17px 0 13px;
-        background-color: $socials-bg;
-
-        &:hover > .socials__text {
-            color: $socials-img;
-        }
-    }
-
-    &__img {
-        padding-bottom: 6px;
-    }
-
-    &__text {
-        font-family: 'PT Sans', sans-serif;
-        font-size: 1.2rem;
-        line-height: 1.33;
-        text-align: center;
-        color: $socials-text;
-    }
 }

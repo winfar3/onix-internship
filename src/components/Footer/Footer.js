@@ -8,7 +8,7 @@ export function Footer() {
     return(
         <footer className="footer">
             <NavLink className="footer__logo uppercase" to="/">fashion</NavLink>
-            {(window.innerWidth > 767 && <HeaderNav/>)}
+            <HeaderNav/>
             <div className="footer__socials">
                 <a 
                     href="https://github.com/winfar3/onix-internship"

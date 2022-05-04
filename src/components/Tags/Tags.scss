@@ -6,22 +6,4 @@
         flex-wrap: wrap;
         gap: 10px;
     }
-
-    &__item {
-        display: inline-block;
-        padding: 6px 15px;
-
-        background-color: $socials-bg;
-
-        font-size: 1.4rem;
-        line-height: 1.35;
-        
-        &:hover {
-            color: $logo-bg;
-        }
-    }
-}
-
-a.tags__item {
-    color: $primary;
 }
