@@ -1,20 +1,34 @@
 import './Pagination.scss';
 
-import { useState } from 'react';
-
 export function Pagination(props) {
-  const maxPosts = 2;
-  const [maxPages] = useState(Math.ceil(props.postsAmount / maxPosts));
+  const pageNumbers = [];
+  for (let i = 1; i <= props.maxPageNumber; i++) {
+    pageNumbers.push(i);
+  }
 
   return (
     <div className="pagination">
-      <p className="pagination__item pagination__item_prev uppercase">older post</p>
-      <button className="pagination__item uppercase">1</button>
-      {/* <button className="pagination__item uppercase">2</button> */}
-      {/* <button className="pagination__item uppercase">3</button> */}
-      {/* <p className="pagination__item uppercase">...</p> */}
-      <button className="pagination__item uppercase">{maxPages}</button>
-      <button className="pagination__item pagination__item_next uppercase">
+      <button 
+        className="pagination__item pagination__item_prev uppercase"
+        onClick={props.prevPage}
+      >
+        older post
+      </button>
+      {
+        pageNumbers.map(number => (
+          <button 
+            className="pagination__item uppercase" 
+            key={number}
+            onClick={() => props.paginate(number)}
+          >
+            {number}
+          </button>
+        ))
+      }
+      <button 
+        className="pagination__item pagination__item_next uppercase"
+        onClick={props.nextPage}
+      >
         next post
       </button>
     </div>

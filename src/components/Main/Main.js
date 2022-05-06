@@ -130,12 +130,40 @@ export function Main() {
         description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem"
     }]);
 
+    //TODO: Add attention movement to the beginning of the block with posts
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage] = useState(7);
+    const maxPageNumber = Math.ceil(postCardData.length / postsPerPage)
+
+    const lastPostIndex = currentPage * postsPerPage;
+    const firstPostIndex = lastPostIndex - postsPerPage;
+    const currentPosts = postCardData.slice(firstPostIndex, lastPostIndex);
+
+    const paginate = pageNumber => setCurrentPage(pageNumber);
+    const prevPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage(prev => prev - 1)
+        }
+    };
+    const nextPage = () => {
+        if (currentPage < maxPageNumber) {
+            setCurrentPage(prev => prev + 1);
+        }
+    };
+
     return (
         <main className="main">
-        {postCardData.map(postCardItem =>
+        {currentPosts.map(postCardItem =>
             <PostCard {...postCardItem} key={postCardItem.id} />
         )}
-        <Pagination postsAmount={postCardData.length} />
+        <Pagination 
+            maxPageNumber={maxPageNumber} 
+            postsPerPage={postsPerPage} 
+            paginate={paginate}
+            prevPage={prevPage}
+            nextPage={nextPage}
+        />
         </main>
     );
 }
