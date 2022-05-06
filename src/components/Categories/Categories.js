@@ -1,8 +1,11 @@
 import "./Categories.scss";
+
+import { useState } from "react";
+
 import {CategoriesItem} from '../CategoriesItem/CategoriesItem.js';
 
 export function Categories() {
-    const categoriesData = [{
+    const [categoriesData] = useState([{
         title: "Fashion",
         url: "fashion",
         number: 23
@@ -22,7 +25,8 @@ export function Categories() {
         title: "Modern clothes",
         url: "modern-clothes",
         number: 12
-    }]
+    }]);
+
     return(
         <div>
             <ul className="categoris__list">

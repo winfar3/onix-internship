@@ -1,4 +1,9 @@
 import "./SocialMedia.scss";
+
+import { useState } from "react";
+
+import { SocialItem } from "../SocialItem/SocialItem";
+
 import facebook from "../../assets/images/socials/facebook.svg";
 import pinterest from "../../assets/images/socials/pinterest.svg";
 import vimeo from "../../assets/images/socials/vimeo.svg";
@@ -8,10 +13,9 @@ import behance from "../../assets/images/socials/behance.svg";
 import instagram from "../../assets/images/socials/instagram.svg";
 import youtube from "../../assets/images/socials/youtube.svg";
 import google from "../../assets/images/socials/google.svg";
-import { SocialItem } from "../SocialItem/SocialItem";
 
 export function SocialMedia() {
-    const socialMediaData = [{
+    const [socialMediaData] = useState([{
         id: "facebook",
         imageUrl: facebook,
         number: "32k",
@@ -56,7 +60,7 @@ export function SocialMedia() {
         imageUrl: google,
         number: "642",
         popularity: "followers"
-    }]
+    }]);
 
     return(
         <div className="socials__wrapper">

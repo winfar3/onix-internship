@@ -1,11 +1,15 @@
-import { PostCard } from "../PostCard/PostCard";
 import "./FeaturedPosts.scss";
+
+import { useState } from "react";
+
+import { PostCard } from "../PostCard/PostCard";
+
 import image12 from "../../assets/images/postcard/12.png"
 import image13 from "../../assets/images/postcard/13.png"
 import image14 from "../../assets/images/postcard/14.png"
 
 export function FeaturedPosts() {
-    const postCardData = [{
+    const [postCardData] = useState([{
         id: "12",
         cardSize: "small",
         imageUrl: image12,
@@ -35,7 +39,7 @@ export function FeaturedPosts() {
         date: "May 11, 2019",
         author: "Rickie Baroch",
         description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem"
-    }]
+    }]);
 
     return(
         <div className="featured-posts">

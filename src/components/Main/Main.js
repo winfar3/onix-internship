@@ -1,6 +1,9 @@
 import "./Main.scss";
 
+import { useState } from "react";
+
 import { PostCard } from "../PostCard/PostCard";
+import { Pagination } from "../Pagination/Pagination";
 
 import image1 from "../../assets/images/postcard/01.png";
 import image2 from "../../assets/images/postcard/02.png";
@@ -15,7 +18,7 @@ import image10 from "../../assets/images/postcard/10.png";
 import image11 from "../../assets/images/postcard/11.png";
 
 export function Main() {
-    const postCardData = [{
+    const [postCardData] = useState([{
         id: "01",
         cardSize: "medium",
         imageUrl: image1,
@@ -125,22 +128,14 @@ export function Main() {
         date: "May 16, 2019",
         author: "Rickie Baroch",
         description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem"
-    }]
+    }]);
 
     return (
         <main className="main">
         {postCardData.map(postCardItem =>
             <PostCard {...postCardItem} key={postCardItem.id} />
         )}
-        <div className="pagination">
-            <p className="pagination__item pagination__item_prev uppercase">older post</p>
-            <button className="pagination__item uppercase">2</button>
-            <button className="pagination__item uppercase">3</button>
-            <button className="pagination__item uppercase">1</button>
-            <p className="pagination__item uppercase">...</p>
-            <button className="pagination__item uppercase">8</button>
-            <button className="pagination__item pagination__item_next uppercase">next post</button>
-        </div>
+        <Pagination postsAmount={postCardData.length} />
         </main>
     );
 }
