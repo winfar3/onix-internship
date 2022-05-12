@@ -4,11 +4,12 @@ export function Menu({ active, setActive }) {
   const navData = ["home", "recipes", "article", "contact", "purchase"];
   const linkRoot = "/onix-internship/";
 
-  if (
-    active
-      ? (document.body.style.overflow = "hidden")
-      : (document.body.style.overflow = "auto")
-  );
+  if (active) {
+    document.body.style.overflow = "hidden"
+  } else {
+    document.body.style.overflow = "auto"
+  };
+  
   return (
     <nav className="header__nav header-nav">
       <ul

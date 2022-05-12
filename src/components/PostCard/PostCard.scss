@@ -98,6 +98,12 @@ a.postcard__category {
         color: $postcard-info;
     }
 
+    &__buttons {
+        display: flex;
+        justify-content: space-between;
+        column-gap: 10px;
+    }
+
     &__author {
         &:hover {
             color: #b1b1b1;

@@ -1,9 +1,9 @@
 import './Pagination.scss';
 
 export function Pagination(props) {
-  const pageNumbers = [];
+  let pageNumbers = [];
   for (let i = 1; i <= props.maxPageNumber; i++) {
-    pageNumbers.push(i);
+    pageNumbers = [...pageNumbers, i];
   }
 
   return (
