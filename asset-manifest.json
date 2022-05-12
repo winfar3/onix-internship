@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/onix-internship/static/css/main.b4105e7d.css",
-    "main.js": "/onix-internship/static/js/main.7ef95879.js",
+    "main.css": "/onix-internship/static/css/main.70a7201f.css",
+    "main.js": "/onix-internship/static/js/main.c5d6791d.js",
     "static/js/787.80dd0e3c.chunk.js": "/onix-internship/static/js/787.80dd0e3c.chunk.js",
     "static/media/08.png": "/onix-internship/static/media/08.ee830c6b59ec7d9482ba.png",
     "static/media/02.png": "/onix-internship/static/media/02.267f836f7e05dfe21bbb.png",
@@ -31,12 +31,12 @@
     "static/media/facebook.svg": "/onix-internship/static/media/facebook.5c4fbdd19bd0fbafc7cc2597b28eec76.svg",
     "index.html": "/onix-internship/index.html",
     "static/media/vimeo.svg": "/onix-internship/static/media/vimeo.28984d271028c5d8952b15ca4a7d0543.svg",
-    "main.b4105e7d.css.map": "/onix-internship/static/css/main.b4105e7d.css.map",
-    "main.7ef95879.js.map": "/onix-internship/static/js/main.7ef95879.js.map",
+    "main.70a7201f.css.map": "/onix-internship/static/css/main.70a7201f.css.map",
+    "main.c5d6791d.js.map": "/onix-internship/static/js/main.c5d6791d.js.map",
     "787.80dd0e3c.chunk.js.map": "/onix-internship/static/js/787.80dd0e3c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b4105e7d.css",
-    "static/js/main.7ef95879.js"
+    "static/css/main.70a7201f.css",
+    "static/js/main.c5d6791d.js"
   ]
 }
