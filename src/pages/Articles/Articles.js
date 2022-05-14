@@ -1,11 +1,11 @@
-import './Article.scss';
+import './Articles.scss';
 
 import { React, useState } from "react";
 
 import { data } from "../../database/database.js";
-import { PostCard } from "../PostCard/PostCard.js";
-import { Button } from '../Button/Button';
-import { AddPostForm } from '../AddPostForm/AddPostForm.js';
+import { PostCard } from "../../components/PostCard/PostCard.js";
+import { Button } from '../../components/Button/Button';
+import { AddPostForm } from '../../components/AddPostForm/AddPostForm.js';
 
 /*
 * COMMENT 
@@ -14,7 +14,7 @@ import { AddPostForm } from '../AddPostForm/AddPostForm.js';
 * Объясни пожалуйста, где можно и нужно исользовать редактирование объекта через spread.
 */
 
-export function Article() {
+export function Articles() {
   const [postCardData, setPostCardData] = useState(data);
   const [showAddForm, setShowAddForm] = useState(false);
 

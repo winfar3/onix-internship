@@ -13,7 +13,7 @@ import { Sidebar } from "./components/Sidebar/Sidebar.js";
 import { InstagramGallery } from "./components/InstagramGallery/InstagramGallery.js";
 import { Footer } from "./components/Footer/Footer.js";
 import Recipes from "./components/Recipes/Recipes";
-import { Article } from "./components/Article/Article";
+import { Articles } from "./pages/Articles/Articles";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 
 function App() {
@@ -37,9 +37,9 @@ function App() {
               }
             />
             <Route 
-              path="/onix-internship/article"
+              path="/onix-internship/articles"
               element={
-                <Article />
+                <Articles />
               }
             />
             <Route 

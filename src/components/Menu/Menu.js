@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 export function Menu({ active, setActive }) {
-  const navData = ["home", "recipes", "article", "contact", "purchase"];
+  const navData = ["home", "recipes", "articles", "contact", "purchase"];
   const linkRoot = "/onix-internship/";
 
   if (active) {
