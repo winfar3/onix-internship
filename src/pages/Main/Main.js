@@ -2,8 +2,8 @@ import "./Main.scss";
 
 import { useState } from "react";
 
-import { PostCard } from "../PostCard/PostCard";
-import { Pagination } from "../Pagination/Pagination";
+import { PostCard } from "../../components/PostCard/PostCard";
+import { Pagination } from "../../components/Pagination/Pagination";
 import { data } from '../../database/database.js';
 
 export function Main() {
@@ -33,16 +33,16 @@ export function Main() {
 
     return (
         <main className="main">
-        {currentPosts.map(postCardItem =>
-            <PostCard {...postCardItem} key={postCardItem.id} />
-        )}
-        <Pagination 
-            maxPageNumber={maxPageNumber} 
-            postsPerPage={postsPerPage} 
-            paginate={paginate}
-            prevPage={prevPage}
-            nextPage={nextPage}
-        />
+            {currentPosts.map(postCardItem =>
+                <PostCard {...postCardItem} key={postCardItem.id} />
+            )}
+            <Pagination 
+                maxPageNumber={maxPageNumber} 
+                postsPerPage={postsPerPage} 
+                paginate={paginate}
+                prevPage={prevPage}
+                nextPage={nextPage}
+            />
         </main>
     );
 }

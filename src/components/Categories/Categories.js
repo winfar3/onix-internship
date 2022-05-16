@@ -2,7 +2,7 @@ import "./Categories.scss";
 
 import { useState } from "react";
 
-import {CategoriesItem} from '../CategoriesItem/CategoriesItem.js';
+import { CategoriesItem } from '../CategoriesItem/CategoriesItem.js'
 
 export function Categories() {
     const [categoriesData] = useState([{

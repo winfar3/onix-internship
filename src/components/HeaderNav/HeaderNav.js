@@ -13,7 +13,7 @@ export function HeaderNav() {
                 className={menuActive ? "header-nav__burger header-nav__burger_active" : "header-nav__burger"}
                 onClick={() => setMenuActive((menuActive) => !menuActive)}
             >
-                <span></span>
+            <span></span>
             </div>
             <Menu active={menuActive} setActive={setMenuActive}/>
         </div>
