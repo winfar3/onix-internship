@@ -16,11 +16,7 @@ export function FeaturedPosts() {
         isPositionTop: false,
         category: "jeans",
         title: "One of Saturn’s largest rings may be newer than anyone",
-        date: {
-            day: 14,
-            month: "May",
-            year: 2019
-          },
+        date: "2019-05-14",
         author: {
             firstName: "Rickie",
             lastName: "Baroch"
@@ -33,11 +29,7 @@ export function FeaturedPosts() {
         isPositionTop: false,
         category: "City",
         title: "One of Saturn’s largest rings may be newer than anyone",
-        date: {
-            day: 13,
-            month: "May",
-            year: 2019
-          },
+        date: "2019-05-13",
         author: {
             firstName: "Rickie",
             lastName: "Baroch"
@@ -50,11 +42,7 @@ export function FeaturedPosts() {
         isPositionTop: false,
         category: "Photography",
         title: "One of Saturn’s largest rings may be newer than anyone",
-        date: {
-            day: 11,
-            month: "May",
-            year: 2019
-          },
+        date: "2019-05-11",
         author: {
             firstName: "Rickie",
             lastName: "Baroch"

@@ -1,8 +1,12 @@
 import { Button } from "../Button/Button";
 import "./PostCard.scss";
+import PostCardDateView from "./PostCardDateView";
 import PostCardImageView from "./PostCardImageView";
 
 export function PostCard({id, cardSize, imageUrl, isPositionTop, category, title, date, author, description, deletePost, deleteImage, addComment, comment}) {
+    const months = ["January","February","March","April","May","June","July",
+    "August","September","October","November","December"];
+    const dateObject = new Date(date);
     
     return (
         <article className={"postcard postcard_" + cardSize} >
@@ -18,7 +22,11 @@ export function PostCard({id, cardSize, imageUrl, isPositionTop, category, title
             <a href="!#" className="postcard__category uppercase">{category}</a>
             <h2 className="postcard__title"><a href="!#">{title}</a></h2>
             <div className="postcard__info">
-                <p className="postcard__date">{date.month} {date.day}, {date.year}</p>
+                <PostCardDateView 
+                    year={dateObject.getFullYear()}
+                    month={months[dateObject.getMonth()]}
+                    day={dateObject.getDate()}
+                />
                 <a href="!#" className="postcard__author"><span>By</span> {author.firstName} {author.lastName}</a>
             </div>
             <div className="postcard__buttons">

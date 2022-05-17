@@ -17,11 +17,7 @@ export const data = [{
   isPositionTop: false,
   category: "Tourism",
   title: "One of Saturn’s largest rings may be newer than anyone",
-  date: {
-    day: 6,
-    month: "June",
-    year: 2019
-  }, 
+  date: "2019-06-06", 
   author: {
     firstName: "Rickie",
     lastName: "Baroch"
@@ -34,11 +30,7 @@ export const data = [{
   isPositionTop: false,
   category: "sport",
   title: "One of Saturn’s largest rings may be newer than anyone",
-  date: {
-    day: 5,
-    month: "June",
-    year: 2019
-  },
+  date: "2019-06-05",
   author: {
     firstName: "Kate",
     lastName: "Willems"
@@ -51,11 +43,7 @@ export const data = [{
   isPositionTop: true,
   category: "fashion",
   title: "One of Saturn’s largest rings may be newer than anyone",
-  date: {
-    day: 4,
-    month: "June",
-    year: 2019
-  },
+  date: "2019-06-04",
   author: {
     firstName: "Jordan",
     lastName: "Hart"
@@ -68,11 +56,7 @@ export const data = [{
   isPositionTop: false,
   category: "clothes",
   title: "One of Saturn’s largest rings may be newer than anyone",
-  date: {
-    day: 3,
-    month: "June",
-    year: 2019
-  },
+  date: "2019-06-03",
   author: {
     firstName: "Kate",
     lastName: "Willems"
@@ -85,11 +69,7 @@ export const data = [{
   isPositionTop: true,
   category: "clothes",
   title: "One of Saturn’s largest rings may be newer than anyone",
-  date: {
-    day: 2,
-    month: "June",
-    year: 2019
-  },
+  date: "2019-06-02",
   author: {
     firstName: "Rickie",
     lastName: "Baroch"
@@ -102,11 +82,7 @@ export const data = [{
   isPositionTop: false,
   category: "fashion",
   title: "One of Saturn’s largest rings may be newer than anyone",
-  date: {
-    day: 1,
-    month: "June",
-    year: 2019
-  },
+  date: "2019-06-01",
   author: {
     firstName: "Jordan",
     lastName: "Hart"
@@ -119,11 +95,7 @@ export const data = [{
   isPositionTop: true,
   category: "Summer",
   title: "One of Saturn’s largest rings may be newer than anyone",
-  date: {
-    day: 30,
-    month: "May",
-    year: 2019
-  },
+  date: "2019-05-30",
   author: {
     firstName: "Rickie",
     lastName: "Baroch"
@@ -136,11 +108,7 @@ export const data = [{
   isPositionTop: false,
   category: "Autumn",
   title: "One of Saturn’s largest rings may be newer than anyone",
-  date: {
-    day: 25,
-    month: "May",
-    year: 2019
-  },
+  date: "2019-05-29",
   author: {
     firstName: "Kate",
     lastName: "Willems"
@@ -153,11 +121,7 @@ export const data = [{
   isPositionTop: true,
   category: "clothes",
   title: "One of Saturn’s largest rings may be newer than anyone",
-  date: {
-    day: 22,
-    month: "May",
-    year: 2019
-  },
+  date: "2019-05-22",
   author: {
     firstName: "Tomas",
     lastName: "Ross"
@@ -170,11 +134,7 @@ export const data = [{
   isPositionTop: false,
   category: "summer",
   title: "One of Saturn’s largest rings may be newer than anyone",
-  date: {
-    day: 19,
-    month: "May",
-    year: 2019
-  },
+  date: "2019-05-19",
   author: {
     firstName: "Rickie",
     lastName: "Baroch"
@@ -187,11 +147,7 @@ export const data = [{
   isPositionTop: false,
   category: "summer",
   title: "One of Saturn’s largest rings may be newer than anyone",
-  date: {
-    day: 16,
-    month: "May",
-    year: 2019
-  },
+  date: "2019-05-16",
   author: {
     firstName: "Jordan",
     lastName: "Hart"
