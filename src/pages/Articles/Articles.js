@@ -23,8 +23,8 @@ export function Articles() {
   };
 
   const sortByDate = () => {
-    postCardData.sort(byField('date'));
-    setPostCardData([...postCardData]); 
+    const temp = [...postCardData].sort(byField('date'));
+    setPostCardData([...temp]); 
   }
 
   const sortById = () => {
