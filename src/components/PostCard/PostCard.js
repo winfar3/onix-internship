@@ -1,5 +1,6 @@
 import { Button } from "../Button/Button";
 import "./PostCard.scss";
+import PostCardImageView from "./PostCardImageView";
 
 export function PostCard({id, cardSize, imageUrl, isPositionTop, category, title, date, author, description, deletePost, deleteImage, addComment, comment}) {
     
@@ -7,10 +8,10 @@ export function PostCard({id, cardSize, imageUrl, isPositionTop, category, title
         <article className={"postcard postcard_" + cardSize} >
             <div className="postcard__image">
                 <a href="!#">
-                    <img 
-                        src={imageUrl} 
-                        className={isPositionTop ? "postcard__img postcard__img_top" : "postcard__img"} 
-                        alt="preview"
+                    <PostCardImageView 
+                        imageUrl={imageUrl}
+                        classNames={isPositionTop ? "postcard__img postcard__img_top" : "postcard__img"}
+                        alt={"preview"}
                     />
                 </a>
             </div>
@@ -21,21 +22,33 @@ export function PostCard({id, cardSize, imageUrl, isPositionTop, category, title
                 <a href="!#" className="postcard__author"><span>By</span> {author.firstName} {author.lastName}</a>
             </div>
             <div className="postcard__buttons">
-                <Button 
-                    logic={deletePost}
-                    content={"Delete post"}
-                    styles={"button button_delete"}
-                />
-                <Button 
-                    logic={deleteImage}
-                    content={"Delete image"}
-                    styles={"button button_delete"}
-                />
-                <Button 
-                    logic={addComment}
-                    content={"Add comment"}
-                    styles={"button button_delete"}
-                />
+                {
+                    deletePost ? 
+                    <Button 
+                        logic={deletePost}
+                        content={"Delete post"}
+                        styles={"button button_delete"}
+                    />
+                    : null
+                }
+                {
+                    deleteImage ?
+                    <Button 
+                        logic={deleteImage}
+                        content={"Delete image"}
+                        styles={"button button_delete"}
+                    />
+                    : null
+                }
+                {
+                    addComment ? 
+                    <Button 
+                        logic={addComment}
+                        content={"Add comment"}
+                        styles={"button button_delete"}
+                    />
+                    : null
+                }
             </div>
             {cardSize === "big" && <p className="postcard__desc">{description}</p>}
             {comment && <p className="postcard__desc">{comment}</p>}

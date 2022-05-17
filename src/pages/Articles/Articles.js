@@ -28,7 +28,7 @@ export function Articles() {
   }
 
   const sortById = () => {
-    let arrayForSort = postCardData;
+    let arrayForSort = [...postCardData];
 
     for (let j = 0; j < arrayForSort.length; j++) {
       for (let i = 0; i < arrayForSort.length - 1 - j; i++) {
