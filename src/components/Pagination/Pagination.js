@@ -1,10 +1,10 @@
 import './Pagination.scss';
 
 export function Pagination(props) {
-  let pageNumbers = [];
-  for (let i = 1; i <= props.maxPageNumber; i++) {
-    pageNumbers = [...pageNumbers, i];
-  }
+  let tempArray = new Array(props.maxPageNumber).fill(0);
+  const pageNumbers = tempArray.map((item, pos) => {
+    return ++pos;
+  });
 
   return (
     <div className="pagination">
