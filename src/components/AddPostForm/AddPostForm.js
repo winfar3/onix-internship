@@ -42,11 +42,7 @@ export function AddPostForm(props) {
       isPositionTop: false,
       category: postCategory,
       title: postTitle,
-      date: {
-        day: 1,
-        month: "June",
-        year: 2022
-      }, 
+      date: "2020-06-01", 
       author: {
         firstName: postFirstName,
         lastName: postLastName
