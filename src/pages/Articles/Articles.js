@@ -45,7 +45,7 @@ export function Articles() {
   }
 
   const deleteImage = (pos) => {
-    delete postCardData[pos].imageUrl;
+    postCardData[pos] = {...postCardData[pos], imageUrl: null}
     setPostCardData([...postCardData]);
   }
 

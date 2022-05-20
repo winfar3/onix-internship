@@ -4,14 +4,13 @@ import React from "react";
 class Recipes extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { date: new Date() };
+    this.state = { 
+      date: new Date(), 
+    };
   }
 
   componentDidMount() {
-    this.timerID = setInterval(
-      () => this.tick(),
-      1000
-    );
+    this.timerID = setInterval(() => this.tick(), 1000);
   }
 
   componentWillUnmount() {
@@ -20,7 +19,7 @@ class Recipes extends React.Component {
 
   tick() {
     this.setState({
-      date: new Date()
+      date: new Date(),
     });
   }
 
@@ -28,7 +27,9 @@ class Recipes extends React.Component {
     return (
       <div className="recipes">
         <h2 className="recipes__title">Hello world!</h2>
-        <h3 className="recipes__clock">It's {this.state.date.toLocaleTimeString()} now.</h3>
+        <h3 className="recipes__clock">
+          It's {this.state.date.toLocaleTimeString()} now.
+        </h3>
       </div>
     );
   }
