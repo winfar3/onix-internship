@@ -53,7 +53,7 @@ export function FeaturedPosts() {
     return(
         <div className="featured-posts">
             {postCardData.map(postCardItem =>
-                <PostCard {...postCardItem} key={postCardItem.id} />
+                <PostCard post={postCardItem} key={postCardItem.id} />
             )}
         </div>
     );

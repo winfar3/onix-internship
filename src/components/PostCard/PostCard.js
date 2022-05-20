@@ -3,63 +3,63 @@ import "./PostCard.scss";
 import PostCardDateView from "./PostCardDateView";
 import PostCardImageView from "./PostCardImageView";
 
-export function PostCard({id, cardSize, imageUrl, isPositionTop, category, title, date, author, description, deletePost, deleteImage, addComment, comment}) {
+export function PostCard(props) {
     const months = ["January","February","March","April","May","June","July",
     "August","September","October","November","December"];
-    const dateObject = new Date(date);
+    const dateObject = new Date(props.post.date);
     
     return (
-        <article className={"postcard postcard_" + cardSize} >
+        <article className={"postcard postcard_" + props.post.cardSize} >
             <div className="postcard__image">
                 <a href="!#">
                     <PostCardImageView 
-                        imageUrl={imageUrl}
-                        classNames={isPositionTop ? "postcard__img postcard__img_top" : "postcard__img"}
+                        imageUrl={props.post.imageUrl}
+                        classNames={props.post.isPositionTop ? "postcard__img postcard__img_top" : "postcard__img"}
                         alt={"preview"}
                     />
                 </a>
             </div>
-            <a href="!#" className="postcard__category uppercase">{category}</a>
-            <h2 className="postcard__title"><a href="!#">{title}</a></h2>
+            <a href="!#" className="postcard__category uppercase">{props.post.category}</a>
+            <h2 className="postcard__title"><a href="!#">{props.post.title}</a></h2>
             <div className="postcard__info">
                 <PostCardDateView 
                     year={dateObject.getFullYear()}
                     month={months[dateObject.getMonth()]}
                     day={dateObject.getDate()}
                 />
-                <a href="!#" className="postcard__author"><span>By</span> {author.firstName} {author.lastName}</a>
+                <a href="!#" className="postcard__author"><span>By</span> {props.post.author.firstName} {props.post.author.lastName}</a>
             </div>
             <div className="postcard__buttons">
                 {
-                    deletePost ? 
+                    props.deletePost ? 
                     <Button 
-                        logic={deletePost}
+                        logic={props.deletePost}
                         content={"Delete post"}
                         styles={"button button_delete"}
                     />
                     : null
                 }
                 {
-                    deleteImage ?
+                    props.deleteImage ?
                     <Button 
-                        logic={deleteImage}
+                        logic={props.deleteImage}
                         content={"Delete image"}
                         styles={"button button_delete"}
                     />
                     : null
                 }
                 {
-                    addComment ? 
+                    props.addComment ? 
                     <Button 
-                        logic={addComment}
+                        logic={props.addComment}
                         content={"Add comment"}
                         styles={"button button_delete"}
                     />
                     : null
                 }
             </div>
-            {cardSize === "big" && <p className="postcard__desc">{description}</p>}
-            {comment && <p className="postcard__desc">{comment}</p>}
+            {props.post.cardSize === "big" && <p className="postcard__desc">{props.post.description}</p>}
+            {props.comment && <p className="postcard__desc">{props.comment}</p>}
         </article>
     );
 }

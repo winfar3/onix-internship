@@ -101,7 +101,7 @@ export function Articles() {
       </div>
       {postCardData.map((postCardItem, pos) => (
         <PostCard 
-          {...postCardItem} 
+          post={postCardItem} 
           key={postCardItem.id} 
           deletePost={() => deletePost(pos)}
           deleteImage={() => deleteImage(pos)}
