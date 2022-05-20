@@ -1,8 +1,15 @@
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 export function Menu({ active, setActive }) {
   const navData = ["home", "recipes", "articles", "contact", "purchase"];
   const linkRoot = "/onix-internship/";
+
+  const [title, setTitle] = useState("");
+
+  useEffect(() => {
+    document.title = `Fasion ${title}`;
+  });
 
   if (active) {
     document.body.style.overflow = "hidden"
@@ -23,6 +30,7 @@ export function Menu({ active, setActive }) {
           <li key={item} className="header-nav__item">
             <NavLink
               to={linkRoot + item}
+              onClick={() => setTitle(item)}
               className="header-nav__link capitalize"
             >
               {item}

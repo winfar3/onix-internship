@@ -34,7 +34,7 @@ export function Main() {
     return (
         <main className="main">
             {currentPosts.map(postCardItem =>
-                <PostCard {...postCardItem} key={postCardItem.id} />
+                <PostCard post={postCardItem} key={postCardItem.id} />
             )}
             <Pagination 
                 maxPageNumber={maxPageNumber} 

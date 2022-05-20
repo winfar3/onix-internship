@@ -7,13 +7,6 @@ import { PostCard } from "../../components/PostCard/PostCard.js";
 import { Button } from '../../components/Button/Button';
 import { AddPostForm } from '../../components/AddPostForm/AddPostForm.js';
 
-/*
-* COMMENT 
-* Я не до конца уверен, что правильно выполнил пункт задания "Переписать часть объекта с помощью spread оператора."
-* В функции addComment я создаю еще один объект с новыми полями и потом объединяю его со старым объектом.
-* Объясни пожалуйста, где можно и нужно исользовать редактирование объекта через spread.
-*/
-
 export function Articles() {
   const [postCardData, setPostCardData] = useState(data);
   const [showAddForm, setShowAddForm] = useState(false);
