@@ -1,27 +1,32 @@
 import './Articles.scss';
 
-import { React, useState } from "react";
+import React from "react";
 
 import { data } from "../../database/database.js";
 import { PostCard } from "../../components/PostCard/PostCard.js";
 import { Button } from '../../components/Button/Button';
 import { AddPostForm } from '../../components/AddPostForm/AddPostForm.js';
 
-export function Articles() {
-  const [postCardData, setPostCardData] = useState(data);
-  const [showAddForm, setShowAddForm] = useState(false);
+class Articles extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      postCardData: data,
+      showAddForm: false,
+    }
+  }
 
-  const byField = (field) => {
+  byField = (field) => {
     return (a, b) => a[field] > b[field] ? 1 : -1;
   };
 
-  const sortByDate = () => {
-    const temp = [...postCardData].sort(byField('date'));
-    setPostCardData([...temp]); 
+  sortByDate = () => {
+    const temp = [...this.state.postCardData].sort(this.byField('date'));
+    this.setState({postCardData: temp}); 
   }
 
-  const sortById = () => {
-    let arrayForSort = [...postCardData];
+  sortById = () => {
+    let arrayForSort = [...this.state.postCardData];
 
     for (let j = 0; j < arrayForSort.length; j++) {
       for (let i = 0; i < arrayForSort.length - 1 - j; i++) {
@@ -33,74 +38,80 @@ export function Articles() {
       }
     }
 
-    setPostCardData([...arrayForSort]);
+    this.setState({postCardData: arrayForSort});
   };
 
-  const handleShowAddForm = () => {
-    setShowAddForm(!showAddForm);
+  handleShowAddForm = () => {
+    this.setState({showAddForm: !this.state.showAddForm});
   }
 
-  const addPost = (post) => {
-    setPostCardData([...postCardData, post]);
+  addPost = (post) => {
+    this.setState({postCardData: [...this.state.postCardData, post]});
   }
 
-  const deleteImage = (pos) => {
-    postCardData[pos] = {...postCardData[pos], imageUrl: null}
-    setPostCardData([...postCardData]);
+  // TODO: Fix mutation bug
+  deleteImage = (pos) => {
+    this.state.postCardData[pos] = {...this.state.postCardData[pos], imageUrl: null}
+    this.setState({postCardData: this.state.postCardData});
   }
 
-  const addComment = (pos) => {
+  // TODO: Fix mutation and render comment bugs
+  addComment = (pos) => {
     const temp = {comment: prompt("Write your comment", "")};
-    postCardData[pos] = {...postCardData[pos], ...temp};
-    setPostCardData([...postCardData]);
+    this.state.postCardData[pos] = {...this.state.postCardData[pos], ...temp};
+    this.setState({postCardData: this.state.postCardData});
   }
 
-  const deletePost = (pos) => {
-    const temp = [...postCardData];
+  deletePost = (pos) => {
+    const temp = [...this.state.postCardData];
     temp.splice(pos, 1);
 
-    setPostCardData(temp);
+    this.setState({postCardData: temp});
   }
 
+  render() {
   return (
     <main className="main">
 
       {
-        showAddForm ? 
+        this.state.showAddForm ? 
         <AddPostForm 
-          handleShowAddForm={handleShowAddForm} 
-          addPost={addPost}  
-          lastId={postCardData[postCardData.length - 1].id}
+          handleShowAddForm={this.handleShowAddForm} 
+          addPost={this.addPost}  
+          lastId={this.state.postCardData[this.state.postCardData.length - 1].id}
         /> 
         : null
       }
 
       <div className="buttonsWrap">
         <Button 
-          logic={sortByDate}
+          logic={this.sortByDate}
           content={"Sort by function"}
           styles={"button button_article"}
         />
         <Button 
-          logic={sortById}
+          logic={this.sortById}
           content={"Bubble sort"}
           styles={"button button_article"}
         />
         <Button 
-          logic={handleShowAddForm}
+          logic={this.handleShowAddForm}
           content={"Add post"}
           styles={"button button_article"}
         />
       </div>
-      {postCardData.map((postCardItem, pos) => (
+      {this.state.postCardData.map((postCardItem, pos) => (
         <PostCard 
           post={postCardItem} 
           key={postCardItem.id} 
-          deletePost={() => deletePost(pos)}
-          deleteImage={() => deleteImage(pos)}
-          addComment={() => addComment(pos)}
+          deletePost={() => this.deletePost(pos)}
+          deleteImage={() => this.deleteImage(pos)}
+          addComment={() => this.addComment(pos)}
           />
       ))}
     </main>
   );
 }
+}
+
+export default Articles;

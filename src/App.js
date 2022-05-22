@@ -13,7 +13,7 @@ import { Sidebar } from "./components/Sidebar/Sidebar.js";
 import { InstagramGallery } from "./components/InstagramGallery/InstagramGallery.js";
 import { Footer } from "./components/Footer/Footer.js";
 import Recipes from "./pages/Recipes/Recipes";
-import { Articles } from "./pages/Articles/Articles";
+import Articles from "./pages/Articles/Articles";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 function App() {

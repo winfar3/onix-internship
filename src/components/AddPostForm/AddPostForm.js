@@ -49,7 +49,6 @@ export function AddPostForm(props) {
       },
       description: postDescription
     };
-    console.log(props.lastId);
 
     props.addPost(post);
     props.handleShowAddForm();
