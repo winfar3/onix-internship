@@ -9,7 +9,7 @@ export function PostCard(props) {
     const dateObject = new Date(props.post.date);
     
     return (
-        <article className={"postcard postcard_" + props.post.cardSize} >
+        <article onClick={props.handleActivePost} className={"postcard postcard_" + props.post.cardSize} >
             <div className="postcard__image">
                 <a href="!#">
                     <PostCardImageView 

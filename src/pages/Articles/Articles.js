@@ -11,15 +11,16 @@ class Articles extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      postCardData: data,
+      postCardData: [...data],
       showAddForm: false,
     }
   }
 
+  // TODO: Solve a bug with changing the size of cards on all pages
   changeCardSize = () => {
     let temp = [...this.state.postCardData];
     temp.map((item) => {
-      item.cardSize = "big";
+      return item.cardSize = "big";
     });
     this.setState({postCardData: temp});
   }
@@ -77,8 +78,17 @@ class Articles extends React.Component {
     this.setState({postCardData: temp});
   }
 
+  handleActivePost = (pos) => {
+    console.log(pos);
+  }
+
   componentDidMount() {
     this.changeCardSize();
+    this.handleActivePost();
+  }
+
+  componentWillUnmount() {
+
   }
 
   render() {
@@ -119,7 +129,8 @@ class Articles extends React.Component {
           deletePost={() => this.deletePost(pos)}
           deleteImage={() => this.deleteImage(pos)}
           addComment={() => this.addComment(pos)}
-          />
+          handleActivePost={() => this.handleActivePost(pos)}
+        />
       ))}
     </main>
   );
