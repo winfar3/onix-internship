@@ -16,6 +16,14 @@ class Articles extends React.Component {
     }
   }
 
+  changeCardSize = () => {
+    let temp = [...this.state.postCardData];
+    temp.map((item) => {
+      item.cardSize = "big";
+    });
+    this.setState({postCardData: temp});
+  }
+
   byField = (field) => {
     return (a, b) => a[field] > b[field] ? 1 : -1;
   };
@@ -67,6 +75,10 @@ class Articles extends React.Component {
     temp.splice(pos, 1);
 
     this.setState({postCardData: temp});
+  }
+
+  componentDidMount() {
+    this.changeCardSize();
   }
 
   render() {
