@@ -85,14 +85,23 @@ class Articles extends React.Component {
     }
   }
 
+  goToPrevPost = (e) => {
+    if (e.key === "ArrowUp") {
+      let temp = this.state.onActivePost;
+      this.setState({onActivePost: --temp});
+    }
+  }
+
   componentDidMount() {
     this.handleActivePost();
     window.addEventListener("keyup", this.goToNextPost);
+    window.addEventListener("keyup", this.goToPrevPost);
   }
 
   componentWillUnmount() {
     this.handleActivePost();
     window.removeEventListener("keyup", this.goToNextPost);
+    window.removeEventListener("keyup", this.goToPrevPost);
   }
 
   render() {
