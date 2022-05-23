@@ -13,6 +13,7 @@ class Articles extends React.Component {
     this.state = {
       postCardData: [...data],
       showAddForm: false,
+      onActivePost: null,
     }
   }
 
@@ -70,7 +71,11 @@ class Articles extends React.Component {
   }
 
   handleActivePost = (pos) => {
-    console.log(pos);
+    let temp = pos;
+    if (this.state.onActivePost === temp) {
+      temp = null;
+    }
+    this.setState({onActivePost: temp});
   }
 
   componentDidMount() {
@@ -78,6 +83,7 @@ class Articles extends React.Component {
   }
 
   componentWillUnmount() {
+    this.handleActivePost();
   }
 
   render() {
@@ -116,6 +122,7 @@ class Articles extends React.Component {
           post={postCardItem} 
           key={postCardItem.id}
           forcedCardSize={"big"}
+          onActivePost={this.state.onActivePost === pos}
           deletePost={() => this.deletePost(pos)}
           deleteImage={() => this.deleteImage(pos)}
           addComment={() => this.addComment(pos)}

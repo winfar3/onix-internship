@@ -46,6 +46,10 @@ a.postcard__category {
         }
     }
 
+    &_active {
+        box-shadow: 0px 6px 6px rgba(201, 169, 110, 1);
+    }
+
     &__image {
         width: calc(100% + 40px);
         height: 280px;

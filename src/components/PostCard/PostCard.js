@@ -8,10 +8,14 @@ export function PostCard(props) {
     const months = ["January","February","March","April","May","June","July",
     "August","September","October","November","December"];
     const cardSize = props.forcedCardSize ? props.forcedCardSize : props.post.cardSize;
+    const onActivePost = props.onActivePost ? "postcard_active" : "";
     const dateObject = new Date(props.post.date);
     
     return (
-        <article onClick={props.handleActivePost} className={"postcard postcard_" + cardSize} >
+        <article 
+            onClick={props.handleActivePost} 
+            className={`postcard postcard_${cardSize} ${onActivePost}`} 
+        >
             <div className="postcard__image">
                 <a href="!#">
                     <PostCardImageView 
