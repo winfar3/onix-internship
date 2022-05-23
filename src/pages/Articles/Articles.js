@@ -78,12 +78,21 @@ class Articles extends React.Component {
     this.setState({onActivePost: temp});
   }
 
+  goToNextPost = (e) => {
+    if (e.key === "ArrowDown") {
+      let temp = this.state.onActivePost;
+      this.setState({onActivePost: ++temp});
+    }
+  }
+
   componentDidMount() {
     this.handleActivePost();
+    window.addEventListener("keyup", this.goToNextPost);
   }
 
   componentWillUnmount() {
     this.handleActivePost();
+    window.removeEventListener("keyup", this.goToNextPost);
   }
 
   render() {
