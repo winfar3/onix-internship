@@ -1,6 +1,6 @@
 import "./AddPostForm.scss";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { Button } from "../Button/Button";
 
@@ -54,6 +54,29 @@ export function AddPostForm(props) {
     props.handleShowAddForm();
   }
 
+  useEffect(() => {
+    const handleEnter = (e) => {
+      if (e.key === "Enter") {
+        createPost(e);
+      }
+    };
+
+    window.addEventListener("keyup", handleEnter);
+
+    return () => window.removeEventListener("keyup", handleEnter);
+  });
+
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape") {
+        props.handleShowAddForm();
+      }
+    }
+
+    window.addEventListener("keyup", handleEscape);
+
+    return () => window.removeEventListener("keyup", handleEscape);
+  });
 
   return (
     <>
