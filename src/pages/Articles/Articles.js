@@ -16,15 +16,6 @@ class Articles extends React.Component {
     }
   }
 
-  // TODO: Solve a bug with changing the size of cards on all pages
-  changeCardSize = () => {
-    let temp = [...this.state.postCardData];
-    temp.map((item) => {
-      return item.cardSize = "big";
-    });
-    this.setState({postCardData: temp});
-  }
-
   byField = (field) => {
     return (a, b) => a[field] > b[field] ? 1 : -1;
   };
@@ -83,12 +74,10 @@ class Articles extends React.Component {
   }
 
   componentDidMount() {
-    this.changeCardSize();
     this.handleActivePost();
   }
 
   componentWillUnmount() {
-
   }
 
   render() {
@@ -125,7 +114,8 @@ class Articles extends React.Component {
       {this.state.postCardData.map((postCardItem, pos) => (
         <PostCard 
           post={postCardItem} 
-          key={postCardItem.id} 
+          key={postCardItem.id}
+          forcedCardSize={"big"}
           deletePost={() => this.deletePost(pos)}
           deleteImage={() => this.deleteImage(pos)}
           addComment={() => this.addComment(pos)}
