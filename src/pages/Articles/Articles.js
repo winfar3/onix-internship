@@ -81,15 +81,33 @@ class Articles extends React.Component {
   goToNextPost = (e) => {
     if (e.key === "ArrowDown") {
       let temp = this.state.onActivePost;
+      if (temp === this.state.postCardData.length - 1) {
+        return null;
+      }
       this.setState({onActivePost: ++temp});
+      this.sctrollToCard();
     }
   }
 
   goToPrevPost = (e) => {
     if (e.key === "ArrowUp") {
       let temp = this.state.onActivePost;
+      if (temp === 0) {
+        return null;
+      }
       this.setState({onActivePost: --temp});
+      this.sctrollToCard();
     }
+  }
+
+  sctrollToCard = () => {
+    const card = document.querySelector(".postcard_active");
+    if (card === null) {
+      return null;
+    }
+    card.scrollIntoView({
+      block: "center",
+    });
   }
 
   componentDidMount() {
