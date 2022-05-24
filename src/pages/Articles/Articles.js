@@ -110,16 +110,24 @@ class Articles extends React.Component {
     });
   }
 
+  deselectActivePost = (e) => {
+    if (e.key === "Escape") {
+      this.handleActivePost();
+    }
+  }
+
   componentDidMount() {
     this.handleActivePost();
     window.addEventListener("keyup", this.goToNextPost);
     window.addEventListener("keyup", this.goToPrevPost);
+    window.addEventListener("keyup", this.deselectActivePost);
   }
 
   componentWillUnmount() {
     this.handleActivePost();
     window.removeEventListener("keyup", this.goToNextPost);
     window.removeEventListener("keyup", this.goToPrevPost);
+    window.removeEventListener("keyup", this.deselectActivePost);
   }
 
   render() {
