@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./PostCard.scss";
 import PostCardButtons from "./PostCardButtons";
 
@@ -9,14 +10,16 @@ export function PostCard(props) {
     "August","September","October","November","December"];
     const cardSize = props.forcedCardSize ? props.forcedCardSize : props.post.cardSize;
     const onActivePost = props.onActivePost ? "postcard_active" : "";
+    const isDraggable = props.draggable ? "postcard_draggable" : "";
     const dateObject = new Date(props.post.date);
-    
+
     return (
         <article 
             onClick={props.handleActivePost} 
-            className={`postcard postcard_${cardSize} ${onActivePost}`} 
+            draggable={props.draggable}
+            className={`postcard postcard_${cardSize} ${onActivePost} ${isDraggable}`} 
         >
-            <div className="postcard__image">
+            <div className={`postcard__image postcard__image_${cardSize}`}>
                 <a href="!#">
                     <PostCardImageView 
                         imageUrl={props.post.imageUrl}
@@ -25,7 +28,9 @@ export function PostCard(props) {
                     />
                 </a>
             </div>
-            <a href="!#" className="postcard__category uppercase">{props.post.category}</a>
+            { cardSize !== "listSize" &&
+                <a href="!#" className="postcard__category uppercase">{props.post.category}</a>
+            }
             <h2 className="postcard__title"><a href="!#">{props.post.title}</a></h2>
             <div className="postcard__info">
                 <PostCardDateView 

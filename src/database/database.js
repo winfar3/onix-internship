@@ -12,6 +12,7 @@ import image11 from "../assets/images/postcard/11.png";
 
 export const data = [{
   id: 3,
+  order: 1,
   cardSize: "medium",
   imageUrl: image1,
   isPositionTop: false,
@@ -25,6 +26,7 @@ export const data = [{
   description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem"
 }, {
   id: 1,
+  order: 2,
   cardSize: "medium",
   imageUrl: image2,
   isPositionTop: false,
@@ -38,6 +40,7 @@ export const data = [{
   description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem"
 }, {
   id: 2,
+  order: 3,
   cardSize: "medium",
   imageUrl: image3,
   isPositionTop: true,
@@ -51,6 +54,7 @@ export const data = [{
   description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem"
 }, {
   id: 4,
+  order: 4,
   cardSize: "medium",
   imageUrl: image4,
   isPositionTop: false,
@@ -64,6 +68,7 @@ export const data = [{
   description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem"
 }, {
   id: 5,
+  order: 5,
   cardSize: "medium",
   imageUrl: image5,
   isPositionTop: true,
@@ -77,6 +82,7 @@ export const data = [{
   description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem"
 }, {
   id: 6,
+  order: 6,
   cardSize: "medium",
   imageUrl: image6,
   isPositionTop: false,
@@ -90,6 +96,7 @@ export const data = [{
   description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem"
 }, {
   id: 7,
+  order: 7,
   cardSize: "big",
   imageUrl: image7,
   isPositionTop: true,
@@ -103,6 +110,7 @@ export const data = [{
   description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem"
 }, {
   id: 8,
+  order: 8,
   cardSize: "medium",
   imageUrl: image8,
   isPositionTop: false,
@@ -116,6 +124,7 @@ export const data = [{
   description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem"
 }, {
   id: 9,
+  order: 9,
   cardSize: "medium",
   imageUrl: image9,
   isPositionTop: true,
@@ -129,6 +138,7 @@ export const data = [{
   description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem"
 }, {
   id: 10,
+  order: 10,
   cardSize: "medium",
   imageUrl: image10,
   isPositionTop: false,
@@ -142,6 +152,7 @@ export const data = [{
   description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem"
 }, {
   id: 11,
+  order: 11,
   cardSize: "medium",
   imageUrl: image11,
   isPositionTop: false,

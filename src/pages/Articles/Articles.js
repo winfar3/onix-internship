@@ -161,11 +161,12 @@ class Articles extends React.Component {
           styles={"button button_article"}
         />
       </div>
-      {this.state.postCardData.map((postCardItem, pos) => (
+      {this.state.postCardData.sort(this.sortPosts).map((postCardItem, pos) => (
         <PostCard 
           post={postCardItem} 
           key={postCardItem.id}
-          forcedCardSize={"big"}
+          forcedCardSize={"listSize"}
+          draggable={true}
           onActivePost={this.state.onActivePost === pos}
           deletePost={() => this.deletePost(pos)}
           deleteImage={() => this.deleteImage(pos)}
