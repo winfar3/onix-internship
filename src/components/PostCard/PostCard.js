@@ -17,6 +17,11 @@ export function PostCard(props) {
         <article 
             onClick={props.handleActivePost} 
             draggable={props.draggable}
+            onDragStart={(e) => props.dragStartHandler(e, props.post)}
+            onDragLeave={(e) => props.dragLeaveHandler(e)}
+            onDragEnd={(e) => props.dragEndHandler(e)}
+            onDragOver={(e) => props.dragOverHandler(e)}
+            onDrop={(e) => props.dropHandler(e, props.post)}
             className={`postcard postcard_${cardSize} ${onActivePost} ${isDraggable}`} 
         >
             <div className={`postcard__image postcard__image_${cardSize}`}>

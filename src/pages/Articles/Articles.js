@@ -14,6 +14,7 @@ class Articles extends React.Component {
       postCardData: [...data],
       showAddForm: false,
       onActivePost: null,
+      currentPost: null,
     }
   }
 
@@ -116,6 +117,33 @@ class Articles extends React.Component {
     }
   }
 
+  dragStartHandler = (e, post) => {
+    this.setState({currentPost: post});
+  }
+
+  dragLeaveHandler = (e) => {
+  }
+
+  dragEndHandler = (e) => {
+  }
+
+  dragOverHandler = (e) => {
+    e.preventDefault();
+  }
+
+  dropHandler = (e, post) => {
+    e.preventDefault();
+    this.setState({postCardData: this.state.postCardData.map((item) => {
+      if (item.id === post.id) {
+        return {...item, order: this.state.currentPost.order}
+      }
+      if (item.id === this.state.currentPost.id) {
+        return {...item, order: post.order}
+      }
+      return item;
+    })});
+  }
+
   componentDidMount() {
     this.handleActivePost();
     window.addEventListener("keyup", this.goToNextPost);
@@ -161,12 +189,17 @@ class Articles extends React.Component {
           styles={"button button_article"}
         />
       </div>
-      {this.state.postCardData.sort(this.sortPosts).map((postCardItem, pos) => (
+      {this.state.postCardData.sort(this.byField("order")).map((postCardItem, pos) => (
         <PostCard 
           post={postCardItem} 
           key={postCardItem.id}
           forcedCardSize={"listSize"}
           draggable={true}
+          dragStartHandler={this.dragStartHandler}
+          dragLeaveHandler={this.dragLeaveHandler}
+          dragEndHandler={this.dragEndHandler}
+          dragOverHandler={this.dragOverHandler}
+          dropHandler={this.dropHandler}
           onActivePost={this.state.onActivePost === pos}
           deletePost={() => this.deletePost(pos)}
           deleteImage={() => this.deleteImage(pos)}
