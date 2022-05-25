@@ -15,6 +15,7 @@ class Articles extends React.Component {
       showAddForm: false,
       onActivePost: null,
       currentPost: null,
+      sortBy: 'order',
     }
   }
 
@@ -23,24 +24,26 @@ class Articles extends React.Component {
   };
 
   sortByDate = () => {
-    const temp = [...this.state.postCardData].sort(this.byField('date'));
-    this.setState({postCardData: temp}); 
+    this.setState({sortBy: 'date'});
+    // const temp = [...this.state.postCardData].sort(this.byField('date'));
+    // this.setState({postCardData: temp}); 
   }
 
   sortById = () => {
-    let arrayForSort = [...this.state.postCardData];
+    this.setState({sortBy: 'id'});
+    // let arrayForSort = [...this.state.postCardData];
 
-    for (let j = 0; j < arrayForSort.length; j++) {
-      for (let i = 0; i < arrayForSort.length - 1 - j; i++) {
-        if (arrayForSort[i].id > arrayForSort[i + 1].id) {
-            let temp = arrayForSort[i];
-            arrayForSort[i] = arrayForSort[i + 1];
-            arrayForSort[i + 1] = temp;
-        }
-      }
-    }
+    // for (let j = 0; j < arrayForSort.length; j++) {
+    //   for (let i = 0; i < arrayForSort.length - 1 - j; i++) {
+    //     if (arrayForSort[i].id > arrayForSort[i + 1].id) {
+    //         let temp = arrayForSort[i];
+    //         arrayForSort[i] = arrayForSort[i + 1];
+    //         arrayForSort[i + 1] = temp;
+    //     }
+    //   }
+    // }
 
-    this.setState({postCardData: arrayForSort});
+    // this.setState({postCardData: arrayForSort});
   };
 
   handleShowAddForm = () => {
@@ -142,6 +145,7 @@ class Articles extends React.Component {
       }
       return item;
     })});
+    this.setState({sortBy: 'order'});
   }
 
   componentDidMount() {
@@ -189,7 +193,7 @@ class Articles extends React.Component {
           styles={"button button_article"}
         />
       </div>
-      {this.state.postCardData.sort(this.byField("order")).map((postCardItem, pos) => (
+      {this.state.postCardData.sort(this.byField(this.state.sortBy)).map((postCardItem, pos) => (
         <PostCard 
           post={postCardItem} 
           key={postCardItem.id}
