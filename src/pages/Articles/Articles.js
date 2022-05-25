@@ -25,25 +25,10 @@ class Articles extends React.Component {
 
   sortByDate = () => {
     this.setState({sortBy: 'date'});
-    // const temp = [...this.state.postCardData].sort(this.byField('date'));
-    // this.setState({postCardData: temp}); 
   }
 
   sortById = () => {
     this.setState({sortBy: 'id'});
-    // let arrayForSort = [...this.state.postCardData];
-
-    // for (let j = 0; j < arrayForSort.length; j++) {
-    //   for (let i = 0; i < arrayForSort.length - 1 - j; i++) {
-    //     if (arrayForSort[i].id > arrayForSort[i + 1].id) {
-    //         let temp = arrayForSort[i];
-    //         arrayForSort[i] = arrayForSort[i + 1];
-    //         arrayForSort[i + 1] = temp;
-    //     }
-    //   }
-    // }
-
-    // this.setState({postCardData: arrayForSort});
   };
 
   handleShowAddForm = () => {

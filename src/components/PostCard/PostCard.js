@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import "./PostCard.scss";
 import PostCardButtons from "./PostCardButtons";
 
@@ -12,6 +12,28 @@ export function PostCard(props) {
     const onActivePost = props.onActivePost ? "postcard_active" : "";
     const isDraggable = props.draggable ? "postcard_draggable" : "";
     const dateObject = new Date(props.post.date);
+    
+    /* COMMENT
+    * Это пример с learn.javascript, но я не уверен, что в моем случае нужно создавать элемент image.
+    * Есть ли другой способ проверить загружено ли изображение и нужно ли использовать другой способ?
+    **/
+    let image = document.createElement('img');
+    image.src = props.post.imageUrl;
+    /* --- */
+
+    /* COMMENT
+    * React Hook useEffect has missing dependencies: 'image' and 'props.post.id'. 
+    * Either include them or remove the dependency array
+    * Видел эту ошибку, но не понял как ее убрать, ведь мне нужна именно проверка меняется ли image.src
+    **/
+    useEffect(() => {
+        image.onload = () => {
+            console.log(`Image for post ${props.post.id} loaded`);
+        }
+        image.onerror = () => {
+            console.log(`ERROR. Image for post ${props.post.id} not loaded`)
+        }
+    }, [image.src]);
 
     return (
         <article 
