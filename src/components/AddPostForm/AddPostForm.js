@@ -37,6 +37,7 @@ export function AddPostForm(props) {
     e.preventDefault();
     const post = {
       id: props.lastId + 1,
+      order: props.lastOrder + 1,
       cardSize: "medium",
       imageUrl: image1,
       isPositionTop: false,

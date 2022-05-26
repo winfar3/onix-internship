@@ -151,6 +151,7 @@ class Articles extends React.Component {
           handleShowAddForm={this.handleShowAddForm} 
           addPost={this.addPost}  
           lastId={this.state.postCardData[this.state.postCardData.length - 1].id}
+          lastOrder={this.state.postCardData.length}
         /> 
         : null
       }
