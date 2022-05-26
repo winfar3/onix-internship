@@ -109,12 +109,6 @@ class Articles extends React.Component {
     this.setState({currentPost: post});
   }
 
-  dragLeaveHandler = (e) => {
-  }
-
-  dragEndHandler = (e) => {
-  }
-
   dragOverHandler = (e) => {
     e.preventDefault();
   }
@@ -185,8 +179,6 @@ class Articles extends React.Component {
           forcedCardSize={"listSize"}
           draggable={true}
           dragStartHandler={this.dragStartHandler}
-          dragLeaveHandler={this.dragLeaveHandler}
-          dragEndHandler={this.dragEndHandler}
           dragOverHandler={this.dragOverHandler}
           dropHandler={this.dropHandler}
           onActivePost={this.state.onActivePost === pos}

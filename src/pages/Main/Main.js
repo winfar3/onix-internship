@@ -7,18 +7,15 @@ import { Pagination } from "../../components/Pagination/Pagination";
 import { data } from '../../database/database.js';
 
 export function Main() {
-    //TODO: Add attention movement to the beginning of the block with posts
-
     const [postCardData] = useState(data);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(7);
-    const maxPageNumber = Math.ceil(postCardData.length / postsPerPage)
+    const maxPageNumber = Math.ceil(postCardData.length / postsPerPage);
 
     const lastPostIndex = currentPage * postsPerPage;
     const firstPostIndex = lastPostIndex - postsPerPage;
     const currentPosts = postCardData.slice(firstPostIndex, lastPostIndex);
-    const elementMain = document.querySelector('.main');
 
     const paginate = pageNumber => setCurrentPage(pageNumber);
     const prevPage = () => {
@@ -33,10 +30,11 @@ export function Main() {
     };
 
     useEffect(() => {
+        const elementMain = document.querySelector('.main');
+
         elementMain.scrollIntoView({
             behavior: 'smooth'
         });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPage]);
 
     return (
