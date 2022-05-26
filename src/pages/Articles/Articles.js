@@ -39,7 +39,7 @@ class Articles extends React.Component {
     this.setState({postCardData: [...this.state.postCardData, post]});
   }
 
-  // TODO: Fix mutation bug
+  // TODO: Fix mutation
   deleteImage = (pos) => {
     this.state.postCardData[pos] = {...this.state.postCardData[pos], imageUrl: null}
     this.setState({postCardData: this.state.postCardData});
