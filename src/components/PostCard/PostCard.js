@@ -67,7 +67,7 @@ export function PostCard(props) {
                 <a href="!#" className="postcard__author"><span>By</span> {props.post.author.firstName} {props.post.author.lastName}</a>
             </div>
             {cardSize === "big" && <p className="postcard__desc">{props.post.description}</p>}
-            {props.comment && <p className="postcard__desc">{props.comment}</p>}
+            {props.post.comment && <p className="postcard__desc">{props.post.comment}</p>}
             <PostCardButtons 
                 deletePost={props.deletePost}
                 deleteImage={props.deleteImage}

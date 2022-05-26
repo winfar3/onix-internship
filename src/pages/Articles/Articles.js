@@ -45,7 +45,7 @@ class Articles extends React.Component {
     this.setState({postCardData: this.state.postCardData});
   }
 
-  // TODO: Fix mutation and render comment bugs
+  // TODO: Fix mutation
   addComment = (pos) => {
     const temp = {comment: prompt("Write your comment", "")};
     this.state.postCardData[pos] = {...this.state.postCardData[pos], ...temp};
@@ -132,6 +132,7 @@ class Articles extends React.Component {
     window.addEventListener("keyup", this.goToNextPost);
     window.addEventListener("keyup", this.goToPrevPost);
     window.addEventListener("keyup", this.deselectActivePost);
+    console.log(this.state.postCardData);
   }
 
   componentWillUnmount() {

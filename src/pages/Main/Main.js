@@ -29,6 +29,7 @@ export function Main() {
         }
     };
 
+    // TODO: fix scroll on click to 'home'
     useEffect(() => {
         const elementMain = document.querySelector('.main');
 
