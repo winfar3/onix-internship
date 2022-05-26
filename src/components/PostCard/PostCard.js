@@ -33,6 +33,7 @@ export function PostCard(props) {
         image.onerror = () => {
             console.log(`ERROR. Image for post ${props.post.id} not loaded`)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [image.src]);
 
     return (

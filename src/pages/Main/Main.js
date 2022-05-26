@@ -1,6 +1,6 @@
 import "./Main.scss";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { PostCard } from "../../components/PostCard/PostCard";
 import { Pagination } from "../../components/Pagination/Pagination";
@@ -18,6 +18,7 @@ export function Main() {
     const lastPostIndex = currentPage * postsPerPage;
     const firstPostIndex = lastPostIndex - postsPerPage;
     const currentPosts = postCardData.slice(firstPostIndex, lastPostIndex);
+    const elementMain = document.querySelector('.main');
 
     const paginate = pageNumber => setCurrentPage(pageNumber);
     const prevPage = () => {
@@ -30,6 +31,13 @@ export function Main() {
             setCurrentPage(prev => prev + 1);
         }
     };
+
+    useEffect(() => {
+        elementMain.scrollIntoView({
+            behavior: 'smooth'
+        });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentPage]);
 
     return (
         <main className="main">
