@@ -16,19 +16,26 @@ class Articles extends React.Component {
       onActivePost: null,
       currentPost: null,
       sortBy: 'order',
+      isSorted: false,
     }
   }
 
   byField = (field) => {
-    return (a, b) => a[field] > b[field] ? 1 : -1;
+    if (this.state.isSorted) {
+      return (a, b) => a[field] > b[field] ? -1 : 1;
+    } else {
+      return (a, b) => a[field] > b[field] ? 1 : -1;
+    }
   };
 
   sortByDate = () => {
     this.setState({sortBy: 'date'});
+    this.setState({isSorted: !this.state.isSorted});
   }
 
   sortById = () => {
     this.setState({sortBy: 'id'});
+    this.setState({isSorted: !this.state.isSorted});
   };
 
   handleShowAddForm = () => {
@@ -114,6 +121,7 @@ class Articles extends React.Component {
     e.preventDefault();
   }
 
+  // TODO: fix bug with order sort after another sort
   dropHandler = (e, post) => {
     e.preventDefault();
     this.setState({postCardData: this.state.postCardData.map((item) => {
@@ -160,12 +168,12 @@ class Articles extends React.Component {
       <div className="buttonsWrap">
         <Button 
           logic={this.sortByDate}
-          content={"Sort by function"}
+          content={"Sort by date"}
           styles={"button button_article"}
         />
         <Button 
           logic={this.sortById}
-          content={"Bubble sort"}
+          content={"Sort by id"}
           styles={"button button_article"}
         />
         <Button 
