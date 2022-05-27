@@ -41,7 +41,8 @@ class Articles extends React.Component {
 
   // TODO: Fix mutation
   deleteImage = (pos) => {
-    this.state.postCardData[pos] = {...this.state.postCardData[pos], imageUrl: null}
+    const {imageUrl, ...otherData} = this.state.postCardData[pos];
+    this.state.postCardData[pos] = {...otherData};
     this.setState({postCardData: this.state.postCardData});
   }
 
@@ -132,7 +133,6 @@ class Articles extends React.Component {
     window.addEventListener("keyup", this.goToNextPost);
     window.addEventListener("keyup", this.goToPrevPost);
     window.addEventListener("keyup", this.deselectActivePost);
-    console.log(this.state.postCardData);
   }
 
   componentWillUnmount() {
