@@ -8,12 +8,14 @@ import {
 
 import { Header } from "./components/Header/Header.js";
 import { Hero } from "./components/Hero/Hero.js";
-import { Main } from "./pages/Main/Main.js";
 import { Sidebar } from "./components/Sidebar/Sidebar.js";
 import { InstagramGallery } from "./components/InstagramGallery/InstagramGallery.js";
 import { Footer } from "./components/Footer/Footer.js";
+
+import { Main } from "./pages/Main/Main.js";
 import Recipes from "./pages/Recipes/Recipes";
 import Articles from "./pages/Articles/Articles";
+import Users from "./pages/Users/Users.js";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 function App() {
@@ -40,6 +42,12 @@ function App() {
               path="/onix-internship/articles"
               element={
                 <Articles />
+              }
+            />
+            <Route 
+              path="/onix-internship/users"
+              element={
+                <Users />
               }
             />
             <Route 

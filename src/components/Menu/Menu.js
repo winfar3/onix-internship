@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 export function Menu({ active, setActive }) {
-  const navData = ["home", "recipes", "articles", "contact", "purchase"];
+  const navData = ["home", "recipes", "articles", "users", "purchase"];
   const linkRoot = "/onix-internship/";
 
   const [title, setTitle] = useState("");
