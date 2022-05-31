@@ -1,0 +1,30 @@
+@import "../../helperStyles/colors.scss";
+
+.userCard {
+  display: block;
+  width: 100%;
+  padding: 14px 20px 14px;
+  box-sizing: border-box;
+  text-align: center;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+
+  &__name {
+    font-size: 2rem;
+  }
+
+  &__list {
+    margin-top: 20px;
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+  &__link {
+    &:hover {
+      color: $link-hover;
+    }
+  }
+}

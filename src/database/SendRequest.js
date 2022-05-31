@@ -16,9 +16,10 @@ export default function SendRequest(method, url, body = null) {
       }
     };
     xhr.onerror = () => {
-      // console.log(xhr.response); // выводит в случае ошибки
+      console.log(xhr.response); // выводит в случае ошибки
     };
 
     xhr.send(JSON.stringify(body)); // отправляем данные на сайт преобразуя в строку
+
   });
 }
