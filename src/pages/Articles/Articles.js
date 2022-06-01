@@ -46,18 +46,28 @@ class Articles extends React.Component {
     this.setState({postCardData: [...this.state.postCardData, post]});
   }
 
-  // TODO: Fix mutation
   deleteImage = (pos) => {
-    const {imageUrl, ...otherData} = this.state.postCardData[pos];
-    this.state.postCardData[pos] = {...otherData};
-    this.setState({postCardData: this.state.postCardData});
+    this.setState({
+      postCardData: this.state.postCardData.map((item, index) => {
+        if (index === pos) {
+          const {imageUrl, ...otherData} = item
+          return otherData;
+        }
+        return item;
+      })
+    })
   }
 
-  // TODO: Fix mutation
   addComment = (pos) => {
     const temp = {comment: prompt("Write your comment", "")};
-    this.state.postCardData[pos] = {...this.state.postCardData[pos], ...temp};
-    this.setState({postCardData: this.state.postCardData});
+    this.setState({
+      postCardData: this.state.postCardData.map((item, index) => {
+        if (index === pos) {
+          return {...item, ...temp}
+        }
+        return item;
+      })
+    })
   }
 
   deletePost = (pos) => {

@@ -1,6 +1,6 @@
 import "./Main.scss";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { PostCard } from "../../components/PostCard/PostCard";
 import { Pagination } from "../../components/Pagination/Pagination";
