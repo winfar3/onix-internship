@@ -1,7 +1,9 @@
 .characters {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
   &__card {
     width: 100%;
-    margin: 20px 0;
     padding: 50px 0;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4);
     
