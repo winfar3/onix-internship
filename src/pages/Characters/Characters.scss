@@ -1,0 +1,11 @@
+.characters {
+  &__card {
+    width: 100%;
+    margin: 20px 0;
+    padding: 50px 0;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4);
+    
+    font-size: 3rem;
+    text-align: center;
+  }
+}
