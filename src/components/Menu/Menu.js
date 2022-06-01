@@ -22,9 +22,6 @@ export function Menu({ active, setActive }) {
     <nav className="header__nav header-nav">
       <ul
         className={
-          // active
-          //   ? "header-nav__list header-nav__list_active"
-          //   : "header-nav__list"
           classNames('header-nav__list', {'header-nav__list_active' : active})
         }
       >
