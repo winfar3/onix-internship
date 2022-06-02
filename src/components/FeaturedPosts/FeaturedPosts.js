@@ -2,7 +2,7 @@ import "./FeaturedPosts.scss";
 
 import { useState } from "react";
 
-import { PostCard } from "../PostCard/PostCard";
+import PostCard from "../PostCard/PostCard";
 
 import image12 from "../../assets/images/postcard/12.png"
 import image13 from "../../assets/images/postcard/13.png"

@@ -1,5 +1,7 @@
 import PostCardButtons from "./PostCardButtons";
 
+import PropTypes, { bool, number, shape, string } from 'prop-types';
+
 /** COMMENT
  * Постарался выделить stateLess компонет. Но не уверен, что все правильно понял и сделал.
  * Поправь меня пожалуйста.
@@ -8,7 +10,7 @@ import PostCardButtons from "./PostCardButtons";
  * Нужно ли их тоже выносить из этого файла или оставить их здесь нормально?
  */
 
-export default function PostCardViev({
+function PostCardViev({
   post,
   handleActivePost,
   draggable,
@@ -69,3 +71,46 @@ export default function PostCardViev({
     </article>
   );
 }
+
+PostCardViev.propTypes = {
+  post: PropTypes.shape({
+    id: number,
+    order: number,
+    cardSize: string,
+    imageUrl: string,
+    isPositionTop: bool,
+    category: string,
+    title: string,
+    date: string, 
+    author: shape({
+      firstName: string,
+      lastName: string,
+    }),
+    description: string,
+  }).isRequired,
+  handleActivePost: PropTypes.func,
+  draggable: PropTypes.bool,
+  dragStartHandler: PropTypes.func,
+  dragOverHandler: PropTypes.func,
+  dropHandler: PropTypes.func,
+  articleclassNames: PropTypes.string,
+  imageClassNames: PropTypes.string,
+  imgUrl: PropTypes.string,
+  imgClassNames: PropTypes.string,
+  imgAlt: PropTypes.string,
+  dateMonth: PropTypes.string,
+  dateDay: PropTypes.number,
+  dateYear: PropTypes.number,
+  deletePost: PropTypes.func,
+  deleteImage: PropTypes.func,
+  addComment: PropTypes.func,
+  cardSize: PropTypes.string,
+}
+
+PostCardViev.defaultProps = {
+  dragStartHandler() {},
+  dragOverHandler()  {},
+  dropHandler() {},
+}
+
+export default PostCardViev;

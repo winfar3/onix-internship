@@ -3,7 +3,7 @@ import './Articles.scss';
 import React from "react";
 
 import { data } from "../../database/database.js";
-import { PostCard } from "../../components/PostCard/PostCard.js";
+import PostCard from "../../components/PostCard/PostCard.js";
 import { Button } from '../../components/Button/Button';
 import { AddPostForm } from '../../components/AddPostForm/AddPostForm.js';
 

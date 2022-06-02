@@ -2,7 +2,7 @@ import "./Main.scss";
 
 import { useState, useEffect } from "react";
 
-import { PostCard } from "../../components/PostCard/PostCard";
+import PostCard from "../../components/PostCard/PostCard";
 import { Pagination } from "../../components/Pagination/Pagination";
 import { data } from "../../database/database.js";
 

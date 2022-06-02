@@ -3,9 +3,10 @@ import "./PostCard.scss";
 import { useEffect } from "react";
 import classNames from "classnames";
 
+
 import PostCardViev from "./PostCardViev";
 
-export function PostCard(props) {
+function PostCard(props) {
   const months = [
     "January",
     "February",
@@ -74,6 +75,9 @@ export function PostCard(props) {
       deletePost={props.deletePost}
       deleteImage={props.deleteImage}
       addComment={props.addComment}
+      cardSize={cardSize}
     />
   );
 }
+
+export default PostCard;
