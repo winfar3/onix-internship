@@ -1,12 +1,12 @@
 import './Button.scss';
 
-export function Button(props) {
+export function Button({ logic, styles, content }) {
   return (
     <button 
-        onClick={props.logic}
-        className={props.styles}
+        onClick={logic}
+        className={styles}
       >
-        {props.content}
+        {content}
       </button>
   );
 }
