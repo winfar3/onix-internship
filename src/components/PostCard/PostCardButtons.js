@@ -1,25 +1,25 @@
 import { Button } from "../Button/Button";
 
-function PostCardButtons(props) {
+function PostCardButtons({deletePost, deleteImage, addComment}) {
   return (
     <div className="postcard__buttons">
-      {props.deletePost ? (
+      {deletePost ? (
         <Button
-          logic={props.deletePost}
+          logic={deletePost}
           content={"Delete post"}
           styles={"button button_delete"}
         />
       ) : null}
-      {props.deleteImage ? (
+      {deleteImage ? (
         <Button
-          logic={props.deleteImage}
+          logic={deleteImage}
           content={"Delete image"}
           styles={"button button_delete"}
         />
       ) : null}
-      {props.addComment ? (
+      {addComment ? (
         <Button
-          logic={props.addComment}
+          logic={addComment}
           content={"Add comment"}
           styles={"button button_delete"}
         />
