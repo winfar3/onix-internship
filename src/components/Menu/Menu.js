@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-export function Menu({ active, setActive }) {
+export function Menu({ active }) {
   const navData = ["home", "recipes", "articles", "users", "characters"];
   const linkRoot = "/onix-internship/";
 
