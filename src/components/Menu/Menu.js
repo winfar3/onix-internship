@@ -1,6 +1,7 @@
 import classNames from "classnames";
+
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import MenuView from "./MenuView";
 
 export function Menu({ active }) {
   const navData = ["home", "recipes", "articles", "users", "characters"];
@@ -19,24 +20,11 @@ export function Menu({ active }) {
   };
   
   return (
-    <nav className="header__nav header-nav">
-      <ul
-        className={
-          classNames('header-nav__list', {'header-nav__list_active' : active})
-        }
-      >
-        {navData.map((item) => (
-          <li key={item} className="header-nav__item">
-            <NavLink
-              to={linkRoot + item}
-              onClick={() => setTitle(item)}
-              className="header-nav__link capitalize"
-            >
-              {item}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <MenuView 
+      navData={navData}
+      classNames={classNames('header-nav__list', {'header-nav__list_active' : active})}
+      linkRoot={linkRoot}
+      setTitle={setTitle}
+    />
   );
 }
