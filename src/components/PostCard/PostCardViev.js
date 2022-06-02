@@ -2,14 +2,6 @@ import PostCardButtons from "./PostCardButtons";
 
 import PropTypes, { bool, number, shape, string } from 'prop-types';
 
-/** COMMENT
- * Постарался выделить stateLess компонет. Но не уверен, что все правильно понял и сделал.
- * Поправь меня пожалуйста.
- * 
- * + есть фрагменты, которые должны вставляться только при определенных условиях.
- * Нужно ли их тоже выносить из этого файла или оставить их здесь нормально?
- */
-
 function PostCardViev({
   post,
   handleActivePost,
