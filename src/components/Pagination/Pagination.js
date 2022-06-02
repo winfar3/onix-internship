@@ -1,13 +1,13 @@
 import './Pagination.scss';
 
-export function Pagination(props) {
-  const pageNumbers = [...new Array(props.maxPageNumber)].map((item, pos) => pos + 1);
+export function Pagination({ maxPageNumber, prevPage, paginate, nextPage }) {
+  const pageNumbers = [...new Array(maxPageNumber)].map((item, pos) => pos + 1);
 
   return (
     <div className="pagination">
       <button 
         className="pagination__item pagination__item_prev uppercase"
-        onClick={props.prevPage}
+        onClick={prevPage}
       >
         older post
       </button>
@@ -16,7 +16,7 @@ export function Pagination(props) {
           <button 
             className="pagination__item uppercase" 
             key={number}
-            onClick={() => props.paginate(number)}
+            onClick={() => paginate(number)}
           >
             {number}
           </button>
@@ -24,7 +24,7 @@ export function Pagination(props) {
       }
       <button 
         className="pagination__item pagination__item_next uppercase"
-        onClick={props.nextPage}
+        onClick={nextPage}
       >
         next post
       </button>

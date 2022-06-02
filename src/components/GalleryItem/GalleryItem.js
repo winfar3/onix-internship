@@ -1,9 +1,9 @@
 import './GalleryItem.scss';
 
-export function GalleryItem(props) {
+export function GalleryItem({ imageUrl, alt }) {
   return(
       <div className="instagram-gallery__item">
-          <img src={props.imageUrl} alt={props.alt} className="instagram-gallery__img"/>
+          <img src={imageUrl} alt={alt} className="instagram-gallery__img"/>
       </div>
   );
 }
