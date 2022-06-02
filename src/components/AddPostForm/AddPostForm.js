@@ -2,11 +2,10 @@ import "./AddPostForm.scss";
 
 import { useState, useEffect } from "react";
 
-import { Button } from "../Button/Button";
-
 import image1 from "../../assets/images/postcard/01.png";
+import AddPostFormView from "./AddPostFormView";
 
-export function AddPostForm(props) {
+export function AddPostForm({ lastId, lastOrder, addPost, handleShowAddForm }) {
   const [postCategory, setPostCategory] = useState("");
   const [postTitle, setPostTitle] = useState("");
   const [postFirstName, setPostFirstName] = useState("");
@@ -36,8 +35,8 @@ export function AddPostForm(props) {
   const createPost = (e) => {
     e.preventDefault();
     const post = {
-      id: props.lastId + 1,
-      order: props.lastOrder + 1,
+      id: lastId + 1,
+      order: lastOrder + 1,
       cardSize: "medium",
       imageUrl: image1,
       isPositionTop: false,
@@ -51,8 +50,8 @@ export function AddPostForm(props) {
       description: postDescription
     };
 
-    props.addPost(post);
-    props.handleShowAddForm();
+    addPost(post);
+    handleShowAddForm();
   }
 
   useEffect(() => {
@@ -70,7 +69,7 @@ export function AddPostForm(props) {
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape") {
-        props.handleShowAddForm();
+        handleShowAddForm();
       }
     }
 
@@ -80,74 +79,19 @@ export function AddPostForm(props) {
   });
 
   return (
-    <>
-      <form action="" className="postForm" onSubmit={createPost}>
-        <div className="postForm__item">
-          <input
-            type="text"
-            name="category"
-            placeholder="category"
-            autoComplete="off"
-            value={postCategory}
-            onChange={handlePostCategoryChange}
-            className="postForm__input"
-          />
-        </div>
-        <div className="postForm__item">
-          <input
-            type="text"
-            name="title"
-            placeholder="title"
-            autoComplete="off"
-            value={postTitle}
-            onChange={handlePostTitleChange}
-            className="postForm__input"
-          />
-        </div>
-        <div className="postForm__item">
-          <input
-            type="text"
-            name="firstName"
-            placeholder="author first name"
-            autoComplete="off"
-            value={postFirstName}
-            onChange={handlePostFirstNameChange}
-            className="postForm__input"
-          />
-        </div>
-        <div className="postForm__item">
-          <input
-            type="text"
-            name="lastName"
-            placeholder="author last name"
-            autoComplete="off"
-            value={postLastName}
-            onChange={handlePostLastNameChange}
-            className="postForm__input"
-          />
-        </div>
-        <div className="postForm__item">
-          <textarea
-            name="description"
-            placeholder="description"
-            autoComplete="off"
-            value={postDescription}
-            onChange={handlePostDescriptionChange}
-            className="postForm__input"
-          />
-        </div>
-        <div className="postForm__item postForm__buttons">
-          <button type="submit" className="button button_add">
-            Add
-          </button>
-          <Button
-            logic={props.handleShowAddForm}
-            content={"Close"}
-            styles={"button button_add"}
-          />
-        </div>
-      </form>
-      <div className="overlay"></div>
-    </>
+    <AddPostFormView 
+      createPost={createPost}
+      postCategory={postCategory}
+      handlePostCategoryChange={handlePostCategoryChange}
+      postTitle={postTitle}
+      handlePostTitleChange={handlePostTitleChange}
+      postFirstName={postFirstName}
+      handlePostFirstNameChange={handlePostFirstNameChange}
+      postLastName={postLastName}
+      handlePostLastNameChange={handlePostLastNameChange}
+      postDescription={postDescription}
+      handlePostDescriptionChange={handlePostDescriptionChange}
+      handleShowAddForm={handleShowAddForm}
+    />
   );
 }
