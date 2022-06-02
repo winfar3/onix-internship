@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import { Button } from "../Button/Button";
 
 function AddPostFormView({
@@ -85,6 +87,21 @@ function AddPostFormView({
       <div className="overlay"></div>
     </>
   );
+}
+
+AddPostFormView.propTypes = {
+  createPost: PropTypes.func,
+  postCategory: PropTypes.string,
+  handlePostCategoryChange: PropTypes.func,
+  postTitle: PropTypes.string,
+  handlePostTitleChange: PropTypes.func,
+  postFirstName: PropTypes.string,
+  handlePostFirstNameChange: PropTypes.func,
+  postLastName: PropTypes.string,
+  handlePostLastNameChange: PropTypes.func,
+  postDescription: PropTypes.string,
+  handlePostDescriptionChange: PropTypes.func,
+  handleShowAddForm: PropTypes.func,
 }
 
 export default AddPostFormView;

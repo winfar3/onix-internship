@@ -5,7 +5,7 @@ import instaPhoto3 from "../../assets/images/instagramGallery/03.png";
 import instaPhoto4 from "../../assets/images/instagramGallery/04.png";
 import instaPhoto5 from "../../assets/images/instagramGallery/05.png";
 import instaPhoto6 from "../../assets/images/instagramGallery/06.png";
-import { GalleryItem } from "../GalleryItem/GalleryItem";
+import InstagramGalleryView from "./InstagramGalleryView";
 
 export function InstagramGallery() {
     const InstagramGalleryData = [{
@@ -33,15 +33,13 @@ export function InstagramGallery() {
         imageUrl: instaPhoto6,
         alt: "Lorem Ipsum"
     }]
+
+    const instagramLink = "https://www.instagram.com/";
     return(
-        <section className="instagram-gallery">
-            <h2 className="instagram-gallery__title">Follow our <a href="https://www.instagram.com/" className="instagram-gallery__link">@instagram_name</a></h2>
-            <div className="instagram-gallery__list">
-                {InstagramGalleryData.map(InstagramGalleryDataItem =>
-                    <GalleryItem {...InstagramGalleryDataItem} key={InstagramGalleryDataItem.id} />
-                )}
-            </div>
-        </section>
+        <InstagramGalleryView 
+            InstagramGalleryData={InstagramGalleryData}
+            instagramLink={instagramLink}
+        />
     );
 }
 
