@@ -3,7 +3,6 @@ import "./PostCard.scss";
 import { useEffect } from "react";
 import classNames from "classnames";
 
-
 import PostCardViev from "./PostCardViev";
 
 function PostCard({

@@ -2,11 +2,10 @@ import "./FeaturedPosts.scss";
 
 import { useState } from "react";
 
-import PostCard from "../PostCard/PostCard";
-
 import image12 from "../../assets/images/postcard/12.png"
 import image13 from "../../assets/images/postcard/13.png"
 import image14 from "../../assets/images/postcard/14.png"
+import FeaturedPostsView from "./FeaturedPostsView";
 
 export function FeaturedPosts() {
     const [postCardData] = useState([{
@@ -51,10 +50,6 @@ export function FeaturedPosts() {
     }]);
 
     return(
-        <div className="featured-posts">
-            {postCardData.map(postCardItem =>
-                <PostCard post={postCardItem} key={postCardItem.id} />
-            )}
-        </div>
+        <FeaturedPostsView postCardData={postCardData}/>
     );
 }
