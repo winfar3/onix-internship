@@ -2,11 +2,11 @@ import "./Main.scss";
 
 import { useState, useEffect } from "react";
 
-import { data } from "../../database/database.js";
 import MainView from "./MainView";
+import SendAxiosRequest from "../../database/SendAxiosRequest";
 
 export function Main() {
-  const [postCardData] = useState(data);
+  const [postCardData, setPostCardData] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(7);
@@ -20,6 +20,12 @@ export function Main() {
   useEffect(() => {
     setElementMain(document.querySelector(".main"));
   }, [elementMain]);
+
+  useEffect(() => {
+    SendAxiosRequest()
+      .then((data) => setPostCardData(data))
+      .catch((err) => console.log(err))
+  }, [])
   
   const scrollToTop = () => {
     elementMain.scrollIntoView({
