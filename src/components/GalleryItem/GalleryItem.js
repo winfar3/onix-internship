@@ -2,7 +2,10 @@ import './GalleryItem.scss';
 
 import PropTypes from 'prop-types';
 
-function GalleryItem({ imageUrl, alt }) {
+function GalleryItem({ instagramGalleryDataItem }) {
+  const imageUrl = instagramGalleryDataItem.imageUrl;
+  const alt = instagramGalleryDataItem.alt
+
   return(
       <div className="instagram-gallery__item">
           <img src={imageUrl} alt={alt} className="instagram-gallery__img"/>
@@ -11,8 +14,10 @@ function GalleryItem({ imageUrl, alt }) {
 }
 
 GalleryItem.propTypes = {
-  imageUrl: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
+  instagramGalleryDataItem: PropTypes.shape({
+    imageUrl: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+  })
 }
 
 export default GalleryItem;

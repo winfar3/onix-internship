@@ -65,7 +65,7 @@ export function SocialMedia() {
     return(
         <div className="socials__wrapper">
             {socialMediaData.map(socialMediaDataItem =>
-                <SocialItem {...socialMediaDataItem} key={socialMediaDataItem.id} />
+                <SocialItem socialMediaDataItem={socialMediaDataItem} key={socialMediaDataItem.id} />
             )}
         </div>
     );

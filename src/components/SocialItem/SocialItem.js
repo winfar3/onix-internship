@@ -1,6 +1,10 @@
 import './SocialItem.scss';
 
-export function SocialItem({ imageUrl, number, popularity }) {
+export function SocialItem({ socialMediaDataItem }) {
+  const imageUrl = socialMediaDataItem.imageUrl;
+  const number = socialMediaDataItem.number;
+  const popularity = socialMediaDataItem.popularity;
+
   return(
       <button className="socials__item">
           <img src={imageUrl} alt="social icon" className="socials__img" />

@@ -31,7 +31,7 @@ export function Categories() {
         <div>
             <ul className="categoris__list">
                 {categoriesData.map(categoriesDataItem =>
-                    <CategoriesItem {...categoriesDataItem} key={categoriesDataItem.title} />
+                    <CategoriesItem category={categoriesDataItem} key={categoriesDataItem.title} />
                 )}
             </ul>
         </div>

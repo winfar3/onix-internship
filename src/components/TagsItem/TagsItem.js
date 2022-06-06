@@ -1,11 +1,11 @@
 import './TagsItem.scss';
 
-export function TagsItem({ id }) {
+export function TagsItem({ tagId }) {
   const linkRoot = "/onix-internship/";
 
   return(
-      <a href={linkRoot + id} className="tags__item capitalize">
-          {id}
+      <a href={linkRoot + tagId} className="tags__item capitalize">
+          {tagId}
       </a>
   );
 }

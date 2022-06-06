@@ -20,7 +20,7 @@ export function Tags() {
     return(
         <div className="tags__wrapper">
             {tagsData.map(tagsDataItem =>
-                <TagsItem {...tagsDataItem} key={tagsDataItem.id} />
+                <TagsItem tagId={tagsDataItem.id} key={tagsDataItem.id} />
             )}
         </div>
     );

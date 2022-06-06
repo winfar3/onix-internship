@@ -8,7 +8,7 @@ import instaPhoto6 from "../../assets/images/instagramGallery/06.png";
 import InstagramGalleryView from "./InstagramGalleryView";
 
 export function InstagramGallery() {
-    const InstagramGalleryData = [{
+    const instagramGalleryData = [{
         id: "01",
         imageUrl: instaPhoto1,
         alt: "Lorem Ipsum"
@@ -37,7 +37,7 @@ export function InstagramGallery() {
     const instagramLink = "https://www.instagram.com/";
     return(
         <InstagramGalleryView 
-            InstagramGalleryData={InstagramGalleryData}
+            instagramGalleryData={instagramGalleryData}
             instagramLink={instagramLink}
         />
     );

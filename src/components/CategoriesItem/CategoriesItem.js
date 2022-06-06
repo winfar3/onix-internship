@@ -1,6 +1,9 @@
 import './CategoriesItem.scss';
 
-export function CategoriesItem({ url, title, number }) {
+export function CategoriesItem({ category }) {
+  const title = category.title;
+  const url = category.url;
+  const number = category.number;
   const linkRoot = "/onix-internship/";
 
   return(
