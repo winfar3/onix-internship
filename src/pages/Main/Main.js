@@ -2,9 +2,8 @@ import "./Main.scss";
 
 import { useState, useEffect } from "react";
 
-import PostCard from "../../components/PostCard/PostCard";
-import { Pagination } from "../../components/Pagination/Pagination";
 import { data } from "../../database/database.js";
+import MainView from "./MainView";
 
 export function Main() {
   const [postCardData] = useState(data);
@@ -61,17 +60,13 @@ export function Main() {
   };
 
   return (
-    <main className="main">
-      {currentPosts.map((postCardItem) => (
-        <PostCard post={postCardItem} key={postCardItem.id} />
-      ))}
-      <Pagination
-        maxPageNumber={maxPageNumber}
-        postsPerPage={postsPerPage}
-        paginate={paginate}
-        prevPage={prevPage}
-        nextPage={nextPage}
-      />
-    </main>
+    <MainView 
+      currentPosts={currentPosts}
+      maxPageNumber={maxPageNumber}
+      postsPerPage={postsPerPage}
+      paginate={paginate}
+      prevPage={prevPage}
+      nextPage={nextPage}
+    />
   );
 }
