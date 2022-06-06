@@ -3,9 +3,7 @@ import './Articles.scss';
 import React from "react";
 
 import { data } from "../../database/database.js";
-import PostCard from "../../components/PostCard/PostCard.js";
-import { Button } from '../../components/Button/Button';
-import { AddPostForm } from '../../components/AddPostForm/AddPostForm.js';
+import ArticlesView from './ArticlesView';
 
 class Articles extends React.Component {
   constructor(props) {
@@ -162,53 +160,25 @@ class Articles extends React.Component {
 
   render() {
   return (
-    <main className="main">
-
-      {
-        this.state.showAddForm ? 
-        <AddPostForm 
-          handleShowAddForm={this.handleShowAddForm} 
-          addPost={this.addPost}  
-          lastId={this.state.postCardData[this.state.postCardData.length - 1].id}
-          lastOrder={this.state.postCardData.length}
-        /> 
-        : null
-      }
-
-      <div className="buttonsWrap">
-        <Button 
-          logic={this.sortByDate}
-          content={"Sort by date"}
-          styles={"button button_article"}
-        />
-        <Button 
-          logic={this.sortById}
-          content={"Sort by id"}
-          styles={"button button_article"}
-        />
-        <Button 
-          logic={this.handleShowAddForm}
-          content={"Add post"}
-          styles={"button button_article"}
-        />
-      </div>
-      {this.state.postCardData.sort(this.byField(this.state.sortBy)).map((postCardItem, pos) => (
-        <PostCard 
-          post={postCardItem} 
-          key={postCardItem.id}
-          forcedCardSize={"listSize"}
-          draggable={true}
-          dragStartHandler={this.dragStartHandler}
-          dragOverHandler={this.dragOverHandler}
-          dropHandler={this.dropHandler}
-          onActivePost={this.state.onActivePost === pos}
-          deletePost={() => this.deletePost(pos)}
-          deleteImage={() => this.deleteImage(pos)}
-          addComment={() => this.addComment(pos)}
-          handleActivePost={() => this.handleActivePost(pos)}
-        />
-      ))}
-    </main>
+    <ArticlesView 
+      showAddForm={this.state.showAddForm}
+      handleShowAddForm={this.handleShowAddForm}
+      addPost={this.addPost}
+      lastId={this.state.postCardData[this.state.postCardData.length - 1].id}
+      lastOrder={this.state.postCardData.length}
+      sortByDate={this.sortByDate}
+      sortById={this.sortById}
+      postCardData={this.state.postCardData}
+      byField={this.byField}
+      sortBy={this.state.sortBy}
+      dragStartHandler={this.dragStartHandler}
+      dragOverHandler={this.dragOverHandler}
+      dropHandler={this.dropHandler}
+      onActivePost={this.state.onActivePost}
+      deletePost={this.deletePost}
+      deleteImage={this.deleteImage}
+      addComment={this.addComment}
+    />
   );
 }
 }
