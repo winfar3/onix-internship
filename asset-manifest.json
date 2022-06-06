@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/onix-internship/static/css/main.0b534dd5.css",
-    "main.js": "/onix-internship/static/js/main.1e440162.js",
+    "main.js": "/onix-internship/static/js/main.defa5994.js",
     "static/js/787.80dd0e3c.chunk.js": "/onix-internship/static/js/787.80dd0e3c.chunk.js",
     "static/media/08.png": "/onix-internship/static/media/08.ee830c6b59ec7d9482ba.png",
     "static/media/02.png": "/onix-internship/static/media/02.267f836f7e05dfe21bbb.png",
@@ -32,11 +32,11 @@
     "index.html": "/onix-internship/index.html",
     "static/media/vimeo.svg": "/onix-internship/static/media/vimeo.28984d271028c5d8952b15ca4a7d0543.svg",
     "main.0b534dd5.css.map": "/onix-internship/static/css/main.0b534dd5.css.map",
-    "main.1e440162.js.map": "/onix-internship/static/js/main.1e440162.js.map",
+    "main.defa5994.js.map": "/onix-internship/static/js/main.defa5994.js.map",
     "787.80dd0e3c.chunk.js.map": "/onix-internship/static/js/787.80dd0e3c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0b534dd5.css",
-    "static/js/main.1e440162.js"
+    "static/js/main.defa5994.js"
   ]
 }
