@@ -14,6 +14,8 @@ function PostCardViev({
   imgUrl,
   imgClassNames,
   imgAlt,
+  imgOnLoad,
+  imgOnError,
   dateMonth,
   dateDay,
   dateYear,
@@ -34,7 +36,13 @@ function PostCardViev({
     >
       <div className={imageClassNames}>
         <a href="!#">
-          <img src={imgUrl} className={imgClassNames} alt={imgAlt} />
+          <img 
+            src={imgUrl} 
+            className={imgClassNames} 
+            alt={imgAlt} 
+            onLoad={imgOnLoad}
+            onError={imgOnError}
+          />
         </a>
       </div>
       {cardSize !== "listSize" && (
@@ -90,6 +98,8 @@ PostCardViev.propTypes = {
   imgUrl: PropTypes.string,
   imgClassNames: PropTypes.string,
   imgAlt: PropTypes.string,
+  imgOnLoad: PropTypes.func,
+  imgOnError: PropTypes.func,
   dateMonth: PropTypes.string,
   dateDay: PropTypes.number,
   dateYear: PropTypes.number,

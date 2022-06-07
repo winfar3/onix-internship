@@ -1,6 +1,5 @@
 import "./PostCard.scss";
 
-import { useEffect } from "react";
 import classNames from "classnames";
 
 import PostCardViev from "./PostCardViev";
@@ -37,28 +36,13 @@ function PostCard({
     : post.cardSize;
   const dateObject = new Date(post.date);
 
-  /* COMMENT
-   * Это пример с learn.javascript, но я не уверен, что в моем случае нужно создавать элемент image.
-   * Есть ли другой способ проверить загружено ли изображение и нужно ли использовать другой способ?
-   **/
-  let image = document.createElement("img");
-  image.src = post.imageUrl;
-  /* --- */
+  const imgOnLoad = () => {
+    console.log(`Image for post ${post.id} loaded`);
+  }
 
-  /* COMMENT
-   * React Hook useEffect has missing dependencies: 'image' and 'post.id'.
-   * Either include them or remove the dependency array
-   * Видел эту ошибку, но не понял как ее убрать, ведь мне нужна именно проверка меняется ли image.src
-   **/
-  useEffect(() => {
-    image.onload = () => {
-      console.log(`Image for post ${post.id} loaded`);
-    };
-    image.onerror = () => {
-      console.log(`ERROR. Image for post ${post.id} not loaded`);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [image.src]);
+  const imgOnError = () => {
+    console.log(`ERROR. Image for post ${post.id} not loaded`);
+  }
 
   return (
     <PostCardViev 
@@ -80,6 +64,8 @@ function PostCard({
               postcard__img_top: post.isPositionTop,
             })}
       imgAlt={"preview"}
+      imgOnLoad={imgOnLoad}
+      imgOnError={imgOnError}
       dateMonth={months[dateObject.getMonth()]}
       dateDay={dateObject.getDate()}
       dateYear={dateObject.getFullYear()}

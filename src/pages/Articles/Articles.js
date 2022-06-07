@@ -163,6 +163,7 @@ class Articles extends React.Component {
     <ArticlesView 
       showAddForm={this.state.showAddForm}
       handleShowAddForm={this.handleShowAddForm}
+      handleActivePost={this.handleActivePost}
       addPost={this.addPost}
       lastId={this.state.postCardData[this.state.postCardData.length - 1].id}
       lastOrder={this.state.postCardData.length}
