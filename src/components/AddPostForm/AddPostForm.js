@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import image1 from "../../assets/images/postcard/01.png";
 import AddPostFormView from "./AddPostFormView";
 
+// TODO: choose the right id and order for a new post
+
 export function AddPostForm({ lastId, lastOrder, addPost, handleShowAddForm }) {
   const [postCategory, setPostCategory] = useState("");
   const [postTitle, setPostTitle] = useState("");

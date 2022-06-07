@@ -25,14 +25,14 @@ function ArticlesView({
 }) {
   return (
     <main className="main">
-      {showAddForm ? (
+      {showAddForm && (
         <AddPostForm
           handleShowAddForm={handleShowAddForm}
           addPost={addPost}
           lastId={lastId}
           lastOrder={lastOrder}
         />
-      ) : null}
+      )}
 
       <div className="buttonsWrap">
         <Button

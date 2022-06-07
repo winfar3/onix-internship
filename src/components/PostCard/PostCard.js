@@ -31,9 +31,7 @@ function PostCard({
     "November",
     "December",
   ];
-  const cardSize = forcedCardSize
-    ? forcedCardSize
-    : post.cardSize;
+  const cardSize = forcedCardSize ? forcedCardSize : post.cardSize;
   const dateObject = new Date(post.date);
 
   const imgOnLoad = () => {
