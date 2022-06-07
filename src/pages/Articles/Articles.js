@@ -1,87 +1,87 @@
-import './Articles.scss';
+import "./Articles.scss";
 
 import React from "react";
 
-import { data } from "../../database/database.js";
-import ArticlesView from './ArticlesView';
+import ArticlesView from "./ArticlesView";
+import SendAxiosRequest from "../../database/SendAxiosRequest";
 
 class Articles extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      postCardData: [...data],
+      postCardData: [],
       showAddForm: false,
       onActivePost: null,
       currentPost: null,
-      sortBy: 'order',
+      sortBy: "order",
       isSorted: false,
-    }
+    };
   }
 
   byField = (field) => {
     if (this.state.isSorted) {
-      return (a, b) => a[field] > b[field] ? -1 : 1;
+      return (a, b) => (a[field] > b[field] ? -1 : 1);
     } else {
-      return (a, b) => a[field] > b[field] ? 1 : -1;
+      return (a, b) => (a[field] > b[field] ? 1 : -1);
     }
   };
 
   sortByDate = () => {
-    this.setState({sortBy: 'date'});
-    this.setState({isSorted: !this.state.isSorted});
-  }
+    this.setState({ sortBy: "date" });
+    this.setState({ isSorted: !this.state.isSorted });
+  };
 
   sortById = () => {
-    this.setState({sortBy: 'id'});
-    this.setState({isSorted: !this.state.isSorted});
+    this.setState({ sortBy: "id" });
+    this.setState({ isSorted: !this.state.isSorted });
   };
 
   handleShowAddForm = () => {
-    this.setState({showAddForm: !this.state.showAddForm});
-  }
+    this.setState({ showAddForm: !this.state.showAddForm });
+  };
 
   addPost = (post) => {
-    this.setState({postCardData: [...this.state.postCardData, post]});
-  }
+    this.setState({ postCardData: [...this.state.postCardData, post] });
+  };
 
   deleteImage = (pos) => {
     this.setState({
       postCardData: this.state.postCardData.map((item, index) => {
         if (index === pos) {
-          const {imageUrl, ...otherData} = item
+          const { imageUrl, ...otherData } = item;
           return otherData;
         }
         return item;
-      })
-    })
-  }
+      }),
+    });
+  };
 
   addComment = (pos) => {
-    const temp = {comment: prompt("Write your comment", "")};
+    const temp = { comment: prompt("Write your comment", "") };
     this.setState({
       postCardData: this.state.postCardData.map((item, index) => {
         if (index === pos) {
-          return {...item, ...temp}
+          return { ...item, ...temp };
         }
         return item;
-      })
-    })
-  }
+      }),
+    });
+  };
 
   deletePost = (pos) => {
     const temp = [...this.state.postCardData];
     temp.splice(pos, 1);
 
-    this.setState({postCardData: temp});
-  }
+    this.setState({ postCardData: temp });
+  };
 
   handleActivePost = (pos) => {
     let temp = pos;
     if (this.state.onActivePost === temp) {
       temp = null;
     }
-    this.setState({onActivePost: temp});
-  }
+    this.setState({ onActivePost: temp });
+  };
 
   goToNextPost = (e) => {
     if (e.key === "ArrowDown") {
@@ -89,10 +89,10 @@ class Articles extends React.Component {
       if (temp === this.state.postCardData.length - 1) {
         return null;
       }
-      this.setState({onActivePost: ++temp});
+      this.setState({ onActivePost: ++temp });
       this.sctrollToCard();
     }
-  }
+  };
 
   goToPrevPost = (e) => {
     if (e.key === "ArrowUp") {
@@ -100,10 +100,10 @@ class Articles extends React.Component {
       if (temp === 0) {
         return null;
       }
-      this.setState({onActivePost: --temp});
+      this.setState({ onActivePost: --temp });
       this.sctrollToCard();
     }
-  }
+  };
 
   sctrollToCard = () => {
     const card = document.querySelector(".postcard_active");
@@ -113,38 +113,45 @@ class Articles extends React.Component {
     card.scrollIntoView({
       block: "center",
     });
-  }
+  };
 
   deselectActivePost = (e) => {
     if (e.key === "Escape") {
       this.handleActivePost();
     }
-  }
+  };
 
   dragStartHandler = (e, post) => {
-    this.setState({currentPost: post});
-  }
+    this.setState({ currentPost: post });
+  };
 
   dragOverHandler = (e) => {
     e.preventDefault();
-  }
+  };
 
   // TODO: fix bug with order sort after another sort
   dropHandler = (e, post) => {
     e.preventDefault();
-    this.setState({postCardData: this.state.postCardData.map((item) => {
-      if (item.id === post.id) {
-        return {...item, order: this.state.currentPost.order}
-      }
-      if (item.id === this.state.currentPost.id) {
-        return {...item, order: post.order}
-      }
-      return item;
-    })});
-    this.setState({sortBy: 'order'});
-  }
+    this.setState({
+      postCardData: this.state.postCardData.map((item) => {
+        if (item.id === post.id) {
+          return { ...item, order: this.state.currentPost.order };
+        }
+        if (item.id === this.state.currentPost.id) {
+          return { ...item, order: post.order };
+        }
+        return item;
+      }),
+    });
+    this.setState({ sortBy: "order" });
+  };
 
   componentDidMount() {
+    SendAxiosRequest()
+      .then((data) => {
+        this.setState({ postCardData: data });
+      })
+      .catch((err) => console.log(err));
     this.handleActivePost();
     window.addEventListener("keyup", this.goToNextPost);
     window.addEventListener("keyup", this.goToPrevPost);
@@ -159,29 +166,35 @@ class Articles extends React.Component {
   }
 
   render() {
-  return (
-    <ArticlesView 
-      showAddForm={this.state.showAddForm}
-      handleShowAddForm={this.handleShowAddForm}
-      handleActivePost={this.handleActivePost}
-      addPost={this.addPost}
-      lastId={this.state.postCardData[this.state.postCardData.length - 1].id}
-      lastOrder={this.state.postCardData.length}
-      sortByDate={this.sortByDate}
-      sortById={this.sortById}
-      postCardData={this.state.postCardData}
-      byField={this.byField}
-      sortBy={this.state.sortBy}
-      dragStartHandler={this.dragStartHandler}
-      dragOverHandler={this.dragOverHandler}
-      dropHandler={this.dropHandler}
-      onActivePost={this.state.onActivePost}
-      deletePost={this.deletePost}
-      deleteImage={this.deleteImage}
-      addComment={this.addComment}
-    />
-  );
-}
+    if (this.state.postCardData.length === 0) {
+      return <h2>Loading posts...</h2>
+    }
+    return (
+      <ArticlesView
+        showAddForm={this.state.showAddForm}
+        handleShowAddForm={this.handleShowAddForm}
+        handleActivePost={this.handleActivePost}
+        addPost={this.addPost}
+        lastId={
+          this.state.postCardData.length > 0 &&
+          this.state.postCardData[this.state.postCardData.length - 1].id
+        }
+        lastOrder={this.state.postCardData.length}
+        sortByDate={this.sortByDate}
+        sortById={this.sortById}
+        postCardData={this.state.postCardData}
+        byField={this.byField}
+        sortBy={this.state.sortBy}
+        dragStartHandler={this.dragStartHandler}
+        dragOverHandler={this.dragOverHandler}
+        dropHandler={this.dropHandler}
+        onActivePost={this.state.onActivePost}
+        deletePost={this.deletePost}
+        deleteImage={this.deleteImage}
+        addComment={this.addComment}
+      />
+    );
+  }
 }
 
 export default Articles;
