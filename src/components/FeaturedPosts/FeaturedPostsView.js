@@ -6,7 +6,7 @@ function FeaturedPostsView({ postCardData }) {
   return (
     <div className="featured-posts">
       {postCardData.map((postCardItem) => (
-        <PostCard post={postCardItem} key={postCardItem.id} />
+        <PostCard post={postCardItem} key={postCardItem.id} forcedCardSize={"small"} />
       ))}
     </div>
   );
