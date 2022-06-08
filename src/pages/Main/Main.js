@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 import MainView from "./MainView";
 import SendAxiosRequest from "../../database/SendAxiosRequest";
+import { postsRequestUrl } from "../../database/requestUrls";
 
 export function Main() {
   const [postCardData, setPostCardData] = useState([]);
@@ -22,7 +23,7 @@ export function Main() {
   }, [elementMain]);
 
   useEffect(() => {
-    SendAxiosRequest()
+    SendAxiosRequest(postsRequestUrl)
       .then((data) => setPostCardData(data))
       .catch((err) => console.log(err))
   }, [])

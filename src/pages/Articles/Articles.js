@@ -4,6 +4,7 @@ import React from "react";
 
 import ArticlesView from "./ArticlesView";
 import SendAxiosRequest from "../../database/SendAxiosRequest";
+import { postsRequestUrl } from "../../database/requestUrls";
 
 class Articles extends React.Component {
   constructor(props) {
@@ -147,7 +148,7 @@ class Articles extends React.Component {
   };
 
   componentDidMount() {
-    SendAxiosRequest()
+    SendAxiosRequest(postsRequestUrl)
       .then((data) => {
         this.setState({ postCardData: data });
       })

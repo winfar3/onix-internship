@@ -16,7 +16,6 @@ import { Main } from "./pages/Main/Main.js";
 import Recipes from "./pages/Recipes/Recipes";
 import Articles from "./pages/Articles/Articles";
 import Users from "./pages/Users/Users.js";
-import Characters from "./pages/Characters/Characters";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 function App() {
@@ -49,12 +48,6 @@ function App() {
               path="/onix-internship/users"
               element={
                 <Users />
-              }
-            />
-            <Route 
-              path="/onix-internship/characters"
-              element={
-                <Characters />
               }
             />
             <Route 

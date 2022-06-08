@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import MenuView from "./MenuView";
 
 export function Menu({ active }) {
-  const navData = ["home", "recipes", "articles", "users", "characters"];
+  const navData = ["home", "recipes", "articles", "users"];
   const linkRoot = "/onix-internship/";
 
   const [title, setTitle] = useState("");
