@@ -6,12 +6,13 @@ function MainView({
   currentPosts,
   maxPageNumber,
   postsPerPage,
+  mainRef,
   paginate,
   prevPage,
   nextPage
 }) {
   return (
-    <main className="main">
+    <main className="main" ref={mainRef}>
       {currentPosts.map((postCardItem) => (
         <PostCard post={postCardItem} key={postCardItem.id} />
       ))}
@@ -30,6 +31,7 @@ MainView.propTypes = {
   currentPosts: PropTypes.array,
   maxPageNumber: PropTypes.number,
   postsPerPage: PropTypes.number,
+  mainRef: PropTypes.object,
   paginate: PropTypes.func,
   prevPage: PropTypes.func,
   nextPage: PropTypes.func,

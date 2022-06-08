@@ -1,6 +1,6 @@
 import "./Main.scss";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import MainView from "./MainView";
 import SendAxiosRequest from "../../database/SendAxiosRequest";
@@ -18,8 +18,9 @@ export function Main() {
   const currentPosts = postCardData.slice(firstPostIndex, lastPostIndex);
 
   const [elementMain, setElementMain] = useState();
+  const mainRef = useRef(null);
   useEffect(() => {
-    setElementMain(document.querySelector(".main"));
+    setElementMain(mainRef.current);
   }, [elementMain]);
 
   useEffect(() => {
@@ -56,6 +57,7 @@ export function Main() {
       currentPosts={currentPosts}
       maxPageNumber={maxPageNumber}
       postsPerPage={postsPerPage}
+      mainRef={mainRef}
       paginate={paginate}
       prevPage={prevPage}
       nextPage={nextPage}
