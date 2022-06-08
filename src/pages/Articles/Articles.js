@@ -28,15 +28,15 @@ class Articles extends React.Component {
   };
 
   sortByDate = () => {
-    this.setState({ sortBy: "date", isSorted: !this.state.isSorted });
+    this.setState(({isSorted}) => ({isSorted: !isSorted, sortBy: 'date'}));
   };
 
   sortById = () => {
-    this.setState({ sortBy: "id", isSorted: !this.state.isSorted });
+    this.setState(({isSorted}) => ({isSorted: !isSorted, sortBy: 'id'}));
   };
 
   handleShowAddForm = () => {
-    this.setState({ showAddForm: !this.state.showAddForm });
+    this.setState(({showAddForm}) => ({showAddForm: !showAddForm}));
   };
 
   addPost = (post) => {
