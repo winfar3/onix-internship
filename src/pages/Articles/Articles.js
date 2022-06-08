@@ -88,7 +88,7 @@ class Articles extends React.Component {
       if (temp === this.state.postCardData.length - 1) {
         return null;
       }
-      this.setState({ onActivePost: ++temp });
+      this.setState({ onActivePost: temp + 1 });
       this.sctrollToCard();
     }
   };
@@ -99,7 +99,7 @@ class Articles extends React.Component {
       if (temp === 0) {
         return null;
       }
-      this.setState({ onActivePost: --temp });
+      this.setState({ onActivePost: temp - 1 });
       this.sctrollToCard();
     }
   };
