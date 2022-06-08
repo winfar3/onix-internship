@@ -1,6 +1,6 @@
 import "./Main.scss";
 
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import MainView from "./MainView";
 import SendAxiosRequest from "../../database/SendAxiosRequest";

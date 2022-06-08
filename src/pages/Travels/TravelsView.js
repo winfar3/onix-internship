@@ -38,7 +38,7 @@ function TravelsView({
 TravelsView.propTypes = {
   data: PropTypes.array,
   sordCards: PropTypes.func,
-  cls: PropTypes.string,
+  cls: PropTypes.number,
   dragStartHandler: PropTypes.func,
   dragEndHandler: PropTypes.func,
   dragOverHandler: PropTypes.func,
