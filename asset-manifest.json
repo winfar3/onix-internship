@@ -1,14 +1,19 @@
 {
   "files": {
     "main.css": "/onix-internship/static/css/main.5c98e034.css",
-    "main.js": "/onix-internship/static/js/main.4db761cc.js",
+    "main.js": "/onix-internship/static/js/main.6e2b5c15.js",
     "static/js/787.80dd0e3c.chunk.js": "/onix-internship/static/js/787.80dd0e3c.chunk.js",
-    "static/media/04.png": "/onix-internship/static/media/04.41c527d8e2591645275c.png",
-    "static/media/06.png": "/onix-internship/static/media/06.3132c44356309467e036.png",
-    "static/media/05.png": "/onix-internship/static/media/05.8bfbd02b3aea027b33dd.png",
-    "static/media/01.png": "/onix-internship/static/media/01.af535e4e1589c1e58f7c.png",
-    "static/media/03.png": "/onix-internship/static/media/03.7444c46e4a9654ec1268.png",
+    "static/media/08.png": "/onix-internship/static/media/08.ee830c6b59ec7d9482ba.png",
     "static/media/02.png": "/onix-internship/static/media/02.267f836f7e05dfe21bbb.png",
+    "static/media/07.png": "/onix-internship/static/media/07.cb0987331ff144d32662.png",
+    "static/media/11.png": "/onix-internship/static/media/11.b253881ee95456151a06.png",
+    "static/media/04.png": "/onix-internship/static/media/04.bd6422bf2faef11fed1d.png",
+    "static/media/03.png": "/onix-internship/static/media/03.7444c46e4a9654ec1268.png",
+    "static/media/06.png": "/onix-internship/static/media/06.78aa6316c721798c8a57.png",
+    "static/media/09.png": "/onix-internship/static/media/09.174e199dcf995cbb121f.png",
+    "static/media/05.png": "/onix-internship/static/media/05.67a8a49597848710c84d.png",
+    "static/media/01.png": "/onix-internship/static/media/01.af535e4e1589c1e58f7c.png",
+    "static/media/10.png": "/onix-internship/static/media/10.abe96f4f4a13f7206f73.png",
     "static/media/hero-bg.jpg": "/onix-internship/static/media/hero-bg.223ad1f8e8b89cf14f4c.jpg",
     "static/media/photo.jpg": "/onix-internship/static/media/photo.5f7d17d8c80233d1dece.jpg",
     "static/media/youtube.svg": "/onix-internship/static/media/youtube.3ac5e2e4aa6019efe69268fa8dc7724d.svg",
@@ -24,11 +29,11 @@
     "index.html": "/onix-internship/index.html",
     "static/media/vimeo.svg": "/onix-internship/static/media/vimeo.28984d271028c5d8952b15ca4a7d0543.svg",
     "main.5c98e034.css.map": "/onix-internship/static/css/main.5c98e034.css.map",
-    "main.4db761cc.js.map": "/onix-internship/static/js/main.4db761cc.js.map",
+    "main.6e2b5c15.js.map": "/onix-internship/static/js/main.6e2b5c15.js.map",
     "787.80dd0e3c.chunk.js.map": "/onix-internship/static/js/787.80dd0e3c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5c98e034.css",
-    "static/js/main.4db761cc.js"
+    "static/js/main.6e2b5c15.js"
   ]
 }
