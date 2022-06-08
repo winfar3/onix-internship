@@ -1,20 +1,26 @@
 import "./UserCard.scss"
 
-export default function UserCard( {user} ) {
+import PropTypes from 'prop-types'
+
+function UserCard( {user} ) {
   return(
     <article className="userCard">
+      <div className="userCard__avatar">
+        <img src={user.avatar} alt="user avatar" />
+      </div>
       <h3 className="userCard__name">{user.name}</h3>
-      <ul className="userCard__list userCard-list">
-        <li className="userCard-list__item">
-          <a href={`mailto: ${user.email}`} className="userCard__link">{user.email}</a>
-        </li>
-        <li className="userCard-list__item">
-          <a href={`tel: ${user.phone}`} className="userCard__link">{user.phone}</a>
-        </li>
-        <li className="userCard-list__item">
-          <a href={user.website} className="userCard__link">{user.website}</a>
-        </li>
-      </ul>
+      <p className="userCard__joined-data">{`Joined at ${user.createdAt}`}</p>
     </article>
   )
 }
+
+UserCard.propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    avatar: PropTypes.string,
+    createdAt: PropTypes.string,
+  })
+}
+
+export default UserCard

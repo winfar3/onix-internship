@@ -13,13 +13,7 @@ export default function Users() {
     SendAxiosRequest(usersRequestUrl)
       .then((data) => setDataFromServer(data))
       .catch((err) => console.log(err))
-  })
-
-  // useEffect(() => {
-  //     SendRequest("GET", requstUrl)
-  //       .then((data) => setDataFromServer(data))
-  //       .catch((err) => console.log(err))
-  // }, [])
+  }, [])
 
   return(
     <UsersView 

@@ -1,7 +1,9 @@
 @import "../../helperStyles/colors.scss";
 
 .userCard {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
   width: 100%;
   padding: 14px 20px 14px;
   box-sizing: border-box;
@@ -9,22 +11,23 @@
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
 
   &__name {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
-  &__list {
-    margin-top: 20px;
-  }
+  &__avatar {
+    max-width: 150px;
+    width: 100%;
+    margin: 0 auto;
 
-  &-list {
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
-  }
-
-  &__link {
-    &:hover {
-      color: $link-hover;
+    & > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
+
+  &__joined-data {
+    font-size: 1.5rem;
+  }
+
 }
