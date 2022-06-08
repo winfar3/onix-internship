@@ -34,21 +34,6 @@ export function Main() {
     });
   };
 
-	/** COMMENT
-   * Пытался сделать прокрутку к началу списка постов при пагинации.
-   * Но через useEffect прокрутка происходила так же при загрузке страницы.
-   * Остановился на варианте сделать просто функцию.
-   * Вопрос: нужно ли здесь использовать useEffect вообще?
-   * Если да, то как убрать прокрутку при загрузке страницы и оставить только на переход между страницами?
-   */
-  // useEffect(() => {
-  //     const elementMain = document.querySelector('.main');
-
-  //     elementMain.scrollIntoView({
-  //         behavior: 'smooth'
-  //     });
-  // }, [currentPage]);
-
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
     scrollToTop();
