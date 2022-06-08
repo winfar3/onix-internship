@@ -1,12 +1,12 @@
 import './Travels.scss'
 
 import { useState } from 'react'
-import classNames from 'classnames'
 
 import spain from '../../assets/images/travels/spain.jpg'
 import france from '../../assets/images/travels/france.jpg'
 import germany from '../../assets/images/travels/germany.jpg'
 import england from '../../assets/images/travels/england.jpg'
+import TravelsView from './TravelsView'
 
 export default function Travels() {
   const [data, setData] = useState([{
@@ -70,24 +70,14 @@ export default function Travels() {
   }
 
   return(
-    <div className='travels'>
-      {data.sort(sordCards).map((card, pos) => 
-        <div 
-          key={card.id}
-          onDragStart={(e) => dragStartHandler(e, card)}
-          onDragLeave={(e) => dragEndHandler(e)}
-          onDragEnd={(e) => dragEndHandler(e)}
-          onDragOver={(e) => dragOverHandler(e, pos)}
-          onDrop={(e) => dropHandler(e, card)}
-          draggable={true}
-          className={classNames('travels__card travels-card', {'_over' : cls === pos})}
-        >
-          <div className='travels-card__image'>
-            <img src={card.img} />
-          </div>
-          {card.name}
-        </div>
-      )}
-    </div>
+    <TravelsView 
+      data={data}
+      sordCards={sordCards}
+      cls={cls}
+      dragStartHandler={dragStartHandler}
+      dragEndHandler={dragEndHandler}
+      dragOverHandler={dragOverHandler}
+      dropHandler={dropHandler}
+    />
   )
 }
