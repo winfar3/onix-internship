@@ -1,10 +1,12 @@
-import "./SidebarSection.scss";
+import "./SidebarSection.scss"
 
-export function SidebarSection(props) {
+function SidebarSection({ title, blockClass, data }) {
     return(
-        <section className={"sidebar__section sidebar-section sidebar-section_" + props.blockClass}>
-            <h3 className="sidebar-section__title">{props.title}</h3>
-            <props.data/>
+        <section className={"sidebar__section sidebar-section sidebar-section_" + blockClass}>
+            <h3 className="sidebar-section__title">{title}</h3>
+            {data}
         </section>
-    );
+    )
 }
+
+export default SidebarSection
