@@ -1,12 +1,13 @@
 import classNames from "classnames";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import MenuView from "./MenuView";
 
 export function Menu({ active }) {
   const navData = ["home", "recipes", "articles", "users", "travels"];
   const linkRoot = "/onix-internship/";
 
+  const bodyElement = useRef(document.body);
   const [title, setTitle] = useState("");
 
   useEffect(() => {
@@ -14,9 +15,9 @@ export function Menu({ active }) {
   });
 
   if (active) {
-    document.body.style.overflow = "hidden"
+    bodyElement.current.classList.add('lock');
   } else {
-    document.body.style.overflow = "auto"
+    bodyElement.current.classList.remove('lock');
   };
   
   return (

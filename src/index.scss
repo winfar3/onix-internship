@@ -1,1 +1,9 @@
 @import "./helperStyles/reset.css";
+
+body {
+  overflow: auto;
+
+  &.lock {
+    overflow: hidden;
+  }
+}
