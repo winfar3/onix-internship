@@ -14,8 +14,12 @@ function MainView({
 }) {
   return (
     <main className="main" ref={mainRef}>
-      {currentPosts.map((postCardItem) => (
-        <PostCard post={postCardItem} key={postCardItem.id} />
+      {currentPosts.map((postCardItem, pos) => (
+        <PostCard 
+          post={postCardItem} 
+          key={postCardItem.id} 
+          forcedCardSize={pos === 4 && 'big'}
+        />
       ))}
       <Pagination
         maxPageNumber={maxPageNumber}
