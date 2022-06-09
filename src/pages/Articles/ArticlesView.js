@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
-import { AddPostForm } from "../../components/AddPostForm/AddPostForm";
-import { Button } from "../../components/Button/Button";
+
+import AddPostForm from "../../components/AddPostForm/AddPostForm";
+import Button from "../../components/Button/Button";
 import PostCard from "../../components/PostCard/PostCard";
 
 function ArticlesView({

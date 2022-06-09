@@ -1,5 +1,5 @@
 import "./Tags.scss";
-import { TagsItem } from "../TagsItem/TagsItem";
+import TagsItem from "../TagsItem/TagsItem";
 
 export function Tags() {
     const tagsData = [{

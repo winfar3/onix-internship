@@ -1,6 +1,6 @@
 import PostCardButtons from "./PostCardButtons";
 
-import PropTypes, { bool, number, shape, string } from 'prop-types';
+import PropTypes from 'prop-types';
 
 function PostCardViev({
   post,
@@ -76,19 +76,19 @@ function PostCardViev({
 
 PostCardViev.propTypes = {
   post: PropTypes.shape({
-    id: number,
-    order: number,
-    cardSize: string,
-    imageUrl: string,
-    isPositionTop: bool,
-    category: string,
-    title: string,
-    date: string, 
-    author: shape({
-      firstName: string,
-      lastName: string,
+    id: PropTypes.number,
+    order: PropTypes.number,
+    cardSize: PropTypes.string,
+    imageUrl: PropTypes.string,
+    isPositionTop: PropTypes.bool,
+    category: PropTypes.string,
+    title: PropTypes.string,
+    date: PropTypes.string, 
+    author: PropTypes.shape({
+      firstName: PropTypes.string,
+      lastName: PropTypes.string,
     }),
-    description: string,
+    description: PropTypes.string,
   }).isRequired,
   handleActivePost: PropTypes.func,
   draggable: PropTypes.bool,

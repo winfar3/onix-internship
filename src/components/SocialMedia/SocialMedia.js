@@ -2,7 +2,7 @@ import "./SocialMedia.scss";
 
 import { useState } from "react";
 
-import { SocialItem } from "../SocialItem/SocialItem";
+import SocialItem from "../SocialItem/SocialItem";
 
 import facebook from "../../assets/images/socials/facebook.svg";
 import pinterest from "../../assets/images/socials/pinterest.svg";

@@ -1,6 +1,8 @@
 import './TagsItem.scss';
 
-export function TagsItem({ tagId }) {
+import PropTypes from "prop-types";
+
+function TagsItem({ tagId }) {
   const linkRoot = "/onix-internship/";
 
   return(
@@ -9,3 +11,9 @@ export function TagsItem({ tagId }) {
       </a>
   );
 }
+
+TagsItem.propTypes = {
+  tagId: PropTypes.string,
+}
+
+export default TagsItem;

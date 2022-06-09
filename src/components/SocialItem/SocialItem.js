@@ -1,6 +1,8 @@
 import './SocialItem.scss';
 
-export function SocialItem({ socialMediaDataItem }) {
+import PropTypes from "prop-types";
+
+function SocialItem({ socialMediaDataItem }) {
   const imageUrl = socialMediaDataItem.imageUrl;
   const number = socialMediaDataItem.number;
   const popularity = socialMediaDataItem.popularity;
@@ -13,3 +15,13 @@ export function SocialItem({ socialMediaDataItem }) {
       </button>
   );
 }
+
+SocialItem.propTypes = {
+  socialMediaDataItem: PropTypes.shape({
+    imageUrl: PropTypes.string,
+    number: PropTypes.string,
+    popularity: PropTypes.string,
+  })
+}
+
+export default SocialItem;

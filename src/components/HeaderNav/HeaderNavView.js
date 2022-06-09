@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import { Menu } from "../Menu/Menu.js";
+import Menu from "../Menu/Menu.js";
 
 function HeaderNavView({ menuActive, menuActiveHandler, isNeedBurger }) {
   return (

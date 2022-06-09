@@ -1,6 +1,7 @@
 import "./PostCard.scss";
 
 import classNames from "classnames";
+import PropTypes from "prop-types"
 
 import PostCardViev from "./PostCardViev";
 
@@ -75,6 +76,35 @@ function PostCard({
       activePostElement={activePostElement}
     />
   );
+}
+
+PostCard.propTypes = {
+  post: PropTypes.shape({
+    id: PropTypes.number,
+    order: PropTypes.number,
+    cardSize: PropTypes.string,
+    imageUrl: PropTypes.string,
+    isPositionTop: PropTypes.bool,
+    category: PropTypes.string,
+    title: PropTypes.string,
+    date: PropTypes.string, 
+    author: PropTypes.shape({
+      firstName: PropTypes.string,
+      lastName: PropTypes.string,
+    }),
+    description: PropTypes.string,
+  }).isRequired,
+  forcedCardSize: PropTypes.string,
+  handleActivePost: PropTypes.func,
+  draggable: PropTypes.bool,
+  dragStartHandler: PropTypes.func,
+  dragOverHandler: PropTypes.func,
+  dropHandler: PropTypes.func,
+  onActivePost: PropTypes.bool,
+  deletePost: PropTypes.func,
+  deleteImage: PropTypes.func,
+  addComment: PropTypes.func,
+  activePostElement: PropTypes.object,
 }
 
 export default PostCard;

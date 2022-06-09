@@ -1,6 +1,8 @@
-import './Button.scss';
+import './Button.scss'
 
-export function Button({ logic, styles, content }) {
+import PropTypes from "prop-types"
+
+function Button({ logic, styles, content }) {
   return (
     <button 
         onClick={logic}
@@ -8,5 +10,13 @@ export function Button({ logic, styles, content }) {
       >
         {content}
       </button>
-  );
+  )
 }
+
+Button.propTypes = {
+  logic: PropTypes.func, 
+  styles: PropTypes.string, 
+  content: PropTypes.string,
+}
+
+export default Button

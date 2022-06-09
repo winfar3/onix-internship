@@ -1,19 +1,23 @@
 import classNames from "classnames";
 
 import { useEffect, useRef, useState } from "react";
+import PropTypes from "prop-types";
+
 import MenuView from "./MenuView";
 
-export function Menu({ active }) {
+function Menu({ active }) {
   const navData = ["home", "recipes", "articles", "users", "travels"];
   const linkRoot = "/onix-internship/";
 
-  const bodyElement = useRef(document.body);
   const [title, setTitle] = useState("");
-
   useEffect(() => {
     document.title = `Fasion ${title}`;
   });
-
+  
+  /**
+   * Blocks page scrolling when the menu is open on phones
+   */
+  const bodyElement = useRef(document.body);
   if (active) {
     bodyElement.current.classList.add('lock');
   } else {
@@ -29,3 +33,9 @@ export function Menu({ active }) {
     />
   );
 }
+
+Menu.propTypes = {
+  active: PropTypes.bool,
+}
+
+export default Menu

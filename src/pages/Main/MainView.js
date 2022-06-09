@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
-import { Pagination } from "../../components/Pagination/Pagination";
+
+import Pagination from "../../components/Pagination/Pagination";
 import PostCard from "../../components/PostCard/PostCard";
 
 function MainView({ 

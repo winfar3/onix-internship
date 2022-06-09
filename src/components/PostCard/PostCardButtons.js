@@ -1,4 +1,6 @@
-import { Button } from "../Button/Button";
+import PropTypes from "prop-types";
+
+import Button from "../Button/Button";
 
 function PostCardButtons({deletePost, deleteImage, addComment}) {
   return (
@@ -26,6 +28,12 @@ function PostCardButtons({deletePost, deleteImage, addComment}) {
       )}
     </div>
   );
+}
+
+PostCardButtons.propTypes = {
+  deletePost: PropTypes.func, 
+  deleteImage: PropTypes.func, 
+  addComment: PropTypes.func,
 }
 
 export default PostCardButtons;
