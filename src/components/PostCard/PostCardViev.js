@@ -1,5 +1,6 @@
 import PostCardButtons from "./PostCardButtons";
 
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 function PostCardViev({
@@ -37,7 +38,7 @@ function PostCardViev({
       ref={activePostElement}
     >
       <div className={imageClassNames}>
-        <a href="!#">
+        <Link to={`/onix-internship/article/${post.id}`}>
           <img 
             src={imgUrl} 
             className={imgClassNames} 
@@ -45,7 +46,7 @@ function PostCardViev({
             onLoad={imgOnLoad}
             onError={imgOnError}
           />
-        </a>
+        </Link>
       </div>
       {cardSize !== "listSize" && (
         <a href="!#" className="postcard__category uppercase">
@@ -53,7 +54,7 @@ function PostCardViev({
         </a>
       )}
       <h2 className="postcard__title">
-        <a href="!#">{post.title}</a>
+        <Link to={`/onix-internship/article/${post.id}`}>{post.title}</Link>
       </h2>
       <div className="postcard__info">
         <p className="postcard__date">{`${dateMonth} ${dateDay}, ${dateYear}`}</p>
@@ -76,7 +77,7 @@ function PostCardViev({
 
 PostCardViev.propTypes = {
   post: PropTypes.shape({
-    id: PropTypes.number,
+    id: PropTypes.string,
     order: PropTypes.number,
     cardSize: PropTypes.string,
     imageUrl: PropTypes.string,

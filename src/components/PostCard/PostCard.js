@@ -80,7 +80,7 @@ function PostCard({
 
 PostCard.propTypes = {
   post: PropTypes.shape({
-    id: PropTypes.number,
+    id: PropTypes.string,
     order: PropTypes.number,
     cardSize: PropTypes.string,
     imageUrl: PropTypes.string,
@@ -94,7 +94,10 @@ PostCard.propTypes = {
     }),
     description: PropTypes.string,
   }).isRequired,
-  forcedCardSize: PropTypes.string,
+  forcedCardSize: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool,
+  ]),
   handleActivePost: PropTypes.func,
   draggable: PropTypes.bool,
   dragStartHandler: PropTypes.func,
