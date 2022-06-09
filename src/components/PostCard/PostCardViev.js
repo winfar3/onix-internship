@@ -23,6 +23,7 @@ function PostCardViev({
   deleteImage,
   addComment,
   cardSize,
+  activePostElement,
 }) {
   return (
     <article
@@ -33,6 +34,7 @@ function PostCardViev({
       onDragOver={(e) => dragOverHandler(e)}
       onDrop={(e) => dropHandler(e, post)}
       className={articleclassNames}
+      ref={activePostElement}
     >
       <div className={imageClassNames}>
         <a href="!#">
@@ -107,6 +109,7 @@ PostCardViev.propTypes = {
   deleteImage: PropTypes.func,
   addComment: PropTypes.func,
   cardSize: PropTypes.string,
+  activePostElement: PropTypes.object,
 }
 
 PostCardViev.defaultProps = {

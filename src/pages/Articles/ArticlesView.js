@@ -22,6 +22,7 @@ function ArticlesView({
   deleteImage,
   addComment,
   handleActivePost,
+  activePostElement,
 }) {
   return (
     <main className="main">
@@ -65,6 +66,7 @@ function ArticlesView({
           deleteImage={() => deleteImage(pos)}
           addComment={() => addComment(pos)}
           handleActivePost={() => handleActivePost(pos)}
+          activePostElement={onActivePost === pos ? activePostElement : null}
         />
       ))}
     </main>
@@ -93,6 +95,7 @@ ArticlesView.propTypes = {
   deleteImage: PropTypes.func,
   addComment: PropTypes.func,
   handleActivePost: PropTypes.func,
+  activePostElement: PropTypes.object,
 };
 
 export default ArticlesView;

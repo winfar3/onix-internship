@@ -9,6 +9,7 @@ import { postsRequestUrl } from "../../database/requestUrls";
 class Articles extends React.Component {
   constructor(props) {
     super(props);
+    this.activePostElement = React.createRef();
     this.state = {
       postCardData: [],
       showAddForm: false,
@@ -105,7 +106,8 @@ class Articles extends React.Component {
   };
 
   sctrollToCard = () => {
-    const card = document.querySelector(".postcard_active");
+    // const card = document.querySelector(".postcard_active");
+    const card = this.activePostElement.current;
     if (card === null) {
       return null;
     }
@@ -191,6 +193,7 @@ class Articles extends React.Component {
         deletePost={this.deletePost}
         deleteImage={this.deleteImage}
         addComment={this.addComment}
+        activePostElement={this.activePostElement}
       />
     );
   }

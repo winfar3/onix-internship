@@ -15,7 +15,8 @@ function PostCard({
   onActivePost,
   deletePost,
   deleteImage,
-  addComment
+  addComment,
+  activePostElement,
 }) {
   const months = [
     "January",
@@ -71,6 +72,7 @@ function PostCard({
       deleteImage={deleteImage}
       addComment={addComment}
       cardSize={cardSize}
+      activePostElement={activePostElement}
     />
   );
 }
