@@ -1,6 +1,7 @@
 import "./Articles.scss";
 
 import React from "react";
+import { ThreeDots } from 'react-loading-icons';
 
 import ArticlesView from "./ArticlesView";
 import SendAxiosRequest from "../../database/SendAxiosRequest";
@@ -17,6 +18,7 @@ class Articles extends React.Component {
       currentPost: null,
       sortBy: "order",
       isSorted: false,
+      isPending: false,
     };
   }
 
@@ -148,9 +150,11 @@ class Articles extends React.Component {
   };
 
   componentDidMount() {
+    this.setState({isPending: true});
     SendAxiosRequest(postsRequestUrl)
       .then((data) => {
         this.setState({ postCardData: data });
+        this.setState({isPending: false});
       })
       .catch((err) => console.log(err));
     this.handleActivePost();
@@ -167,8 +171,8 @@ class Articles extends React.Component {
   }
 
   render() {
-    if (this.state.postCardData.length === 0) {
-      return <h2>Loading posts...</h2>
+    if (this.state.isPending) {
+      return <div className="loader"><ThreeDots stroke="#06bcee" fill="#06bcee"/></div>
     }
     return (
       <ArticlesView

@@ -25,7 +25,9 @@ export function Main() {
 
   useEffect(() => {
     SendAxiosRequest(postsRequestUrl)
-      .then((data) => setPostCardData(data))
+      .then((data) => {
+        setPostCardData(data)
+      })
       .catch((err) => console.log(err))
   }, [])
   

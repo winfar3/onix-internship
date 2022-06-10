@@ -7,7 +7,6 @@ function ArticleView({
   imageUrl,
   description,
 }) {
-  console.log(imageUrl)
   return(
     <article className="article">
       <h2 className="article__title">{title}</h2>

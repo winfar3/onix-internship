@@ -100,7 +100,7 @@ function AddPostForm({ lastId, lastOrder, addPost, handleShowAddForm }) {
 }
 
 AddPostForm.propTypes = {
-  lastId: PropTypes.number, 
+  lastId: PropTypes.string, 
   lastOrder: PropTypes.number, 
   addPost: PropTypes.func, 
   handleShowAddForm: PropTypes.func,

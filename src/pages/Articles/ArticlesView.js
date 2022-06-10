@@ -79,7 +79,7 @@ ArticlesView.propTypes = {
   handleShowAddForm: PropTypes.func,
   addPost: PropTypes.func,
   lastId: PropTypes.oneOfType([
-    PropTypes.number,
+    PropTypes.string,
     PropTypes.bool,
   ]),
   lastOrder: PropTypes.number,
