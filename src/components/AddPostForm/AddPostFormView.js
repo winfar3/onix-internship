@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-import Button from "../Button/Button";
+import Button from '../Button/Button';
 
 function AddPostFormView({
   createPost,
@@ -79,29 +79,29 @@ function AddPostFormView({
           </button>
           <Button
             logic={handleShowAddForm}
-            content={"Close"}
-            styles={"button button_add"}
+            content="Close"
+            styles="button button_add"
           />
         </div>
       </form>
-      <div className="overlay"></div>
+      <div className="overlay" />
     </>
   );
 }
 
 AddPostFormView.propTypes = {
-  createPost: PropTypes.func,
-  postCategory: PropTypes.string,
-  handlePostCategoryChange: PropTypes.func,
-  postTitle: PropTypes.string,
-  handlePostTitleChange: PropTypes.func,
-  postFirstName: PropTypes.string,
-  handlePostFirstNameChange: PropTypes.func,
-  postLastName: PropTypes.string,
-  handlePostLastNameChange: PropTypes.func,
-  postDescription: PropTypes.string,
-  handlePostDescriptionChange: PropTypes.func,
-  handleShowAddForm: PropTypes.func,
-}
+  createPost: PropTypes.func.isRequired,
+  postCategory: PropTypes.string.isRequired,
+  handlePostCategoryChange: PropTypes.func.isRequired,
+  postTitle: PropTypes.string.isRequired,
+  handlePostTitleChange: PropTypes.func.isRequired,
+  postFirstName: PropTypes.string.isRequired,
+  handlePostFirstNameChange: PropTypes.func.isRequired,
+  postLastName: PropTypes.string.isRequired,
+  handlePostLastNameChange: PropTypes.func.isRequired,
+  postDescription: PropTypes.string.isRequired,
+  handlePostDescriptionChange: PropTypes.func.isRequired,
+  handleShowAddForm: PropTypes.func.isRequired,
+};
 
 export default AddPostFormView;

@@ -1,22 +1,23 @@
-import './Button.scss'
+import './Button.scss';
 
-import PropTypes from "prop-types"
+import PropTypes from 'prop-types';
 
 function Button({ logic, styles, content }) {
   return (
-    <button 
-        onClick={logic}
-        className={styles}
-      >
-        {content}
-      </button>
-  )
+    <button
+      type="button" 
+      onClick={logic}
+      className={styles}
+    >
+      {content}
+    </button>
+  );
 }
 
 Button.propTypes = {
-  logic: PropTypes.func, 
-  styles: PropTypes.string, 
-  content: PropTypes.string,
-}
+  logic: PropTypes.func.isRequired, 
+  styles: PropTypes.string.isRequired, 
+  content: PropTypes.string.isRequired,
+};
 
-export default Button
+export default Button;

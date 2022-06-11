@@ -1,19 +1,21 @@
-import "./AddPostForm.scss";
+import './AddPostForm.scss';
 
-import { useState, useEffect } from "react";
-import PropTypes from "prop-types"
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
-import image1 from "../../assets/images/postcard/01.png";
-import AddPostFormView from "./AddPostFormView";
+import image1 from '../../assets/images/postcard/01.png';
+import AddPostFormView from './AddPostFormView';
 
 // TODO: choose the right id and order for a new post
 
-function AddPostForm({ lastId, lastOrder, addPost, handleShowAddForm }) {
-  const [postCategory, setPostCategory] = useState("");
-  const [postTitle, setPostTitle] = useState("");
-  const [postFirstName, setPostFirstName] = useState("");
-  const [postLastName, setPostLastName] = useState("");
-  const [postDescription, setPostDescription] = useState("");
+function AddPostForm({
+  lastId, lastOrder, addPost, handleShowAddForm 
+}) {
+  const [postCategory, setPostCategory] = useState('');
+  const [postTitle, setPostTitle] = useState('');
+  const [postFirstName, setPostFirstName] = useState('');
+  const [postLastName, setPostLastName] = useState('');
+  const [postDescription, setPostDescription] = useState('');
   
   const handlePostCategoryChange = (e) => {
     setPostCategory(e.target.value);
@@ -40,12 +42,12 @@ function AddPostForm({ lastId, lastOrder, addPost, handleShowAddForm }) {
     const post = {
       id: lastId + 1,
       order: lastOrder + 1,
-      cardSize: "medium",
+      cardSize: 'medium',
       imageUrl: image1,
       isPositionTop: false,
       category: postCategory,
       title: postTitle,
-      date: "2020-06-01", 
+      date: '2020-06-01', 
       author: {
         firstName: postFirstName,
         lastName: postLastName
@@ -55,30 +57,30 @@ function AddPostForm({ lastId, lastOrder, addPost, handleShowAddForm }) {
 
     addPost(post);
     handleShowAddForm();
-  }
+  };
 
   useEffect(() => {
     const handleEnter = (e) => {
-      if (e.key === "Enter") {
+      if (e.key === 'Enter') {
         createPost(e);
       }
     };
 
-    window.addEventListener("keyup", handleEnter);
+    window.addEventListener('keyup', handleEnter);
 
-    return () => window.removeEventListener("keyup", handleEnter);
+    return () => window.removeEventListener('keyup', handleEnter);
   });
 
   useEffect(() => {
     const handleEscape = (e) => {
-      if (e.key === "Escape") {
+      if (e.key === 'Escape') {
         handleShowAddForm();
       }
-    }
+    };
 
-    window.addEventListener("keyup", handleEscape);
+    window.addEventListener('keyup', handleEscape);
 
-    return () => window.removeEventListener("keyup", handleEscape);
+    return () => window.removeEventListener('keyup', handleEscape);
   });
 
   return (
@@ -100,10 +102,10 @@ function AddPostForm({ lastId, lastOrder, addPost, handleShowAddForm }) {
 }
 
 AddPostForm.propTypes = {
-  lastId: PropTypes.string, 
-  lastOrder: PropTypes.number, 
-  addPost: PropTypes.func, 
-  handleShowAddForm: PropTypes.func,
-}
+  lastId: PropTypes.string.isRequired, 
+  lastOrder: PropTypes.number.isRequired, 
+  addPost: PropTypes.func.isRequired, 
+  handleShowAddForm: PropTypes.func.isRequired,
+};
 
 export default AddPostForm;

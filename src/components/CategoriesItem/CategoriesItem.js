@@ -1,19 +1,27 @@
-import './CategoriesItem.scss'
+import './CategoriesItem.scss';
 
-import PropTypes from "prop-types"
+import PropTypes from 'prop-types';
 
 function CategoriesItem({ category }) {
-  const title = category.title
-  const url = category.url
-  const number = category.number
-  const linkRoot = "/onix-internship/"
+  const { title } = category;
+  const { url } = category.url;
+  const { number } = category.number;
+  const linkRoot = '/onix-internship/';
 
-  return(
-      <li className="categoris__item">
-          <a href={linkRoot + url} className="categoris__link">{title}</a>
-          <p>({number})</p>
-      </li>
-  )
+  return (
+    <li className="categoris__item">
+      <a href={linkRoot + url} className="categoris__link">
+        {title}
+      </a>
+      <p>
+        (
+        {
+          number
+        }
+        )
+      </p>
+    </li>
+  );
 }
 
 CategoriesItem.propTypes = {
@@ -21,7 +29,7 @@ CategoriesItem.propTypes = {
     title: PropTypes.string,
     url: PropTypes.string,
     number: PropTypes.number,
-  }),
-}
+  }).isRequired,
+};
 
-export default CategoriesItem
+export default CategoriesItem;
