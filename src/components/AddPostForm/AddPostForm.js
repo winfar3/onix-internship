@@ -9,7 +9,7 @@ import AddPostFormView from './AddPostFormView';
 // TODO: choose the right id and order for a new post
 
 function AddPostForm({
-  lastId, lastOrder, addPost, handleShowAddForm 
+  lastOrder, addPost, handleShowAddForm 
 }) {
   const [postCategory, setPostCategory] = useState('');
   const [postTitle, setPostTitle] = useState('');
@@ -37,17 +37,21 @@ function AddPostForm({
     setPostDescription(e.target.value);
   };
 
+  const newDate = new Date();
+  const newId = JSON.stringify(newDate);
+  const currentDate = newId.slice(1, 11);
+
   const createPost = (e) => {
     e.preventDefault();
     const post = {
-      id: lastId + 1,
+      id: newId,
       order: lastOrder + 1,
       cardSize: 'medium',
       imageUrl: image1,
       isPositionTop: false,
       category: postCategory,
       title: postTitle,
-      date: '2020-06-01', 
+      date: currentDate, 
       author: {
         firstName: postFirstName,
         lastName: postLastName
@@ -102,7 +106,6 @@ function AddPostForm({
 }
 
 AddPostForm.propTypes = {
-  lastId: PropTypes.string.isRequired, 
   lastOrder: PropTypes.number.isRequired, 
   addPost: PropTypes.func.isRequired, 
   handleShowAddForm: PropTypes.func.isRequired,

@@ -33,9 +33,15 @@ function PostCardButtons({
 }
 
 PostCardButtons.propTypes = {
-  deletePost: PropTypes.func.isRequired, 
-  deleteImage: PropTypes.func.isRequired, 
-  addComment: PropTypes.func.isRequired,
+  deletePost: PropTypes.func, 
+  deleteImage: PropTypes.func, 
+  addComment: PropTypes.func,
+};
+
+PostCardButtons.defaultProps = {
+  deletePost: null,
+  deleteImage: null,
+  addComment: null,
 };
 
 export default PostCardButtons;

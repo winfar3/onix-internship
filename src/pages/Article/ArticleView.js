@@ -26,11 +26,19 @@ function ArticleView({
 }
 
 ArticleView.propTypes = {
-  title: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  createdDate: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  category: PropTypes.string,
+  createdDate: PropTypes.string,
+  imageUrl: PropTypes.string,
+  description: PropTypes.string,
+};
+
+ArticleView.defaultProps = {
+  title: '',
+  category: '',
+  createdDate: '',
+  imageUrl: '',
+  description: '',
 };
 
 export default ArticleView;

@@ -1,5 +1,6 @@
 import './PostCard.scss';
 
+import { useRef } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -35,6 +36,8 @@ function PostCard({
   ];
   const cardSize = forcedCardSize || post.cardSize;
   const dateObject = new Date(post.date);
+
+  const postRef = useRef(activePostElement);
 
   // TODO: remove after solving warnings eslint
   const imgOnLoad = () => {
@@ -74,7 +77,7 @@ function PostCard({
       deleteImage={deleteImage}
       addComment={addComment}
       cardSize={cardSize}
-      activePostElement={activePostElement}
+      activePostElement={postRef}
     />
   );
 }
@@ -99,16 +102,29 @@ PostCard.propTypes = {
     PropTypes.string,
     PropTypes.bool,
   ]).isRequired,
-  handleActivePost: PropTypes.func.isRequired,
-  draggable: PropTypes.bool.isRequired,
-  dragStartHandler: PropTypes.func.isRequired,
-  dragOverHandler: PropTypes.func.isRequired,
-  dropHandler: PropTypes.func.isRequired,
-  onActivePost: PropTypes.bool.isRequired,
-  deletePost: PropTypes.func.isRequired,
-  deleteImage: PropTypes.func.isRequired,
-  addComment: PropTypes.func.isRequired,
-  activePostElement: PropTypes.element.isRequired,
+  handleActivePost: PropTypes.func,
+  draggable: PropTypes.bool,
+  dragStartHandler: PropTypes.func,
+  dragOverHandler: PropTypes.func,
+  dropHandler: PropTypes.func,
+  onActivePost: PropTypes.bool,
+  deletePost: PropTypes.func,
+  deleteImage: PropTypes.func,
+  addComment: PropTypes.func,
+  activePostElement: PropTypes.shape(),
+};
+
+PostCard.defaultProps = {
+  handleActivePost() {},
+  deletePost: null,
+  deleteImage: null,
+  addComment: null,
+  draggable: false,
+  dragStartHandler() {},
+  dragOverHandler() {},
+  dropHandler() {},
+  onActivePost: false,
+  activePostElement: {},
 };
 
 export default PostCard;

@@ -200,10 +200,6 @@ class Articles extends React.Component {
         handleShowAddForm={this.handleShowAddForm}
         handleActivePost={this.handleActivePost}
         addPost={this.addPost}
-        lastId={
-          postCardData.length > 0 
-          && postCardData[postCardData.length - 1].id
-        }
         lastOrder={postCardData.length}
         sortByDate={this.sortByDate}
         sortById={this.sortById}

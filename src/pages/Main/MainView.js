@@ -33,10 +33,10 @@ function MainView({
 }
 
 MainView.propTypes = {
-  currentPosts: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  currentPosts: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   maxPageNumber: PropTypes.number.isRequired,
   postsPerPage: PropTypes.number.isRequired,
-  mainRef: PropTypes.element.isRequired,
+  mainRef: PropTypes.shape().isRequired,
   paginate: PropTypes.func.isRequired,
   prevPage: PropTypes.func.isRequired,
   nextPage: PropTypes.func.isRequired,

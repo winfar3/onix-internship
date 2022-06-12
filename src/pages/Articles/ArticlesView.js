@@ -8,7 +8,6 @@ function ArticlesView({
   showAddForm,
   handleShowAddForm,
   addPost,
-  lastId,
   lastOrder,
   sortByDate,
   sortById,
@@ -31,7 +30,6 @@ function ArticlesView({
         <AddPostForm
           handleShowAddForm={handleShowAddForm}
           addPost={addPost}
-          lastId={lastId}
           lastOrder={lastOrder}
         />
       )}
@@ -78,7 +76,6 @@ ArticlesView.propTypes = {
   showAddForm: PropTypes.bool.isRequired,
   handleShowAddForm: PropTypes.func.isRequired,
   addPost: PropTypes.func.isRequired,
-  lastId: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
   lastOrder: PropTypes.number.isRequired,
   sortByDate: PropTypes.func.isRequired,
   sortById: PropTypes.func.isRequired,
@@ -88,12 +85,17 @@ ArticlesView.propTypes = {
   dragStartHandler: PropTypes.func.isRequired,
   dragOverHandler: PropTypes.func.isRequired,
   dropHandler: PropTypes.func.isRequired,
-  onActivePost: PropTypes.number.isRequired,
+  onActivePost: PropTypes.number,
   deletePost: PropTypes.func.isRequired,
   deleteImage: PropTypes.func.isRequired,
   addComment: PropTypes.func.isRequired,
   handleActivePost: PropTypes.func.isRequired,
-  activePostElement: PropTypes.element.isRequired,
+  activePostElement: PropTypes.shape(),
+};
+
+ArticlesView.defaultProps = {
+  onActivePost: null,
+  activePostElement: {},
 };
 
 export default ArticlesView;

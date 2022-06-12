@@ -98,7 +98,7 @@ PostCardViev.propTypes = {
   dropHandler: PropTypes.func,
   articleclassNames: PropTypes.string.isRequired,
   imageClassNames: PropTypes.string.isRequired,
-  imgUrl: PropTypes.string.isRequired,
+  imgUrl: PropTypes.string,
   imgClassNames: PropTypes.string.isRequired,
   imgAlt: PropTypes.string.isRequired,
   imgOnLoad: PropTypes.func.isRequired,
@@ -106,17 +106,22 @@ PostCardViev.propTypes = {
   dateMonth: PropTypes.string.isRequired,
   dateDay: PropTypes.number.isRequired,
   dateYear: PropTypes.number.isRequired,
-  deletePost: PropTypes.func.isRequired,
-  deleteImage: PropTypes.func.isRequired,
-  addComment: PropTypes.func.isRequired,
+  deletePost: PropTypes.func,
+  deleteImage: PropTypes.func,
+  addComment: PropTypes.func,
   cardSize: PropTypes.string.isRequired,
-  activePostElement: PropTypes.element.isRequired,
+  activePostElement: PropTypes.shape(),
 };
 
 PostCardViev.defaultProps = {
   dragStartHandler() {},
   dragOverHandler() {},
   dropHandler() {},
+  activePostElement: {},
+  imgUrl: '',
+  deletePost: null,
+  deleteImage: null,
+  addComment: null,
 };
 
 export default PostCardViev;

@@ -38,11 +38,15 @@ function TravelsView({
 TravelsView.propTypes = {
   data: PropTypes.arrayOf(PropTypes.shape).isRequired,
   sordCards: PropTypes.func.isRequired,
-  cls: PropTypes.number.isRequired,
+  cls: PropTypes.number,
   dragStartHandler: PropTypes.func.isRequired,
   dragEndHandler: PropTypes.func.isRequired,
   dragOverHandler: PropTypes.func.isRequired,
   dropHandler: PropTypes.func.isRequired,
+};
+
+TravelsView.defaultProps = {
+  cls: null,
 };
 
 export default TravelsView;

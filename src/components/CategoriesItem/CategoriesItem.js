@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 function CategoriesItem({ category }) {
   const { title } = category;
-  const { url } = category.url;
-  const { number } = category.number;
+  const { url } = category;
+  const { number } = category;
   const linkRoot = '/onix-internship/';
 
   return (

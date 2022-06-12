@@ -15,7 +15,7 @@ function Button({ logic, styles, content }) {
 }
 
 Button.propTypes = {
-  logic: PropTypes.func.isRequired, 
+  logic: PropTypes.oneOfType([PropTypes.func, PropTypes.number]).isRequired, 
   styles: PropTypes.string.isRequired, 
   content: PropTypes.string.isRequired,
 };

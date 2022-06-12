@@ -2,10 +2,10 @@ import './Sidebar.scss';
 
 import SidebarSection from '../SidebarSection/SidebarSection';
 import AboutAuthor from '../AboutAuthor/AboutAuthor';
-import { FeaturedPosts } from '../FeaturedPosts/FeaturedPosts';
-import { Categories } from '../Categories/Categories';
-import { SocialMedia } from '../SocialMedia/SocialMedia';
-import { Tags } from '../Tags/Tags';
+import FeaturedPosts from '../FeaturedPosts/FeaturedPosts';
+import Categories from '../Categories/Categories';
+import SocialMedia from '../SocialMedia/SocialMedia';
+import Tags from '../Tags/Tags';
 
 function Sidebar() {
   return (
