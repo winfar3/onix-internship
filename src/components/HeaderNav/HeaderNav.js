@@ -1,33 +1,33 @@
-import "./HeaderNav.scss";
+import './HeaderNav.scss';
 
-import { useState } from "react";
-import PropTypes from "prop-types";
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-import HeaderNavView from "./HeaderNavView";
+import HeaderNavView from './HeaderNavView';
 
 function HeaderNav({ isNeedBurger }) {
-    const [menuActive, setMenuActive] = useState(false);
+  const [menuActive, setMenuActive] = useState(false);
 
-    const menuActiveHandler = () => {
-        setMenuActive((oldMenuActive) => !oldMenuActive)
-    }
+  const menuActiveHandler = () => {
+    setMenuActive((oldMenuActive) => !oldMenuActive);
+  };
 
-    return (
-        <HeaderNavView 
-            menuActive={menuActive}
-            setMenuActive={setMenuActive}
-            menuActiveHandler={menuActiveHandler}
-            isNeedBurger={isNeedBurger}
-        />
-    );
+  return (
+    <HeaderNavView
+      menuActive={menuActive}
+      setMenuActive={setMenuActive}
+      menuActiveHandler={menuActiveHandler}
+      isNeedBurger={isNeedBurger}
+    />
+  );
 }
 
 HeaderNav.propTypes = {
-    isNeedBurger: PropTypes.bool,
-}
+  isNeedBurger: PropTypes.bool,
+};
 
 HeaderNav.defaultProps = {
-    isNeedBurger: false,
-}
+  isNeedBurger: false,
+};
 
 export default HeaderNav;

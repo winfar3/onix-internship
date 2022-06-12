@@ -1,12 +1,12 @@
-import "./Main.scss";
+import './Main.scss';
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from 'react';
 
-import MainView from "./MainView";
-import SendAxiosRequest from "../../database/SendAxiosRequest";
-import { postsRequestUrl } from "../../database/requestUrls";
+import MainView from './MainView';
+import SendAxiosRequest from '../../database/SendAxiosRequest';
+import { postsRequestUrl } from '../../database/requestUrls';
 
-export function Main() {
+function Main() {
   const [postCardData, setPostCardData] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,14 +26,13 @@ export function Main() {
   useEffect(() => {
     SendAxiosRequest(postsRequestUrl)
       .then((data) => {
-        setPostCardData(data)
-      })
-      .catch((err) => console.log(err))
-  }, [])
-  
+        setPostCardData(data);
+      });
+  }, []);
+
   const scrollToTop = () => {
     elementMain.scrollIntoView({
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   };
 
@@ -55,7 +54,7 @@ export function Main() {
   };
 
   return (
-    <MainView 
+    <MainView
       currentPosts={currentPosts}
       maxPageNumber={maxPageNumber}
       postsPerPage={postsPerPage}
@@ -66,3 +65,5 @@ export function Main() {
     />
   );
 }
+
+export default Main;

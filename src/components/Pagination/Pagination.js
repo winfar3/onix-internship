@@ -1,30 +1,35 @@
-import "./Pagination.scss";
+import './Pagination.scss';
 
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-function Pagination({ maxPageNumber, prevPage, paginate, nextPage }) {
+function Pagination({ 
+  maxPageNumber, prevPage, paginate, nextPage 
+}) {
   const pageNumbers = [...new Array(maxPageNumber)].map((item, pos) => pos + 1);
 
   return (
     <div className="pagination">
       <button
-        className="pagination__item pagination__item_prev uppercase"
+        type="button"
         onClick={prevPage}
+        className="pagination__item pagination__item_prev uppercase"
       >
         older post
       </button>
       {pageNumbers.map((number) => (
         <button
-          className="pagination__item uppercase"
           key={number}
+          type="button"
           onClick={() => paginate(number)}
+          className="pagination__item uppercase"
         >
           {number}
         </button>
       ))}
       <button
-        className="pagination__item pagination__item_next uppercase"
+        type="button"
         onClick={nextPage}
+        className="pagination__item pagination__item_next uppercase"
       >
         next post
       </button>
@@ -33,10 +38,10 @@ function Pagination({ maxPageNumber, prevPage, paginate, nextPage }) {
 }
 
 Pagination.propTypes = {
-  maxPageNumber: PropTypes.number, 
-  prevPage: PropTypes.func, 
-  paginate: PropTypes.func, 
-  nextPage: PropTypes.func,
-}
+  maxPageNumber: PropTypes.number.isRequired,
+  prevPage: PropTypes.func.isRequired,
+  paginate: PropTypes.func.isRequired,
+  nextPage: PropTypes.func.isRequired,
+};
 
 export default Pagination;

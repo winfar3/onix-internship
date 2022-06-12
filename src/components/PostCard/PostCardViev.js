@@ -1,11 +1,10 @@
-import PostCardButtons from "./PostCardButtons";
-
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import PostCardButtons from './PostCardButtons';
+
 function PostCardViev({
   post,
-  handleActivePost,
   draggable,
   dragStartHandler,
   dragOverHandler,
@@ -29,7 +28,6 @@ function PostCardViev({
   return (
     <article
       // TODO: do not make the post active when clicking on the buttons
-      onClick={handleActivePost}
       draggable={draggable}
       onDragStart={(e) => dragStartHandler(e, post)}
       onDragOver={(e) => dragOverHandler(e)}
@@ -48,7 +46,7 @@ function PostCardViev({
           />
         </Link>
       </div>
-      {cardSize !== "listSize" && (
+      {cardSize !== 'listSize' && (
         <a href="!#" className="postcard__category uppercase">
           {post.category}
         </a>
@@ -59,10 +57,12 @@ function PostCardViev({
       <div className="postcard__info">
         <p className="postcard__date">{`${dateMonth} ${dateDay}, ${dateYear}`}</p>
         <a href="!#" className="postcard__author">
-          <span>By</span> {`${post.author.firstName} ${post.author.lastName}`}
+          <span>By</span> 
+          {' '}
+          {`${post.author.firstName} ${post.author.lastName}`}
         </a>
       </div>
-      {cardSize === "big" && (
+      {cardSize === 'big' && (
         <p className="postcard__desc">{post.description}</p>
       )}
       {post.comment && <p className="postcard__desc">{post.comment}</p>}
@@ -90,33 +90,33 @@ PostCardViev.propTypes = {
       lastName: PropTypes.string,
     }),
     description: PropTypes.string,
+    comment: PropTypes.string,
   }).isRequired,
-  handleActivePost: PropTypes.func,
-  draggable: PropTypes.bool,
+  draggable: PropTypes.bool.isRequired,
   dragStartHandler: PropTypes.func,
   dragOverHandler: PropTypes.func,
   dropHandler: PropTypes.func,
-  articleclassNames: PropTypes.string,
-  imageClassNames: PropTypes.string,
-  imgUrl: PropTypes.string,
-  imgClassNames: PropTypes.string,
-  imgAlt: PropTypes.string,
-  imgOnLoad: PropTypes.func,
-  imgOnError: PropTypes.func,
-  dateMonth: PropTypes.string,
-  dateDay: PropTypes.number,
-  dateYear: PropTypes.number,
-  deletePost: PropTypes.func,
-  deleteImage: PropTypes.func,
-  addComment: PropTypes.func,
-  cardSize: PropTypes.string,
-  activePostElement: PropTypes.object,
-}
+  articleclassNames: PropTypes.string.isRequired,
+  imageClassNames: PropTypes.string.isRequired,
+  imgUrl: PropTypes.string.isRequired,
+  imgClassNames: PropTypes.string.isRequired,
+  imgAlt: PropTypes.string.isRequired,
+  imgOnLoad: PropTypes.func.isRequired,
+  imgOnError: PropTypes.func.isRequired,
+  dateMonth: PropTypes.string.isRequired,
+  dateDay: PropTypes.number.isRequired,
+  dateYear: PropTypes.number.isRequired,
+  deletePost: PropTypes.func.isRequired,
+  deleteImage: PropTypes.func.isRequired,
+  addComment: PropTypes.func.isRequired,
+  cardSize: PropTypes.string.isRequired,
+  activePostElement: PropTypes.element.isRequired,
+};
 
 PostCardViev.defaultProps = {
   dragStartHandler() {},
-  dragOverHandler()  {},
+  dragOverHandler() {},
   dropHandler() {},
-}
+};
 
 export default PostCardViev;

@@ -1,21 +1,19 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
-import UserCard from '../../components/UserCard/UserCard'
+import UserCard from '../../components/UserCard/UserCard';
 
 function UsersView({ dataFromServer }) {
-  return(
+  return (
     <main className="main">
-      {
-        dataFromServer.map(item => 
-          <UserCard user={item} key={item.id}/>
-        )
-      }
+      {dataFromServer.map((item) => (
+        <UserCard user={item} key={item.id} />
+      ))}
     </main>
-  )
+  );
 }
 
 UsersView.propTypes = {
-  dataFromServer: PropTypes.array,
-}
+  dataFromServer: PropTypes.arrayOf(PropTypes.shape).isRequired,
+};
 
-export default UsersView
+export default UsersView;

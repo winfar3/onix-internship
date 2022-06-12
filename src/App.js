@@ -1,15 +1,15 @@
-import "./App.scss";
+import './App.scss';
 
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { Main } from "./pages/Main/Main.js";
-import Recipes from "./pages/Recipes/Recipes";
-import Articles from "./pages/Articles/Articles";
-import Article from "./pages/Article/Article";
-import Users from "./pages/Users/Users.js";
-import Travels from "./pages/Travels/Travels";
-import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import Layout from "./components/Layout/Layout";
+import { Main } from './pages/Main/Main';
+import Recipes from './pages/Recipes/Recipes';
+import Articles from './pages/Articles/Articles';
+import Article from './pages/Article/Article';
+import Users from './pages/Users/Users';
+import Travels from './pages/Travels/Travels';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import Layout from './components/Layout/Layout';
 
 function App() {
   return (

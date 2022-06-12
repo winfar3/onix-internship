@@ -1,7 +1,9 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-function MenuView({ navData, classNames, linkRoot, setTitle }) {
+function MenuView({ 
+  navData, classNames, linkRoot, setTitle 
+}) {
   return (
     <nav className="header__nav header-nav">
       <ul
@@ -24,10 +26,10 @@ function MenuView({ navData, classNames, linkRoot, setTitle }) {
 }
 
 MenuView.propTypes = {
-  navData: PropTypes.array,
-  classNames: PropTypes.string,
-  linkRoot: PropTypes.string,
-  setTitle: PropTypes.func,
-}
+  navData: PropTypes.arrayOf(PropTypes.string).isRequired,
+  classNames: PropTypes.string.isRequired,
+  linkRoot: PropTypes.string.isRequired,
+  setTitle: PropTypes.func.isRequired,
+};
 
 export default MenuView;

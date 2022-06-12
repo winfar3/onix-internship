@@ -1,30 +1,30 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
-import { Header } from "../Header/Header.js";
-import { Hero } from "../Hero/Hero.js";
-import { Sidebar } from "../Sidebar/Sidebar.js";
-import { InstagramGallery } from "../InstagramGallery/InstagramGallery.js";
-import { Footer } from "../Footer/Footer.js";
+import { Header } from '../Header/Header';
+import { Hero } from '../Hero/Hero';
+import { Sidebar } from '../Sidebar/Sidebar';
+import { InstagramGallery } from '../InstagramGallery/InstagramGallery';
+import { Footer } from '../Footer/Footer';
 
 function Layout({ children }) {
-  return(
+  return (
     <>
       <Header />
       <Hero />
       <div className="container">
         <div className="content-wrapper">
           {children}
-        <Sidebar />
+          <Sidebar />
         </div>
       </div>
-      <InstagramGallery/>
+      <InstagramGallery />
       <Footer />
     </>
-  )
+  );
 }
 
 Layout.propTypes = {
-  children: PropTypes.element,
-}
+  children: PropTypes.element.isRequired,
+};
 
-export default Layout
+export default Layout;

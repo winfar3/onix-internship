@@ -1,11 +1,11 @@
-import "./Recipes.scss";
-import React from "react";
+import './Recipes.scss';
+import React from 'react';
 
 class Recipes extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      date: new Date(), 
+    this.state = {
+      date: new Date(),
     };
   }
 
@@ -24,11 +24,14 @@ class Recipes extends React.Component {
   }
 
   render() {
+    const { date } = this.state;
     return (
       <div className="recipes">
         <h2 className="recipes__title">Hello world!</h2>
         <h3 className="recipes__clock">
-          It's {this.state.date.toLocaleTimeString()} now.
+          It&apos;s 
+          {date.toLocaleTimeString()} 
+          now.
         </h3>
       </div>
     );

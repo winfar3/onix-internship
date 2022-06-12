@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-import AddPostForm from "../../components/AddPostForm/AddPostForm";
-import Button from "../../components/Button/Button";
-import PostCard from "../../components/PostCard/PostCard";
+import AddPostForm from '../../components/AddPostForm/AddPostForm';
+import Button from '../../components/Button/Button';
+import PostCard from '../../components/PostCard/PostCard';
 
 function ArticlesView({
   showAddForm,
@@ -39,26 +39,26 @@ function ArticlesView({
       <div className="buttonsWrap">
         <Button
           logic={sortByDate}
-          content={"Sort by date"}
-          styles={"button button_article"}
+          content="Sort by date"
+          styles="button button_article"
         />
         <Button
           logic={sortById}
-          content={"Sort by id"}
-          styles={"button button_article"}
+          content="Sort by id"
+          styles="button button_article"
         />
         <Button
           logic={handleShowAddForm}
-          content={"Add post"}
-          styles={"button button_article"}
+          content="Add post"
+          styles="button button_article"
         />
       </div>
       {postCardData.sort(byField(sortBy)).map((postCardItem, pos) => (
         <PostCard
           post={postCardItem}
           key={postCardItem.id}
-          forcedCardSize={"listSize"}
-          draggable={true}
+          forcedCardSize="listSize"
+          draggable
           dragStartHandler={dragStartHandler}
           dragOverHandler={dragOverHandler}
           dropHandler={dropHandler}
@@ -75,28 +75,25 @@ function ArticlesView({
 }
 
 ArticlesView.propTypes = {
-  showAddForm: PropTypes.bool,
-  handleShowAddForm: PropTypes.func,
-  addPost: PropTypes.func,
-  lastId: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.bool,
-  ]),
-  lastOrder: PropTypes.number,
-  sortByDate: PropTypes.func,
-  sortById: PropTypes.func,
-  postCardData: PropTypes.array,
-  byField: PropTypes.func,
-  sortBy: PropTypes.string,
-  dragStartHandler: PropTypes.func,
-  dragOverHandler: PropTypes.func,
-  dropHandler: PropTypes.func,
-  onActivePost: PropTypes.number,
-  deletePost: PropTypes.func,
-  deleteImage: PropTypes.func,
-  addComment: PropTypes.func,
-  handleActivePost: PropTypes.func,
-  activePostElement: PropTypes.object,
+  showAddForm: PropTypes.bool.isRequired,
+  handleShowAddForm: PropTypes.func.isRequired,
+  addPost: PropTypes.func.isRequired,
+  lastId: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
+  lastOrder: PropTypes.number.isRequired,
+  sortByDate: PropTypes.func.isRequired,
+  sortById: PropTypes.func.isRequired,
+  postCardData: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  byField: PropTypes.func.isRequired,
+  sortBy: PropTypes.string.isRequired,
+  dragStartHandler: PropTypes.func.isRequired,
+  dragOverHandler: PropTypes.func.isRequired,
+  dropHandler: PropTypes.func.isRequired,
+  onActivePost: PropTypes.number.isRequired,
+  deletePost: PropTypes.func.isRequired,
+  deleteImage: PropTypes.func.isRequired,
+  addComment: PropTypes.func.isRequired,
+  handleActivePost: PropTypes.func.isRequired,
+  activePostElement: PropTypes.element.isRequired,
 };
 
 export default ArticlesView;

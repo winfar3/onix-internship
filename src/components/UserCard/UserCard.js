@@ -1,15 +1,15 @@
-import PropTypes from "prop-types"
+import PropTypes from 'prop-types';
 
-import UserCardView from "./UserCardView"
+import UserCardView from './UserCardView';
 
-function UserCard({user}) {
-  return(
-    <UserCardView 
+function UserCard({ user }) {
+  return (
+    <UserCardView
       name={user.name}
       avatar={user.avatar}
       createdAt={user.createdAt.split('T')[0]}
     />
-  )
+  );
 }
 
 UserCard.propTypes = {
@@ -17,7 +17,7 @@ UserCard.propTypes = {
     name: PropTypes.string,
     avatar: PropTypes.string,
     createdAt: PropTypes.string,
-  }),
-}
+  }).isRequired,
+};
 
-export default UserCard
+export default UserCard;

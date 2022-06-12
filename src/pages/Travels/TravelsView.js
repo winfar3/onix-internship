@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import classNames from 'classnames'
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 function TravelsView({
   data,
@@ -20,8 +20,8 @@ function TravelsView({
           onDragEnd={(e) => dragEndHandler(e)}
           onDragOver={(e) => dragOverHandler(e, pos)}
           onDrop={(e) => dropHandler(e, card)}
-          draggable={true}
-          className={classNames("travels__card travels-card", {
+          draggable
+          className={classNames('travels__card travels-card', {
             _over: cls === pos,
           })}
         >
@@ -36,13 +36,13 @@ function TravelsView({
 }
 
 TravelsView.propTypes = {
-  data: PropTypes.array,
-  sordCards: PropTypes.func,
-  cls: PropTypes.number,
-  dragStartHandler: PropTypes.func,
-  dragEndHandler: PropTypes.func,
-  dragOverHandler: PropTypes.func,
-  dropHandler: PropTypes.func,
+  data: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  sordCards: PropTypes.func.isRequired,
+  cls: PropTypes.number.isRequired,
+  dragStartHandler: PropTypes.func.isRequired,
+  dragEndHandler: PropTypes.func.isRequired,
+  dragOverHandler: PropTypes.func.isRequired,
+  dropHandler: PropTypes.func.isRequired,
 };
 
 export default TravelsView;

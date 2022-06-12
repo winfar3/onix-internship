@@ -1,9 +1,9 @@
-import "./PostCard.scss";
+import './PostCard.scss';
 
-import classNames from "classnames";
-import PropTypes from "prop-types"
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
-import PostCardViev from "./PostCardViev";
+import PostCardViev from './PostCardViev';
 
 function PostCard({
   post,
@@ -20,29 +20,30 @@ function PostCard({
   activePostElement,
 }) {
   const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
   ];
-  const cardSize = forcedCardSize ? forcedCardSize : post.cardSize;
+  const cardSize = forcedCardSize || post.cardSize;
   const dateObject = new Date(post.date);
 
+  // TODO: remove after solving warnings eslint
   const imgOnLoad = () => {
-    console.log(`Image for post ${post.id} loaded`);
-  }
+    console.log(`Image for post ${post.id} loaded`); // eslint-disable-line no-console
+  };
 
   const imgOnError = () => {
-    console.log(`ERROR. Image for post ${post.id} not loaded`);
-  }
+    console.log(`ERROR. Image for post ${post.id} not loaded`); // eslint-disable-line no-console
+  };
 
   return (
     <PostCardViev 
@@ -53,17 +54,17 @@ function PostCard({
       dragOverHandler={dragOverHandler}
       dropHandler={dropHandler}
       articleclassNames={classNames(
-        "postcard",
+        'postcard',
         `postcard_${cardSize}`,
         { postcard_active: onActivePost },
         { postcard_draggable: draggable }
       )}
       imageClassNames={`postcard__image postcard__image_${cardSize}`}
       imgUrl={post.imageUrl}
-      imgClassNames={classNames("postcard__img", {
-              postcard__img_top: post.isPositionTop,
-            })}
-      imgAlt={"preview"}
+      imgClassNames={classNames('postcard__img', {
+        postcard__img_top: post.isPositionTop,
+      })}
+      imgAlt="preview"
       imgOnLoad={imgOnLoad}
       imgOnError={imgOnError}
       dateMonth={months[dateObject.getMonth()]}
@@ -97,17 +98,17 @@ PostCard.propTypes = {
   forcedCardSize: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.bool,
-  ]),
-  handleActivePost: PropTypes.func,
-  draggable: PropTypes.bool,
-  dragStartHandler: PropTypes.func,
-  dragOverHandler: PropTypes.func,
-  dropHandler: PropTypes.func,
-  onActivePost: PropTypes.bool,
-  deletePost: PropTypes.func,
-  deleteImage: PropTypes.func,
-  addComment: PropTypes.func,
-  activePostElement: PropTypes.object,
-}
+  ]).isRequired,
+  handleActivePost: PropTypes.func.isRequired,
+  draggable: PropTypes.bool.isRequired,
+  dragStartHandler: PropTypes.func.isRequired,
+  dragOverHandler: PropTypes.func.isRequired,
+  dropHandler: PropTypes.func.isRequired,
+  onActivePost: PropTypes.bool.isRequired,
+  deletePost: PropTypes.func.isRequired,
+  deleteImage: PropTypes.func.isRequired,
+  addComment: PropTypes.func.isRequired,
+  activePostElement: PropTypes.element.isRequired,
+};
 
 export default PostCard;

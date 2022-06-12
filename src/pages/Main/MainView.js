@@ -1,23 +1,23 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-import Pagination from "../../components/Pagination/Pagination";
-import PostCard from "../../components/PostCard/PostCard";
+import Pagination from '../../components/Pagination/Pagination';
+import PostCard from '../../components/PostCard/PostCard';
 
-function MainView({ 
+function MainView({
   currentPosts,
   maxPageNumber,
   postsPerPage,
   mainRef,
   paginate,
   prevPage,
-  nextPage
+  nextPage,
 }) {
   return (
     <main className="main" ref={mainRef}>
       {currentPosts.map((postCardItem, pos) => (
-        <PostCard 
-          post={postCardItem} 
-          key={postCardItem.id} 
+        <PostCard
+          post={postCardItem}
+          key={postCardItem.id}
           forcedCardSize={pos === 4 && 'big'}
         />
       ))}
@@ -33,13 +33,13 @@ function MainView({
 }
 
 MainView.propTypes = {
-  currentPosts: PropTypes.array,
-  maxPageNumber: PropTypes.number,
-  postsPerPage: PropTypes.number,
-  mainRef: PropTypes.object,
-  paginate: PropTypes.func,
-  prevPage: PropTypes.func,
-  nextPage: PropTypes.func,
+  currentPosts: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  maxPageNumber: PropTypes.number.isRequired,
+  postsPerPage: PropTypes.number.isRequired,
+  mainRef: PropTypes.element.isRequired,
+  paginate: PropTypes.func.isRequired,
+  prevPage: PropTypes.func.isRequired,
+  nextPage: PropTypes.func.isRequired,
 };
 
 export default MainView;

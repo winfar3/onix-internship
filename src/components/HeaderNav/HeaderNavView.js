@@ -1,18 +1,21 @@
-import classNames from "classnames";
-import PropTypes from "prop-types";
-import Menu from "../Menu/Menu.js";
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import Menu from '../Menu/Menu';
 
 function HeaderNavView({ menuActive, menuActiveHandler, isNeedBurger }) {
   return (
     <>
       {isNeedBurger && (
         <div
-          className={classNames("header-nav__burger", {
-            "header-nav__burger_active": menuActive,
-          })}
           onClick={() => menuActiveHandler()}
+          onKeyPress={() => {}}
+          role="button"
+          tabIndex={0}
+          className={classNames('header-nav__burger', {
+            'header-nav__burger_active': menuActive,
+          })}
         >
-          <span></span>
+          <span />
         </div>
       )}
       <Menu active={menuActive} />
@@ -21,9 +24,9 @@ function HeaderNavView({ menuActive, menuActiveHandler, isNeedBurger }) {
 }
 
 HeaderNavView.propTypes = {
-  menuActive: PropTypes.bool,
-  menuActiveHandler: PropTypes.func,
-  isNeedBurger: PropTypes.bool,
-}
+  menuActive: PropTypes.bool.isRequired,
+  menuActiveHandler: PropTypes.func.isRequired,
+  isNeedBurger: PropTypes.bool.isRequired,
+};
 
 export default HeaderNavView;
