@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 function MenuView({ 
   navData, classNames, linkRoot, setTitle, menuActiveHandler 
 }) {
+  /** Allows to call a function menuActiveHandler if the site is open on a tablet or phone 
+   * Without this, the menu also opens in desktop mode
+   */
+  // TODO: Find the best solution
+  const mobileDisplay = window.outerWidth < 768;
   return (
     <nav className="header__nav header-nav">
       <ul
@@ -13,7 +18,7 @@ function MenuView({
           <li key={item} className="header-nav__item">
             <NavLink
               to={linkRoot + item}
-              onClick={() => { setTitle(item); menuActiveHandler(); }}
+              onClick={mobileDisplay ? () => { setTitle(item); menuActiveHandler(); } : () => setTitle(item)}
               className="header-nav__link capitalize"
             >
               {item}
@@ -30,7 +35,11 @@ MenuView.propTypes = {
   classNames: PropTypes.string.isRequired,
   linkRoot: PropTypes.string.isRequired,
   setTitle: PropTypes.func.isRequired,
-  menuActiveHandler: PropTypes.func.isRequired,
+  menuActiveHandler: PropTypes.func,
+};
+
+MenuView.defaultProps = {
+  menuActiveHandler() {},
 };
 
 export default MenuView;
