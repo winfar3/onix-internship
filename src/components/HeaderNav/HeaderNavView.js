@@ -18,7 +18,10 @@ function HeaderNavView({ menuActive, menuActiveHandler, isNeedBurger }) {
           <span />
         </div>
       )}
-      <Menu active={menuActive} />
+      <Menu 
+        active={menuActive} 
+        menuActiveHandler={menuActiveHandler}
+      />
     </>
   );
 }

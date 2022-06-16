@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import MenuView from './MenuView';
 
-function Menu({ active }) {
+function Menu({ active, menuActiveHandler }) {
   const navData = ['home', 'recipes', 'articles', 'users', 'travels'];
   const linkRoot = '/onix-internship/';
 
@@ -30,12 +30,14 @@ function Menu({ active }) {
       classNames={classNames('header-nav__list', { 'header-nav__list_active': active })}
       linkRoot={linkRoot}
       setTitle={setTitle}
+      menuActiveHandler={menuActiveHandler}
     />
   );
 }
 
 Menu.propTypes = {
   active: PropTypes.bool.isRequired,
+  menuActiveHandler: PropTypes.func.isRequired,
 };
 
 export default Menu;
