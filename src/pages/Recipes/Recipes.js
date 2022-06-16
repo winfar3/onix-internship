@@ -29,9 +29,9 @@ class Recipes extends React.Component {
       <div className="recipes">
         <h2 className="recipes__title">Hello world!</h2>
         <h3 className="recipes__clock">
-          It&apos;s 
+          It&apos;s&nbsp;
           {date.toLocaleTimeString()} 
-          now.
+          &nbsp;now.
         </h3>
       </div>
     );

@@ -1,36 +1,28 @@
 import './Articles.scss';
 
 import React from 'react';
-import { ThreeDots } from 'react-loading-icons';
+import PropTypes from 'prop-types';
 
 import ArticlesView from './ArticlesView';
-import SendAxiosRequest from '../../database/SendAxiosRequest';
 import { postsRequestUrl } from '../../database/requestUrls';
+import withRequest from '../../components/withRequest/withRequest';
 
 class Articles extends React.Component {
   constructor(props) {
     super(props);
+    const { dataFromServer } = this.props;
     this.activePostElement = React.createRef();
     this.state = {
-      postCardData: [],
+      postCardData: dataFromServer,
       showAddForm: false,
       onActivePost: null,
       currentPost: null,
       sortBy: 'order',
       isSorted: false,
-      isPending: false,
     };
   }
 
   componentDidMount() {
-    this.setState({ isPending: true });
-    SendAxiosRequest(postsRequestUrl)
-      .then((data) => {
-        this.setState({ postCardData: data });
-        this.setState({ isPending: false });
-      });
-    // TODO: remove after solving warnings eslint
-    // .catch((err) => console.log(err));
     this.handleActivePost();
     window.addEventListener('keyup', this.goToNextPost);
     window.addEventListener('keyup', this.goToPrevPost);
@@ -184,16 +176,9 @@ class Articles extends React.Component {
 
   render() {
     const { 
-      isPending, showAddForm, postCardData, sortBy, onActivePost 
+      showAddForm, postCardData, sortBy, onActivePost 
     } = this.state;
 
-    if (isPending) {
-      return (
-        <div className="loader">
-          <ThreeDots stroke="#06bcee" fill="#06bcee" />
-        </div>
-      );
-    }
     return (
       <ArticlesView
         showAddForm={showAddForm}
@@ -219,4 +204,8 @@ class Articles extends React.Component {
   }
 }
 
-export default Articles;
+Articles.propTypes = {
+  dataFromServer: PropTypes.arrayOf(PropTypes.shape).isRequired,
+};
+
+export default withRequest(Articles, postsRequestUrl);

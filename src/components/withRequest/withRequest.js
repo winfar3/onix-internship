@@ -1,4 +1,5 @@
 import React from 'react';
+import ThreeDots from 'react-loading-icons/dist/esm/components/three-dots';
 import SendAxiosRequest from '../../database/SendAxiosRequest';
 
 function withRequest(Component, apiUrl) {
@@ -7,20 +8,30 @@ function withRequest(Component, apiUrl) {
       super(props);
       this.state = {
         requstedData: [],
+        isPanding: true,
       };
     }
 
     componentDidMount() {
+      this.setState({ isPanding: true });
       this.get();
     }
-
+    
     get = () => {
-      SendAxiosRequest(apiUrl)
-        .then((data) => this.setState({ requstedData: data }));
+      SendAxiosRequest(apiUrl).then((data) => {
+        this.setState({ requstedData: data, isPanding: false });
+      });
     };
-
+    
     render() {
-      const { requstedData } = this.state;
+      const { requstedData, isPanding } = this.state;
+      if (isPanding) {
+        return (
+          <div className="loader">
+            <ThreeDots stroke="#06bcee" fill="#06bcee" />
+          </div>
+        );
+      }
       /* eslint-disable react/jsx-props-no-spreading */
       return <Component dataFromServer={requstedData} {...this.porps} />;
     }
