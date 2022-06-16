@@ -1,13 +1,14 @@
 import './Main.scss';
 
 import { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 
 import MainView from './MainView';
-import SendAxiosRequest from '../../database/SendAxiosRequest';
 import { postsRequestUrl } from '../../database/requestUrls';
+import withRequest from '../../components/withRequest/withRequest';
 
-function Main() {
-  const [postCardData, setPostCardData] = useState([]);
+function Main({ dataFromServer }) {
+  const [postCardData] = useState(dataFromServer);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(7);
@@ -22,13 +23,6 @@ function Main() {
   useEffect(() => {
     setElementMain(mainRef.current);
   }, [elementMain]);
-
-  useEffect(() => {
-    SendAxiosRequest(postsRequestUrl)
-      .then((data) => {
-        setPostCardData(data);
-      });
-  }, []);
 
   const scrollToTop = () => {
     elementMain.scrollIntoView({
@@ -66,4 +60,12 @@ function Main() {
   );
 }
 
-export default Main;
+Main.propTypes = {
+  dataFromServer: PropTypes.arrayOf(PropTypes.shape),
+};
+
+Main.defaultProps = {
+  dataFromServer: [],
+};
+
+export default withRequest(Main, postsRequestUrl);
