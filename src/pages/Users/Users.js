@@ -1,18 +1,17 @@
 import './Users.scss';
 
-import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 import UsersView from './UsersView';
-import SendAxiosRequest from '../../database/SendAxiosRequest';
 import { usersRequestUrl } from '../../database/requestUrls';
+import withRequest from '../../components/withRequest/withRequest';
 
-export default function Users() {
-  const [dataFromServer, setDataFromServer] = useState([]);
-
-  useEffect(() => {
-    SendAxiosRequest(usersRequestUrl)
-      .then((data) => setDataFromServer(data));
-  }, []);
-
+function Users({ dataFromServer }) {
   return <UsersView dataFromServer={dataFromServer} />;
 }
+
+Users.propTypes = {
+  dataFromServer: PropTypes.arrayOf(PropTypes.shape).isRequired,
+};
+
+export default withRequest(Users, usersRequestUrl);
