@@ -24,6 +24,7 @@ function PostCardViev({
   addComment,
   cardSize,
   activePostElement,
+  handleActivePost,
 }) {
   return (
     <article
@@ -70,6 +71,7 @@ function PostCardViev({
         deletePost={deletePost}
         deleteImage={deleteImage}
         addComment={addComment}
+        handleActivePost={handleActivePost}
       />
     </article>
   );
@@ -107,17 +109,19 @@ PostCardViev.propTypes = {
   addComment: PropTypes.func,
   cardSize: PropTypes.string.isRequired,
   activePostElement: PropTypes.shape(),
+  handleActivePost: PropTypes.func,
 };
 
 PostCardViev.defaultProps = {
   dragStartHandler() {},
   dragOverHandler() {},
   dropHandler() {},
-  activePostElement: {},
+  activePostElement: null,
   imgUrl: '',
   deletePost: null,
   deleteImage: null,
   addComment: null,
+  handleActivePost: null,
 };
 
 export default PostCardViev;

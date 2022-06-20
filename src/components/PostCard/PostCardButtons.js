@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Button from '../Button/Button';
 
 function PostCardButtons({
-  deletePost, deleteImage, addComment
+  deletePost, deleteImage, addComment, handleActivePost
 }) {
   return (
     <div className="postcard__buttons">
@@ -28,6 +28,13 @@ function PostCardButtons({
           styles="button button_delete"
         />
       )}
+      {handleActivePost && (
+        <Button
+          logic={handleActivePost}
+          content="Select post"
+          styles="button button_delete"
+        />
+      )}
     </div>
   );
 }
@@ -36,12 +43,14 @@ PostCardButtons.propTypes = {
   deletePost: PropTypes.func, 
   deleteImage: PropTypes.func, 
   addComment: PropTypes.func,
+  handleActivePost: PropTypes.func,
 };
 
 PostCardButtons.defaultProps = {
   deletePost: null,
   deleteImage: null,
   addComment: null,
+  handleActivePost: null,
 };
 
 export default PostCardButtons;

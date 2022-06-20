@@ -90,12 +90,11 @@ ArticlesView.propTypes = {
   deleteImage: PropTypes.func.isRequired,
   addComment: PropTypes.func.isRequired,
   handleActivePost: PropTypes.func.isRequired,
-  activePostElement: PropTypes.shape(),
+  activePostElement: PropTypes.shape().isRequired,
 };
 
 ArticlesView.defaultProps = {
   onActivePost: null,
-  activePostElement: {},
 };
 
 export default ArticlesView;

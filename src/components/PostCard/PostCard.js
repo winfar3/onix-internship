@@ -1,6 +1,5 @@
 import './PostCard.scss';
 
-import { useRef } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -36,8 +35,6 @@ function PostCard({
   ];
   const cardSize = forcedCardSize || post.cardSize;
   const dateObject = new Date(post.date);
-
-  const postRef = useRef(activePostElement);
 
   // TODO: remove after solving warnings eslint
   const imgOnLoad = () => {
@@ -76,7 +73,7 @@ function PostCard({
       deleteImage={deleteImage}
       addComment={addComment}
       cardSize={cardSize}
-      activePostElement={postRef}
+      activePostElement={activePostElement}
     />
   );
 }
@@ -106,7 +103,7 @@ PostCard.propTypes = {
 };
 
 PostCard.defaultProps = {
-  handleActivePost() {},
+  handleActivePost: null,
   deletePost: null,
   deleteImage: null,
   addComment: null,
@@ -115,7 +112,7 @@ PostCard.defaultProps = {
   dragOverHandler() {},
   dropHandler() {},
   onActivePost: false,
-  activePostElement: {},
+  activePostElement: null,
 };
 
 export default PostCard;
