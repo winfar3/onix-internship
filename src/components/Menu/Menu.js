@@ -13,16 +13,18 @@ function Menu({ active, menuActiveHandler }) {
   useEffect(() => {
     document.title = `Fasion ${title}`;
   });
-  
-  /**
-   * Locks page scrolling when the menu is open on phones
-   */
+
   const bodyElement = useRef(document.body);
-  if (active) {
-    bodyElement.current.classList.add('lock');
-  } else {
-    bodyElement.current.classList.remove('lock');
-  }
+  useEffect(() => {
+    /**
+     * Locks page scrolling when the menu is open on phones
+     */
+    if (active) {
+      bodyElement.current.classList.add('lock');
+    } else {
+      bodyElement.current.classList.remove('lock');
+    }
+  }, [active]);
   
   return (
     <MenuView 
