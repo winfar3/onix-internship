@@ -78,13 +78,9 @@ function PostCardViev({
 PostCardViev.propTypes = {
   post: PropTypes.shape({
     id: PropTypes.string,
-    order: PropTypes.number,
     cardSize: PropTypes.string,
-    imageUrl: PropTypes.string,
-    isPositionTop: PropTypes.bool,
     category: PropTypes.string,
     title: PropTypes.string,
-    date: PropTypes.string, 
     author: PropTypes.shape({
       firstName: PropTypes.string,
       lastName: PropTypes.string,
