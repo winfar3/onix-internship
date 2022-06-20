@@ -56,11 +56,10 @@ function PostCard({
       dragStartHandler={dragStartHandler}
       dragOverHandler={dragOverHandler}
       dropHandler={dropHandler}
-      articleclassNames={classNames(
+      articleClassNames={classNames(
         'postcard',
         `postcard_${cardSize}`,
-        { postcard_active: onActivePost },
-        { postcard_draggable: draggable }
+        { postcard_active: onActivePost, postcard_draggable: draggable }
       )}
       imageClassNames={`postcard__image postcard__image_${cardSize}`}
       imgUrl={post.imageUrl}

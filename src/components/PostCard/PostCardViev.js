@@ -9,7 +9,7 @@ function PostCardViev({
   dragStartHandler,
   dragOverHandler,
   dropHandler,
-  articleclassNames,
+  articleClassNames,
   imageClassNames,
   imgUrl,
   imgClassNames,
@@ -32,7 +32,7 @@ function PostCardViev({
       onDragStart={(e) => dragStartHandler(e, post)}
       onDragOver={(e) => dragOverHandler(e)}
       onDrop={(e) => dropHandler(e, post)}
-      className={articleclassNames}
+      className={articleClassNames}
       ref={activePostElement}
     >
       <div className={imageClassNames}>
@@ -92,7 +92,7 @@ PostCardViev.propTypes = {
   dragStartHandler: PropTypes.func,
   dragOverHandler: PropTypes.func,
   dropHandler: PropTypes.func,
-  articleclassNames: PropTypes.string.isRequired,
+  articleClassNames: PropTypes.string.isRequired,
   imageClassNames: PropTypes.string.isRequired,
   imgUrl: PropTypes.string,
   imgClassNames: PropTypes.string.isRequired,
