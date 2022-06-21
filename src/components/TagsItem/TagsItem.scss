@@ -4,7 +4,7 @@
   display: inline-block;
   padding: 6px 15px;
 
-  background-color: $socials-bg;
+  background-color: var(--socials-bg);
 
   font-size: 1.4rem;
   line-height: 1.35;
@@ -15,5 +15,5 @@
 }
 
 a.tags__item {
-  color: $primary;
+  color: var(--primary);
 }

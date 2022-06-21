@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 
-import Header from '../Header/Header';
-import Hero from '../Hero/Hero';
-import Sidebar from '../Sidebar/Sidebar';
-import InstagramGallery from '../InstagramGallery/InstagramGallery';
-import Footer from '../Footer/Footer';
+import Header from '../components/Header/Header';
+import Hero from '../components/Hero/Hero';
+import Sidebar from '../components/Sidebar/Sidebar';
+import InstagramGallery from '../components/InstagramGallery/InstagramGallery';
+import Footer from '../components/Footer/Footer';
 
 function Layout({ children }) {
   return (

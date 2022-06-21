@@ -1,7 +1,10 @@
 @import "./helperStyles/reset.css";
+@import "./helperStyles/colors.scss";
 
 body {
   overflow: auto;
+  background-color: var(--background-color);
+  color: var(--secondary);
 
   &.lock {
     overflow: hidden;

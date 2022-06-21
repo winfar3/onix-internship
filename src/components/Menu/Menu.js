@@ -1,9 +1,15 @@
 import classNames from 'classnames';
 
-import { useEffect, useRef, useState } from 'react';
+import { 
+  useContext, 
+  useEffect, 
+  useRef, 
+  useState 
+} from 'react';
 import PropTypes from 'prop-types';
 
 import MenuView from './MenuView';
+import ThemeContext from '../../context/ThemeContext';
 
 function Menu({ active, menuActiveHandler }) {
   const navData = ['home', 'recipes', 'articles', 'users', 'travels'];
@@ -14,17 +20,29 @@ function Menu({ active, menuActiveHandler }) {
     document.title = `Fasion ${title}`;
   });
 
+  /**
+   * Locks page scrolling when the menu is open on phones
+   */
   const bodyElement = useRef(document.body);
   useEffect(() => {
-    /**
-     * Locks page scrolling when the menu is open on phones
-     */
     if (active) {
       bodyElement.current.classList.add('lock');
     } else {
       bodyElement.current.classList.remove('lock');
     }
   }, [active]);
+
+  const { isDark, setIsDark } = useContext(ThemeContext);
+  const themeToggle = () => {
+    setIsDark((value) => !value);
+  };
+  useEffect(() => {
+    if (isDark) {
+      bodyElement.current.setAttribute('data-theme', 'dark');
+    } else {
+      bodyElement.current.removeAttribute('data-theme');
+    }
+  }, [isDark]);
   
   return (
     <MenuView 
@@ -33,6 +51,7 @@ function Menu({ active, menuActiveHandler }) {
       linkRoot={linkRoot}
       setTitle={setTitle}
       menuActiveHandler={menuActiveHandler}
+      themeToggle={themeToggle}
     />
   );
 }

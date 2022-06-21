@@ -44,12 +44,12 @@
         margin-top: 40px;
         padding: 30px 0;
 
-        border-top: 1px solid $sidebar-border;
+        border-top: 1px solid var(--sidebar-border);
 
         font-size: 1.4rem;
         line-height: 1.29;
         text-align: center;
-        color: $primary;
+        color: var(--primary);
     }
 }
 

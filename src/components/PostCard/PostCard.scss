@@ -15,7 +15,7 @@ a.postcard__category {
 
     text-align: center;
 
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--postcard-shadow);
 
     &_big {
         text-align-last: left;
@@ -102,7 +102,7 @@ a.postcard__category {
 
         font-size: 1.2em;
         line-height: 1.33;
-        color: $postcard-info;
+        color: var(--postcard-info);
     }
 
     &__buttons {
@@ -130,6 +130,6 @@ a.postcard__category {
         font-size: 14px;
         line-height: 1.72;
         text-align: left;
-        color: $postcard-info;
+        color: var(--postcard-info);
     }
 }

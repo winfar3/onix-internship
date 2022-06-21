@@ -10,7 +10,7 @@
   }
   
   &:not(:last-child) {
-      border-bottom: 1px solid $sidebar-border;
+      border-bottom: 1px solid var(--sidebar-border);
   }
 
   &__link:hover {
