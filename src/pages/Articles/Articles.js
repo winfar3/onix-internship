@@ -16,7 +16,6 @@ class Articles extends React.Component {
       postCardData: dataFromServer,
       showAddForm: false,
       onActivePost: null,
-      currentPost: null,
       sortBy: 'order',
       isSorted: false,
     };
@@ -148,32 +147,6 @@ class Articles extends React.Component {
     }
   };
 
-  dragStartHandler = (e, post) => {
-    this.setState({ currentPost: post });
-  };
-
-  dragOverHandler = (e) => {
-    e.preventDefault();
-  };
-
-  // TODO: fix bug with order sort after another sort
-  dropHandler = (e, post) => {
-    const { postCardData, currentPost } = this.state;
-    e.preventDefault();
-    this.setState({
-      postCardData: postCardData.map((item) => {
-        if (item.id === post.id) {
-          return { ...item, order: currentPost.order };
-        }
-        if (item.id === currentPost.id) {
-          return { ...item, order: post.order };
-        }
-        return item;
-      }),
-    });
-    this.setState({ sortBy: 'order' });
-  };
-
   render() {
     const { 
       showAddForm, postCardData, sortBy, onActivePost 
@@ -191,9 +164,6 @@ class Articles extends React.Component {
         postCardData={postCardData}
         byField={this.byField}
         sortBy={sortBy}
-        dragStartHandler={this.dragStartHandler}
-        dragOverHandler={this.dragOverHandler}
-        dropHandler={this.dropHandler}
         onActivePost={onActivePost}
         deletePost={this.deletePost}
         deleteImage={this.deleteImage}

@@ -14,9 +14,6 @@ function ArticlesView({
   postCardData,
   byField,
   sortBy,
-  dragStartHandler,
-  dragOverHandler,
-  dropHandler,
   onActivePost,
   deletePost,
   deleteImage,
@@ -56,10 +53,6 @@ function ArticlesView({
           post={postCardItem}
           key={postCardItem.id}
           forcedCardSize="listSize"
-          draggable
-          dragStartHandler={dragStartHandler}
-          dragOverHandler={dragOverHandler}
-          dropHandler={dropHandler}
           onActivePost={onActivePost === pos}
           deletePost={() => deletePost(pos)}
           deleteImage={() => deleteImage(pos)}
@@ -82,9 +75,6 @@ ArticlesView.propTypes = {
   postCardData: PropTypes.arrayOf(PropTypes.shape).isRequired,
   byField: PropTypes.func.isRequired,
   sortBy: PropTypes.string.isRequired,
-  dragStartHandler: PropTypes.func.isRequired,
-  dragOverHandler: PropTypes.func.isRequired,
-  dropHandler: PropTypes.func.isRequired,
   onActivePost: PropTypes.number,
   deletePost: PropTypes.func.isRequired,
   deleteImage: PropTypes.func.isRequired,
