@@ -4,8 +4,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ArticlesView from './ArticlesView';
-import { postsRequestUrl } from '../../database/requestUrls';
-import withRequest from '../../components/withRequest/withRequest';
+import { postsRequestUrl } from '../../constants/requestUrls';
+import withRequest from '../../hocs/withRequest/withRequest';
 
 class Articles extends React.Component {
   constructor(props) {

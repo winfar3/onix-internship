@@ -4,8 +4,8 @@ import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import MainView from './MainView';
-import { postsRequestUrl } from '../../database/requestUrls';
-import withRequest from '../../components/withRequest/withRequest';
+import { postsRequestUrl } from '../../constants/requestUrls';
+import withRequest from '../../hocs/withRequest/withRequest';
 
 function Main({ dataFromServer }) {
   const [postCardData] = useState(dataFromServer);

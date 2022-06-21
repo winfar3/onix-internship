@@ -3,8 +3,8 @@ import './Users.scss';
 import PropTypes from 'prop-types';
 
 import UsersView from './UsersView';
-import { usersRequestUrl } from '../../database/requestUrls';
-import withRequest from '../../components/withRequest/withRequest';
+import { usersRequestUrl } from '../../constants/requestUrls';
+import withRequest from '../../hocs/withRequest/withRequest';
 
 function Users({ dataFromServer }) {
   return <UsersView dataFromServer={dataFromServer} />;

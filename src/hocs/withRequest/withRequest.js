@@ -1,6 +1,6 @@
 import React from 'react';
 import ThreeDots from 'react-loading-icons/dist/esm/components/three-dots';
-import SendAxiosRequest from '../../database/SendAxiosRequest';
+import SendAxiosRequest from '../../hooks/SendAxiosRequest';
 
 function withRequest(Component, apiUrl) {
   class WithRequest extends React.Component {

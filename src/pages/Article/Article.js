@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ThreeDots } from 'react-loading-icons';
 
-import SendAxiosRequest from '../../database/SendAxiosRequest';
-import { postsRequestUrl } from '../../database/requestUrls';
+import SendAxiosRequest from '../../hooks/SendAxiosRequest';
+import { postsRequestUrl } from '../../constants/requestUrls';
 import ArticleView from './ArticleView';
 
 function Article() {

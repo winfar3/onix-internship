@@ -3,7 +3,7 @@ import './FeaturedPosts.scss';
 import { useEffect, useState } from 'react';
 
 import FeaturedPostsView from './FeaturedPostsView';
-import SendAxiosRequest from '../../database/SendAxiosRequest';
+import SendAxiosRequest from '../../hooks/SendAxiosRequest';
 
 function FeaturedPosts() {
   const requstUrl = 'https://61fc04453f1e34001792c787.mockapi.io/posts';
