@@ -1,5 +1,5 @@
 import React from 'react';
-import ThreeDots from 'react-loading-icons/dist/esm/components/three-dots';
+import Loader from '../../components/Loader/Loader';
 import SendAxiosRequest from '../../hooks/SendAxiosRequest';
 
 function withRequest(Component, apiUrl) {
@@ -27,9 +27,7 @@ function withRequest(Component, apiUrl) {
       const { requstedData, isPanding } = this.state;
       if (isPanding) {
         return (
-          <div className="loader">
-            <ThreeDots stroke="#06bcee" fill="#06bcee" />
-          </div>
+          <Loader />
         );
       }
       /* eslint-disable react/jsx-props-no-spreading */
