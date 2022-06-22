@@ -18,6 +18,7 @@ function Main({ dataFromServer }) {
   const firstPostIndex = lastPostIndex - postsPerPage;
   const currentPosts = postCardData.slice(firstPostIndex, lastPostIndex);
 
+  // TODO: take out a repeating function
   const [elementMain, setElementMain] = useState();
   const mainRef = useRef(null);
   useEffect(() => {

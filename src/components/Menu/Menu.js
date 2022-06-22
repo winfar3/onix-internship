@@ -9,7 +9,7 @@ import {
 import PropTypes from 'prop-types';
 
 import MenuView from './MenuView';
-import ThemeContext from '../../context/ThemeContext';
+import Context from '../../context/Context';
 
 function Menu({ active, menuActiveHandler }) {
   const navData = ['home', 'recipes', 'articles', 'users', 'travels'];
@@ -32,7 +32,7 @@ function Menu({ active, menuActiveHandler }) {
     }
   }, [active]);
 
-  const { isDark, setIsDark } = useContext(ThemeContext);
+  const { isDark, setIsDark } = useContext(Context);
   const themeToggle = () => {
     setIsDark((value) => !value);
   };

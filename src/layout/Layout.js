@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 
 import Header from '../components/Header/Header';
@@ -8,9 +9,16 @@ import Footer from '../components/Footer/Footer';
 
 function Layout() {
   const isHomepage = useLocation().pathname === '/onix-internship/';
+  // TODO: take out a repeating function
+  const mainRef = useRef(null);
+  useEffect(() => {
+    mainRef.current.scrollIntoView({
+      behavior: 'smooth',
+    });
+  }, [useLocation().pathname]);
   return (
     <>
-      <Header />
+      <Header mainRef={mainRef} />
       {isHomepage && <Hero />}
       <div className="container">
         <div className="content-wrapper">

@@ -1,12 +1,13 @@
 import './Header.scss';
 
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import HeaderNav from '../HeaderNav/HeaderNav';
 
-function Header() {
+function Header({ mainRef }) {
   return (
-    <header className="header">
+    <header ref={mainRef} className="header">
       <div className="header__wrapper">
         <NavLink className="header__logo uppercase" to="/">
           fashion
@@ -16,5 +17,13 @@ function Header() {
     </header>
   );
 }
+
+Header.propTypes = {
+  mainRef: PropTypes.shape(),
+};
+
+Header.defaultProps = {
+  mainRef: null,
+};
 
 export default Header;
