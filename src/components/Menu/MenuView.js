@@ -1,8 +1,15 @@
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import DarkModeToggle from 'react-dark-mode-toggle';
 
 function MenuView({ 
-  navData, classNames, linkRoot, setTitle, menuActiveHandler, themeToggle
+  navData, 
+  classNames, 
+  linkRoot, 
+  setTitle, 
+  menuActiveHandler, 
+  themeToggle, 
+  isDark
 }) {
   /** Allows to call a function menuActiveHandler if the site is open on a tablet or phone 
    * Without this, the menu also opens in desktop mode
@@ -25,15 +32,11 @@ function MenuView({
             </NavLink>
           </li>
         ))}
-        <li className="header-nav__item">
-          <button 
-            type="button" 
-            onClick={themeToggle} 
-            className="header-nav__link"
-          >
-            Change theme
-          </button>
-        </li>
+        <DarkModeToggle 
+          onChange={themeToggle} 
+          checked={isDark}
+          size={60}
+        />
       </ul>
     </nav>
   );
@@ -46,6 +49,7 @@ MenuView.propTypes = {
   setTitle: PropTypes.func.isRequired,
   menuActiveHandler: PropTypes.func,
   themeToggle: PropTypes.func.isRequired,
+  isDark: PropTypes.bool.isRequired,
 };
 
 MenuView.defaultProps = {

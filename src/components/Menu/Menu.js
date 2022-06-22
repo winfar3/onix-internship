@@ -52,6 +52,7 @@ function Menu({ active, menuActiveHandler }) {
       setTitle={setTitle}
       menuActiveHandler={menuActiveHandler}
       themeToggle={themeToggle}
+      isDark={isDark}
     />
   );
 }

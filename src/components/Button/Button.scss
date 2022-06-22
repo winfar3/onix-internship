@@ -1,11 +1,15 @@
 .button {
   padding: 15px;
   border: 1px solid #ccc;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--button-shadow);
   color: var(--secondary);
 
   &:hover {
     border-color: #999;
+  }
+
+  &:active {
+    box-shadow: var(--button-shadow_active);
   }
 
   &_delete {
@@ -15,5 +19,10 @@
   &_add {
     padding: 5px 15px;
     background-color: #fff;
+  }
+
+  &_theme {
+    padding: 3px 10px;
+    border-radius: 15px;
   }
 }
