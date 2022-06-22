@@ -6,15 +6,13 @@ import Hero from '../components/Hero/Hero';
 import Sidebar from '../components/Sidebar/Sidebar';
 import InstagramGallery from '../components/InstagramGallery/InstagramGallery';
 import Footer from '../components/Footer/Footer';
+import scrollToTop from '../hooks/scrollToTop';
 
 function Layout() {
   const isHomepage = useLocation().pathname === '/onix-internship/';
-  // TODO: take out a repeating function
   const mainRef = useRef(null);
   useEffect(() => {
-    mainRef.current.scrollIntoView({
-      behavior: 'smooth',
-    });
+    scrollToTop(mainRef);
   }, [useLocation().pathname]);
   return (
     <>
