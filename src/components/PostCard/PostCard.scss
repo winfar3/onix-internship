@@ -77,7 +77,6 @@ a.postcard__category {
         display: inline-block;
         margin-top: 15px;
 
-        font-family: 'PT Sans', sans-serif;
         font-size: 1.2em;
         line-height: 1.33;
         color: $logo-bg;
@@ -86,6 +85,7 @@ a.postcard__category {
     &__title {
         margin-top: 4px;
 
+        font-family: 'PT Serif', serif;
         font-size: 2rem;
         line-height: 1.4;
 
@@ -101,6 +101,7 @@ a.postcard__category {
 
         margin-top: 10px;
 
+        font-family: 'PT Serif', serif;
         font-size: 1.2em;
         line-height: 1.33;
         color: var(--postcard-info);

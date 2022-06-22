@@ -17,6 +17,7 @@
     &__title {
         margin-top: 20px;
         
+        font-family: "PT Serif", serif;
         font-size: 16px;
         font-weight: 700;
         line-height: 1.31;
@@ -29,6 +30,7 @@
     &__subtitle {
         margin-top: 4px;
 
+        font-family: "PT Serif", serif;
         font-size: 14px;
         font-style: italic;
         line-height: 1.35;
@@ -38,7 +40,6 @@
     &__desc {
         margin-top: 14px;
 
-        font-family: 'PT Sans', sans-serif;
         font-size: 14px;
         line-height: 1.71;
         color: var(--primary);
@@ -53,6 +54,7 @@
 }
 
 a.about-author-block__link {
+    font-family: 'PT Sans', sans-serif;
     font-size: 12px;
     line-height: 1.33;
     color: $logo-bg;

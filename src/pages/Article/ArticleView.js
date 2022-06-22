@@ -8,12 +8,12 @@ function ArticleView({
       <h2 className="article__title">{title}</h2>
       <ul className="article__info article-info">
         <li className="article-info__item">By Name Name</li>
-        <li className="article-info__item">
-          Category: 
+        <li className="article-info__item capitalize">
+          Category:&nbsp;
           {category}
         </li>
         <li className="article-info__item">
-          Posted: 
+          Posted:&nbsp;
           {createdDate}
         </li>
       </ul>

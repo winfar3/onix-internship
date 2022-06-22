@@ -1,10 +1,13 @@
 @import "./styles/reset.css";
 @import "./styles/colors.scss";
+@import "./styles/fonts.scss";
 
 body {
   overflow: auto;
   background-color: var(--background-color);
   color: var(--secondary);
+
+  font-family: "PT Sans", sans-serif;
 
   &.lock {
     overflow: hidden;
