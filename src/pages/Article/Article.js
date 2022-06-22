@@ -6,12 +6,15 @@ import { ThreeDots } from 'react-loading-icons';
 
 import SendAxiosRequest from '../../hooks/SendAxiosRequest';
 import { postsRequestUrl } from '../../constants/requestUrls';
+import months from '../../constants/months';
 import ArticleView from './ArticleView';
 
 function Article() {
   const params = useParams();
   const [postData, setPostData] = useState({});
   const [isPending, setIsPending] = useState(false);
+  const dateObject = new Date(postData.date);
+  const text = postData.postBody;
 
   useEffect(() => {
     setIsPending(true);
@@ -33,9 +36,13 @@ function Article() {
     <ArticleView
       title={postData.title}
       category={postData.category}
-      createdDate={postData.date}
+      dateMonth={months[dateObject.getMonth()]}
+      dateDay={dateObject.getDate()}
+      dateYear={dateObject.getFullYear()}
       imageUrl={postData.imageUrl}
+      author={postData.author}
       description={postData.description}
+      fullText={text}
     />
   );
 }

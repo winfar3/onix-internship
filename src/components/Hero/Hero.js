@@ -7,6 +7,7 @@ import withRequest from '../../hocs/withRequest/withRequest';
 import months from '../../constants/months';
 import HeroView from './HeroView';
 
+//  TODO hide loader
 function Hero({ dataFromServer }) {
   const post = dataFromServer[0];
   const dateObject = new Date(post.date);
