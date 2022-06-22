@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 import PostCardViev from './PostCardViev';
+import months from '../../constants/months';
 
 function PostCard({
   post,
@@ -19,20 +20,6 @@ function PostCard({
   addComment,
   activePostElement,
 }) {
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
   const cardSize = forcedCardSize || post.cardSize;
   const dateObject = new Date(post.date);
 

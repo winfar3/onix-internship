@@ -1,38 +1,30 @@
 import './Hero.scss';
-import heroBg from '../../assets/images/hero/hero-bg.jpg';
 
-function Hero() {
+import PropTypes from 'prop-types';
+
+import { lastRequestUrl } from '../../constants/requestUrls';
+import withRequest from '../../hocs/withRequest/withRequest';
+import months from '../../constants/months';
+import HeroView from './HeroView';
+
+function Hero({ dataFromServer }) {
+  const post = dataFromServer[0];
+  const dateObject = new Date(post.date);
   return (
-    <section className="hero">
-      <div className="container">
-        <div className="hero__wrapper">
-          <h1 className="hero__title">
-            <a href="!#">
-              One of Saturn’s largest rings may be newer than anyone
-            </a>
-          </h1>
-          <div className="hero__info hero-info">
-            <p className="hero-info__date">June 6, 2019</p>
-            <a href="!#" className="hero-info__author">
-              <span>By</span>
-              {' '}
-              Rickie Baroch
-            </a>
-            <a href="!#" className="hero-info__comments">
-              4 comments
-            </a>
-          </div>
-          <div className="hero__image">
-            <img
-              src={heroBg}
-              alt="backgraund for grand post"
-              className="hero__img"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
+    <HeroView 
+      id={post.id}
+      title={post.title}
+      dateMonth={months[dateObject.getMonth()]}
+      dateDay={dateObject.getDate()}
+      dateYear={dateObject.getFullYear()}
+      author={post.author}
+      imageUrl={post.imageUrl}
+    />
   );
 }
 
-export default Hero;
+Hero.propTypes = {
+  dataFromServer: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+};
+
+export default withRequest(Hero, lastRequestUrl);
