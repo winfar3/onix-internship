@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ThreeDots } from 'react-loading-icons';
 
-import SendAxiosRequest from '../../hooks/SendAxiosRequest';
+import SendAxiosRequest from '../../helpers/SendAxiosRequest';
 import { postsRequestUrl } from '../../constants/requestUrls';
 import months from '../../constants/months';
 import ArticleView from './ArticleView';

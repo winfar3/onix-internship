@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import MainView from './MainView';
 import { postsRequestUrl } from '../../constants/requestUrls';
 import withRequest from '../../hocs/withRequest/withRequest';
-import scrollToTop from '../../hooks/scrollToTop';
+import scrollToTop from '../../helpers/scrollToTop';
 
 function Main({ dataFromServer }) {
   const [postCardData] = useState(dataFromServer);

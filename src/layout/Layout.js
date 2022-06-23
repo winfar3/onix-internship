@@ -6,7 +6,7 @@ import Header from '../components/Header/Header';
 import Sidebar from '../components/Sidebar/Sidebar';
 import InstagramGallery from '../components/InstagramGallery/InstagramGallery';
 import Footer from '../components/Footer/Footer';
-import scrollToTop from '../hooks/scrollToTop';
+import scrollToTop from '../helpers/scrollToTop';
 
 function Layout({ children, renderContent }) {
   const mainRef = useRef(null);

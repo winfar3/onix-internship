@@ -1,6 +1,6 @@
 import React from 'react';
 import Loader from '../../components/Loader/Loader';
-import SendAxiosRequest from '../../hooks/SendAxiosRequest';
+import SendAxiosRequest from '../../helpers/SendAxiosRequest';
 
 function withRequest(Component, apiUrl) {
   class WithRequest extends React.Component {
