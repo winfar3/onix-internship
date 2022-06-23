@@ -1,6 +1,6 @@
 import './App.scss';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import Main from './pages/Main/Main';
@@ -13,9 +13,14 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import Hero from './components/Hero/Hero';
 import Layout from './layout/Layout';
 import ThemeContext from './context/ThemeContext';
+import useLocalStorage from './hooks/useLocalStorage';
 
 function App() {
-  const [isDark, setIsDark] = useState(false);
+  const [theme, setTheme] = useLocalStorage(false, 'theme');
+  const [isDark, setIsDark] = useState(theme);
+  useEffect(() => {
+    setTheme(isDark);
+  }, [isDark]);
   const value = useMemo(() => ({ isDark, setIsDark }), [isDark]);
   return (
     <ThemeContext.Provider value={value}>
