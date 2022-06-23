@@ -28,7 +28,6 @@ function PostCardViev({
 }) {
   return (
     <article
-      // TODO: do not make the post active when clicking on the buttons
       draggable={draggable}
       onDragStart={(e) => dragStartHandler(e, post)}
       onDragOver={(e) => dragOverHandler(e)}

@@ -3,7 +3,7 @@ import './Hero.scss';
 import PropTypes from 'prop-types';
 
 import { lastRequestUrl } from '../../constants/requestUrls';
-import withRequest from '../../hocs/withRequest/withRequest';
+import withRequest from '../../hocs/withRequest';
 import months from '../../constants/months';
 import HeroView from './HeroView';
 

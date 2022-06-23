@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import MainView from './MainView';
 import { postsRequestUrl } from '../../constants/requestUrls';
-import withRequest from '../../hocs/withRequest/withRequest';
+import withRequest from '../../hocs/withRequest';
 import scrollToTop from '../../helpers/scrollToTop';
 
 function Main({ dataFromServer }) {

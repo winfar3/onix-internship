@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import UsersView from './UsersView';
 import { usersRequestUrl } from '../../constants/requestUrls';
-import withRequest from '../../hocs/withRequest/withRequest';
+import withRequest from '../../hocs/withRequest';
 
 function Users({ dataFromServer }) {
   return <UsersView dataFromServer={dataFromServer} />;

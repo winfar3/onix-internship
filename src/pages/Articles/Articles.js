@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import ArticlesView from './ArticlesView';
 import { postsRequestUrl } from '../../constants/requestUrls';
-import withRequest from '../../hocs/withRequest/withRequest';
+import withRequest from '../../hocs/withRequest';
 
 class Articles extends React.Component {
   constructor(props) {
