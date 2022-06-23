@@ -31,7 +31,7 @@ function withRequest(Component, apiUrl) {
         );
       }
       /* eslint-disable react/jsx-props-no-spreading */
-      return <Component dataFromServer={requstedData} {...this.porps} />;
+      return <Component dataFromServer={requstedData} {...this.props} />;
     }
   }
 
