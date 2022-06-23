@@ -11,13 +11,13 @@ import Users from './pages/Users/Users';
 import Travels from './pages/Travels/Travels';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import Layout from './layout/Layout';
-import Context from './context/Context';
+import ThemeContext from './context/ThemeContext';
 
 function App() {
   const [isDark, setIsDark] = useState(false);
   const value = useMemo(() => ({ isDark, setIsDark }), [isDark]);
   return (
-    <Context.Provider value={value}>
+    <ThemeContext.Provider value={value}>
       <div className="App">
         <Routes>
           <Route path="/onix-internship/" element={<Layout />}>
@@ -37,7 +37,7 @@ function App() {
           <Route path="*" element={<Navigate to="/onix-internship/404" />} />
         </Routes>
       </div>
-    </Context.Provider>
+    </ThemeContext.Provider>
   );
 }
 
