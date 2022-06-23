@@ -3,9 +3,7 @@ import './SocialItem.scss';
 import PropTypes from 'prop-types';
 
 function SocialItem({ socialMediaDataItem }) {
-  const { imageUrl } = socialMediaDataItem;
-  const { number } = socialMediaDataItem;
-  const { popularity } = socialMediaDataItem;
+  const { imageUrl, number, popularity } = socialMediaDataItem;
 
   return (
     <button 
