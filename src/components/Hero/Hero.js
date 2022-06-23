@@ -9,7 +9,7 @@ import HeroView from './HeroView';
 
 //  TODO hide loader
 function Hero({ dataFromServer }) {
-  const post = dataFromServer[0];
+  const [post] = dataFromServer;
   const dateObject = new Date(post.date);
   return (
     <HeroView 
