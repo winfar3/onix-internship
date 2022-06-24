@@ -15,7 +15,9 @@ function AddCommentForm({ addComment }) {
   const createComment = (e) => {
     e.preventDefault();
     const comment = commentText;
-    addComment(comment);
+    if (comment.length > 0) {
+      addComment(comment);
+    }
     showModalHandler();
   };
 
