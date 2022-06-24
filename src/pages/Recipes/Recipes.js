@@ -2,10 +2,9 @@ import './Recipes.scss';
 
 import { useContext } from 'react';
 
-import AddCommentForm from '../../components/AddCommentForm/AddCommentForm';
-import Modal from '../../components/Modal/Modal';
 import ModalContext from '../../context/ModalContext';
 import useLocalStorage from '../../hooks/useLocalStorage';
+import RecipesView from './RecipesView';
 
 function Recipes() {
   const { showModal, showModalHandler } = useContext(ModalContext);
@@ -16,21 +15,12 @@ function Recipes() {
   };
 
   return (
-    <div className="recipes">
-      <h2 className="recipes__title">Hello world!</h2>
-      <ul className="recipes__list">
-        {/* eslint-disable-next-line react/no-array-index-key */}
-        {comments.map((item, index) => (<li key={index} className="recipes__item">{item}</li>))}
-      </ul>
-      {showModal && (<Modal><AddCommentForm addComment={addComment} /></Modal>)}
-      <button
-        onClick={() => showModalHandler()}
-        type="button"
-        className="button recipes__btn"
-      >
-        Add comment
-      </button>
-    </div>
+    <RecipesView 
+      comments={comments}
+      showModal={showModal}
+      showModalHandler={showModalHandler}
+      addComment={addComment}
+    />
   );
 }
 
