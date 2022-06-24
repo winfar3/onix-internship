@@ -1,6 +1,7 @@
 import './Pagination.scss';
 
 import PropTypes from 'prop-types';
+import Button from '../Button/Button';
 
 function Pagination({ 
   maxPageNumber, prevPage, paginate, nextPage 
@@ -9,30 +10,24 @@ function Pagination({
 
   return (
     <div className="pagination">
-      <button
-        type="button"
-        onClick={prevPage}
-        className="pagination__item pagination__item_prev uppercase"
-      >
-        older post
-      </button>
+      <Button 
+        logic={prevPage}
+        styles="pagination__item pagination__item_prev uppercase"
+        content="older post"
+      />
       {pageNumbers.map((number) => (
-        <button
+        <Button 
           key={number}
-          type="button"
-          onClick={() => paginate(number)}
-          className="pagination__item uppercase"
-        >
-          {number}
-        </button>
+          logic={() => paginate(number)}
+          styles="pagination__item uppercase"
+          content={number}
+        />
       ))}
-      <button
-        type="button"
-        onClick={nextPage}
-        className="pagination__item pagination__item_next uppercase"
-      >
-        next post
-      </button>
+      <Button 
+        logic={nextPage}
+        styles="pagination__item pagination__item_next uppercase"
+        content="next post"
+      />
     </div>
   );
 }

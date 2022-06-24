@@ -5,6 +5,7 @@ import {
   string 
 } from 'prop-types';
 import AddCommentForm from '../../components/AddCommentForm/AddCommentForm';
+import Button from '../../components/Button/Button';
 import Modal from '../../components/Modal/Modal';
 
 function RecipesView({
@@ -21,13 +22,11 @@ function RecipesView({
         {comments.map((item, index) => (<li key={index} className="recipes__item">{item}</li>))}
       </ul>
       {showModal && (<Modal><AddCommentForm addComment={addComment} /></Modal>)}
-      <button
-        onClick={() => showModalHandler()}
-        type="button"
-        className="button recipes__btn"
-      >
-        Add comment
-      </button>
+      <Button 
+        logic={() => showModalHandler()}
+        styles="button recipes__btn"
+        content="Add comment"
+      />
     </div>
   );
 }

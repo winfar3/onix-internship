@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Button from '../Button/Button';
 
 function AddPostFormView({
   createPost,
@@ -70,9 +71,11 @@ function AddPostFormView({
         />
       </div>
       <div className="postForm__item postForm__buttons">
-        <button type="submit" className="button button_add">
-          Add
-        </button>
+        <Button 
+          isSending
+          styles="button button_add"
+          content="Add"
+        />
       </div>
     </form>
   );

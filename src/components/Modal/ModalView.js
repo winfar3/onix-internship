@@ -1,16 +1,15 @@
 import { element, func } from 'prop-types';
+import Button from '../Button/Button';
 
 function ModalView({ children, showModalHandler }) {
   return (
     <>
       <div className="modal">
-        <button
-          type="button"
-          onClick={() => showModalHandler()}
-          className="button_close"
-        >
-          X
-        </button>
+        <Button 
+          logic={() => showModalHandler()}
+          styles="button_close"
+          content="&nbsp;"
+        />
         {children}
       </div>
       <div className="overlay" />

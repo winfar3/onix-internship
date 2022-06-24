@@ -2,10 +2,15 @@ import './Button.scss';
 
 import PropTypes from 'prop-types';
 
-function Button({ logic, styles, content }) {
+function Button({ 
+  isSending, 
+  logic, 
+  styles, 
+  content 
+}) {
   return (
     <button
-      type="button" 
+      type={isSending ? 'submit' : 'button'}
       onClick={logic}
       className={styles}
     >
@@ -15,9 +20,15 @@ function Button({ logic, styles, content }) {
 }
 
 Button.propTypes = {
-  logic: PropTypes.oneOfType([PropTypes.func, PropTypes.number]).isRequired, 
+  isSending: PropTypes.bool,
+  logic: PropTypes.oneOfType([PropTypes.func, PropTypes.number]), 
   styles: PropTypes.string.isRequired, 
-  content: PropTypes.string.isRequired,
+  content: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+};
+
+Button.defaultProps = {
+  isSending: false,
+  logic: null,
 };
 
 export default Button;

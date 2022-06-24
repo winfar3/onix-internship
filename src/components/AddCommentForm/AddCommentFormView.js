@@ -1,4 +1,5 @@
 import { func, string } from 'prop-types';
+import Button from '../Button/Button';
 
 function AddCommentFormView({ 
   createComment,
@@ -21,7 +22,11 @@ function AddCommentFormView({
         />
       </div>
       <div>
-        <button type="submit" className="button">Add</button>
+        <Button 
+          isSending 
+          styles="button"
+          content="Add"
+        />
       </div>
     </form>
   );
