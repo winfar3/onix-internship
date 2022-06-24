@@ -1,7 +1,24 @@
 .recipes {
-  text-align: center;
-
-  &__title, &__clock {
+  &__title {
     font-size: 3rem;
+    text-align: center;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    margin: 30px 0;
+  }
+
+  &__item {
+    font-size: 2rem;
+  }
+
+  &__btn {
+    display: block;
+    margin: 0 auto;
+    max-width: 200px;
+    min-width: 150px;
   }
 }

@@ -18,6 +18,7 @@ import ModalContext from './context/ModalContext';
 
 /** TODO: decompose code 
  * Fix bug with displaying 2 modals on one page. Make the context more local.
+ * Combine routes with menu.
 */
 function App() {
   const [theme, setTheme] = useLocalStorage(false, 'theme');
@@ -47,7 +48,7 @@ function App() {
               element={<Navigate to="/onix-internship/" />}
             />
             <Route 
-              path="/onix-internship/recipes" 
+              path="/onix-internship/comments" 
               element={<Layout><Recipes /></Layout>} 
             />
             <Route path="/onix-internship/articles" element={<Layout><Articles /></Layout>} />

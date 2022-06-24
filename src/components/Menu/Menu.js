@@ -12,7 +12,7 @@ import MenuView from './MenuView';
 import ThemeContext from '../../context/ThemeContext';
 
 function Menu({ active, menuActiveHandler }) {
-  const navData = ['home', 'recipes', 'articles', 'users', 'travels'];
+  const navData = ['home', 'comments', 'articles', 'users', 'travels'];
   const linkRoot = '/onix-internship/';
 
   const [title, setTitle] = useState('');

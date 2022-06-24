@@ -1,8 +1,12 @@
-// import PropTypes from 'prop-types';
+import { func, string } from 'prop-types';
 
-function AddCommentFormView() {
+function AddCommentFormView({ 
+  createComment,
+  commentText,
+  handleCommentText, 
+}) {
   return (
-    <form action="">
+    <form action="" onSubmit={createComment}>
       <div className="postForm__item">
         <textarea 
           type="text"
@@ -11,6 +15,8 @@ function AddCommentFormView() {
           autoComplete="off"
           cols={60}
           rows={10}
+          value={commentText}
+          onChange={handleCommentText}
           className="postForm__input"
         />
       </div>
@@ -21,8 +27,10 @@ function AddCommentFormView() {
   );
 }
 
-// AddCommentFormView.propTypes = {
-  
-// }
+AddCommentFormView.propTypes = {
+  createComment: func.isRequired,
+  commentText: string.isRequired,
+  handleCommentText: func.isRequired,
+};
 
 export default AddCommentFormView;
