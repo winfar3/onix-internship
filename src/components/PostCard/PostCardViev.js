@@ -5,10 +5,6 @@ import PostCardButtons from './PostCardButtons';
 
 function PostCardViev({
   post,
-  draggable,
-  dragStartHandler,
-  dragOverHandler,
-  dropHandler,
   articleClassNames,
   imageClassNames,
   imgUrl,
@@ -28,10 +24,6 @@ function PostCardViev({
 }) {
   return (
     <article
-      draggable={draggable}
-      onDragStart={(e) => dragStartHandler(e, post)}
-      onDragOver={(e) => dragOverHandler(e)}
-      onDrop={(e) => dropHandler(e, post)}
       className={articleClassNames}
       ref={activePostElement}
     >
@@ -89,10 +81,6 @@ PostCardViev.propTypes = {
     description: PropTypes.string,
     comment: PropTypes.string,
   }).isRequired,
-  draggable: PropTypes.bool.isRequired,
-  dragStartHandler: PropTypes.func,
-  dragOverHandler: PropTypes.func,
-  dropHandler: PropTypes.func,
   articleClassNames: PropTypes.string.isRequired,
   imageClassNames: PropTypes.string.isRequired,
   imgUrl: PropTypes.string,
@@ -112,9 +100,6 @@ PostCardViev.propTypes = {
 };
 
 PostCardViev.defaultProps = {
-  dragStartHandler() {},
-  dragOverHandler() {},
-  dropHandler() {},
   activePostElement: null,
   imgUrl: '',
   deletePost: null,

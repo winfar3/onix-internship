@@ -2,11 +2,10 @@ import PropTypes from 'prop-types';
 
 import AddPostForm from '../../components/AddPostForm/AddPostForm';
 import Button from '../../components/Button/Button';
+import Modal from '../../components/Modal/Modal';
 import PostCard from '../../components/PostCard/PostCard';
 
 function ArticlesView({
-  showAddForm,
-  handleShowAddForm,
   addPost,
   lastOrder,
   sortByDate,
@@ -20,15 +19,19 @@ function ArticlesView({
   addComment,
   handleActivePost,
   activePostElement,
+  showModalHandler,
+  showModal,
 }) {
   return (
     <main className="main">
-      {showAddForm && (
-        <AddPostForm
-          handleShowAddForm={handleShowAddForm}
-          addPost={addPost}
-          lastOrder={lastOrder}
-        />
+      {showModal && (
+        <Modal>
+          <AddPostForm
+            showModalHandler={showModalHandler}
+            addPost={addPost}
+            lastOrder={lastOrder}
+          />
+        </Modal>
       )}
 
       <div className="buttonsWrap">
@@ -43,7 +46,7 @@ function ArticlesView({
           styles="button button_article"
         />
         <Button
-          logic={handleShowAddForm}
+          logic={showModalHandler}
           content="Add post"
           styles="button button_article"
         />
@@ -66,8 +69,6 @@ function ArticlesView({
 }
 
 ArticlesView.propTypes = {
-  showAddForm: PropTypes.bool.isRequired,
-  handleShowAddForm: PropTypes.func.isRequired,
   addPost: PropTypes.func.isRequired,
   lastOrder: PropTypes.number.isRequired,
   sortByDate: PropTypes.func.isRequired,
@@ -81,6 +82,8 @@ ArticlesView.propTypes = {
   addComment: PropTypes.func.isRequired,
   handleActivePost: PropTypes.func.isRequired,
   activePostElement: PropTypes.shape().isRequired,
+  showModalHandler: PropTypes.func.isRequired,
+  showModal: PropTypes.bool.isRequired,
 };
 
 ArticlesView.defaultProps = {

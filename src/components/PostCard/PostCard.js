@@ -1,23 +1,20 @@
 import './PostCard.scss';
 
-import classNames from 'classnames';
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import PostCardViev from './PostCardViev';
 import months from '../../constants/months';
+import ModalContext from '../../context/ModalContext';
 
 function PostCard({
   post,
   forcedCardSize,
   handleActivePost,
-  draggable,
-  dragStartHandler,
-  dragOverHandler,
-  dropHandler,
   onActivePost,
   deletePost,
   deleteImage,
-  addComment,
   activePostElement,
 }) {
   const cardSize = forcedCardSize || post.cardSize;
@@ -32,18 +29,16 @@ function PostCard({
     console.log(`ERROR. Image for post ${post.id} not loaded`); // eslint-disable-line no-console
   };
 
+  const { showModal, showModalHandler } = useContext(ModalContext);
+
   return (
     <PostCardViev 
       post={post}
       handleActivePost={handleActivePost}
-      draggable={draggable}
-      dragStartHandler={dragStartHandler}
-      dragOverHandler={dragOverHandler}
-      dropHandler={dropHandler}
       articleClassNames={classNames(
         'postcard',
         `postcard_${cardSize}`,
-        { postcard_active: onActivePost, postcard_draggable: draggable }
+        { postcard_active: onActivePost }
       )}
       imageClassNames={`postcard__image postcard__image_${cardSize}`}
       imgUrl={post.imageUrl}
@@ -58,9 +53,10 @@ function PostCard({
       dateYear={dateObject.getFullYear()}
       deletePost={deletePost}
       deleteImage={deleteImage}
-      addComment={addComment}
       cardSize={cardSize}
       activePostElement={activePostElement}
+      showModal={showModal}
+      showModalHandler={showModalHandler}
     />
   );
 }
@@ -78,14 +74,9 @@ PostCard.propTypes = {
     PropTypes.bool,
   ]).isRequired,
   handleActivePost: PropTypes.func,
-  draggable: PropTypes.bool,
-  dragStartHandler: PropTypes.func,
-  dragOverHandler: PropTypes.func,
-  dropHandler: PropTypes.func,
   onActivePost: PropTypes.bool,
   deletePost: PropTypes.func,
   deleteImage: PropTypes.func,
-  addComment: PropTypes.func,
   activePostElement: PropTypes.shape(),
 };
 
@@ -93,11 +84,6 @@ PostCard.defaultProps = {
   handleActivePost: null,
   deletePost: null,
   deleteImage: null,
-  addComment: null,
-  draggable: false,
-  dragStartHandler() {},
-  dragOverHandler() {},
-  dropHandler() {},
   onActivePost: false,
   activePostElement: null,
 };

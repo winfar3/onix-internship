@@ -14,7 +14,11 @@ import Hero from './components/Hero/Hero';
 import Layout from './layout/Layout';
 import ThemeContext from './context/ThemeContext';
 import useLocalStorage from './hooks/useLocalStorage';
+import ModalContext from './context/ModalContext';
 
+/** TODO: decompose code 
+ * Fix bug with displaying 2 modals on one page. Make the context more local.
+*/
 function App() {
   const [theme, setTheme] = useLocalStorage(false, 'theme');
   const [isDark, setIsDark] = useState(theme);
@@ -22,31 +26,40 @@ function App() {
     setTheme(isDark);
   }, [isDark]);
   const value = useMemo(() => ({ isDark, setIsDark }), [isDark]);
+
+  const [showModal, setShowModal] = useState(false);
+  const showModalHandler = () => {
+    setShowModal((shows) => !shows);
+  };
+  const modalValue = useMemo(() => ({ showModal, setShowModal, showModalHandler }), [showModal]);
+
   return (
     <ThemeContext.Provider value={value}>
-      <div className="App">
-        <Routes>
-          <Route
-            path="/onix-internship/"
-            element={<Layout renderContent={<Hero />}><Main /></Layout>}
-          />
-          <Route
-            path="/onix-internship/home"
-            element={<Navigate to="/onix-internship/" />}
-          />
-          <Route 
-            path="/onix-internship/recipes" 
-            element={<Layout><Recipes /></Layout>} 
-          />
-          <Route path="/onix-internship/articles" element={<Layout><Articles /></Layout>} />
-          <Route path="/onix-internship/article/:id" element={<Layout><Article /></Layout>} />
-          <Route path="/onix-internship/users" element={<Layout><Users /></Layout>} />
-          <Route path="/onix-internship/travels" element={<Layout><Travels /></Layout>} />
-          <Route path="/onix-internship/404" element={<Layout><NotFoundPage /></Layout>} />
-          <Route path="/" element={<Navigate to="/onix-internship/" />} />
-          <Route path="*" element={<Navigate to="/onix-internship/404" />} />
-        </Routes>
-      </div>
+      <ModalContext.Provider value={modalValue}>
+        <div className="App">
+          <Routes>
+            <Route
+              path="/onix-internship/"
+              element={<Layout renderContent={<Hero />}><Main /></Layout>}
+            />
+            <Route
+              path="/onix-internship/home"
+              element={<Navigate to="/onix-internship/" />}
+            />
+            <Route 
+              path="/onix-internship/recipes" 
+              element={<Layout><Recipes /></Layout>} 
+            />
+            <Route path="/onix-internship/articles" element={<Layout><Articles /></Layout>} />
+            <Route path="/onix-internship/article/:id" element={<Layout><Article /></Layout>} />
+            <Route path="/onix-internship/users" element={<Layout><Users /></Layout>} />
+            <Route path="/onix-internship/travels" element={<Layout><Travels /></Layout>} />
+            <Route path="/onix-internship/404" element={<Layout><NotFoundPage /></Layout>} />
+            <Route path="/" element={<Navigate to="/onix-internship/" />} />
+            <Route path="*" element={<Navigate to="/onix-internship/404" />} />
+          </Routes>
+        </div>
+      </ModalContext.Provider>
     </ThemeContext.Provider>
   );
 }

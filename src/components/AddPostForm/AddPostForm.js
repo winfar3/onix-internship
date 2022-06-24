@@ -9,7 +9,7 @@ import AddPostFormView from './AddPostFormView';
 // TODO: choose the right id and order for a new post
 
 function AddPostForm({
-  lastOrder, addPost, handleShowAddForm 
+  lastOrder, addPost, showModalHandler
 }) {
   const [postCategory, setPostCategory] = useState('');
   const [postTitle, setPostTitle] = useState('');
@@ -60,7 +60,7 @@ function AddPostForm({
     };
 
     addPost(post);
-    handleShowAddForm();
+    showModalHandler();
   };
 
   useEffect(() => {
@@ -78,7 +78,7 @@ function AddPostForm({
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') {
-        handleShowAddForm();
+        showModalHandler();
       }
     };
 
@@ -100,15 +100,14 @@ function AddPostForm({
       handlePostLastNameChange={handlePostLastNameChange}
       postDescription={postDescription}
       handlePostDescriptionChange={handlePostDescriptionChange}
-      handleShowAddForm={handleShowAddForm}
     />
   );
 }
 
 AddPostForm.propTypes = {
+  showModalHandler: PropTypes.func.isRequired,
   lastOrder: PropTypes.number.isRequired, 
   addPost: PropTypes.func.isRequired, 
-  handleShowAddForm: PropTypes.func.isRequired,
 };
 
 export default AddPostForm;

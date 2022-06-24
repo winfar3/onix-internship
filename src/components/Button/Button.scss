@@ -25,4 +25,34 @@
     padding: 3px 10px;
     border-radius: 15px;
   }
+
+  &_close {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+
+    width: 30px;
+    height: 30px;
+
+    font-size: 0;
+
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 10px;
+      width: 5px;
+      height: 30px;
+      background-color: var(--postcard-info);
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
 }

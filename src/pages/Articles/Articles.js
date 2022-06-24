@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import ArticlesView from './ArticlesView';
 import { postsRequestUrl } from '../../constants/requestUrls';
 import withRequest from '../../hocs/withRequest';
+import ModalContext from '../../context/ModalContext';
 
 class Articles extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class Articles extends React.Component {
     this.activePostElement = React.createRef();
     this.state = {
       postCardData: dataFromServer,
-      showAddForm: false,
+      // showAddForm: false,
       onActivePost: null,
       sortBy: 'order',
       isSorted: false,
@@ -51,9 +52,9 @@ class Articles extends React.Component {
     this.setState(({ isSorted }) => ({ isSorted: !isSorted, sortBy: 'id' }));
   };
 
-  handleShowAddForm = () => {
-    this.setState(({ showAddForm }) => ({ showAddForm: !showAddForm }));
-  };
+  // handleShowAddForm = () => {
+  //   this.setState(({ showAddForm }) => ({ showAddForm: !showAddForm }));
+  // };
 
   addPost = (post) => {
     const { postCardData } = this.state;
@@ -74,13 +75,13 @@ class Articles extends React.Component {
   };
 
   // TODO: remove after solving warnings eslint
-  addComment = (pos) => {
+  addComment = (pos, comment) => {
     const { postCardData } = this.state;
-    const temp = { comment: prompt('Write your comment', '') }; // eslint-disable-line no-alert
+    // const temp = { comment: prompt('Write your comment', '') }; // eslint-disable-line no-alert
     this.setState({
       postCardData: postCardData.map((item, index) => {
         if (index === pos) {
-          return { ...item, ...temp };
+          return { ...item, ...comment };
         }
         return item;
       }),
@@ -149,13 +150,14 @@ class Articles extends React.Component {
 
   render() {
     const { 
-      showAddForm, postCardData, sortBy, onActivePost 
+      postCardData, sortBy, onActivePost 
     } = this.state;
+    const { showModal, showModalHandler } = this.context;
 
     return (
       <ArticlesView
-        showAddForm={showAddForm}
-        handleShowAddForm={this.handleShowAddForm}
+        showModal={showModal}
+        showModalHandler={showModalHandler}
         handleActivePost={this.handleActivePost}
         addPost={this.addPost}
         lastOrder={postCardData.length}
@@ -177,5 +179,7 @@ class Articles extends React.Component {
 Articles.propTypes = {
   dataFromServer: PropTypes.arrayOf(PropTypes.shape).isRequired,
 };
+
+Articles.contextType = ModalContext;
 
 export default withRequest(Articles, postsRequestUrl);

@@ -1,41 +1,30 @@
 import './Recipes.scss';
-import React from 'react';
 
-class Recipes extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      date: new Date(),
-    };
-  }
+import { useContext } from 'react';
 
-  componentDidMount() {
-    this.timerID = setInterval(() => this.tick(), 1000);
-  }
+import AddCommentForm from '../../components/AddCommentForm/AddCommentForm';
+import Modal from '../../components/Modal/Modal';
+import ModalContext from '../../context/ModalContext';
 
-  componentWillUnmount() {
-    clearInterval(this.timerID);
-  }
-
-  tick() {
-    this.setState({
-      date: new Date(),
-    });
-  }
-
-  render() {
-    const { date } = this.state;
-    return (
-      <div className="recipes">
-        <h2 className="recipes__title">Hello world!</h2>
-        <h3 className="recipes__clock">
-          It&apos;s&nbsp;
-          {date.toLocaleTimeString()} 
-          &nbsp;now.
-        </h3>
-      </div>
-    );
-  }
+function Recipes() {
+  const { showModal, showModalHandler } = useContext(ModalContext);
+  return (
+    <div className="recipes">
+      <h2 className="recipes__title">Hello world!</h2>
+      <h3 className="recipes__clock">
+        It&apos;s&nbsp;
+        &nbsp;now.
+      </h3>
+      {showModal && (<Modal><AddCommentForm /></Modal>)}
+      <button
+        onClick={() => showModalHandler()}
+        type="button"
+        className="button"
+      >
+        Modal
+      </button>
+    </div>
+  );
 }
 
 export default Recipes;
