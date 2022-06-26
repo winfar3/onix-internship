@@ -1,6 +1,11 @@
 import './Articles.scss';
 
-import React from 'react';
+import { 
+  useContext, 
+  useRef, 
+  useState, 
+  useEffect 
+} from 'react';
 import PropTypes from 'prop-types';
 
 import ArticlesView from './ArticlesView';
@@ -8,131 +13,71 @@ import { postsRequestUrl } from '../../constants/requestUrls';
 import withRequest from '../../hocs/withRequest';
 import ModalContext from '../../context/ModalContext';
 
-class Articles extends React.Component {
-  constructor(props) {
-    super(props);
-    const { dataFromServer } = this.props;
-    this.activePostElement = React.createRef();
-    this.state = {
-      postCardData: dataFromServer,
-      // showAddForm: false,
-      onActivePost: null,
-      sortBy: 'order',
-      isSorted: false,
-    };
-  }
+function Articles({ dataFromServer }) {
+  const activePostElement = useRef(null);
+  const { showModal, showModalHandler } = useContext(ModalContext);
+  const [postCardData, setPostCardData] = useState([...dataFromServer]);
+  const [onActivePost, setOnActivePost] = useState(null);
+  const [isSorted, setIsSorted] = useState(false);
+  const [sortBy, setSortBy] = useState('date');
 
-  componentDidMount() {
-    this.handleActivePost();
-    window.addEventListener('keyup', this.goToNextPost);
-    window.addEventListener('keyup', this.goToPrevPost);
-    window.addEventListener('keyup', this.deselectActivePost);
-  }
-
-  componentWillUnmount() {
-    this.handleActivePost();
-    window.removeEventListener('keyup', this.goToNextPost);
-    window.removeEventListener('keyup', this.goToPrevPost);
-    window.removeEventListener('keyup', this.deselectActivePost);
-  }
-
-  byField = (field) => {
-    const { isSorted } = this.state;
+  const byField = (field) => {
     if (isSorted) {
       return (a, b) => (a[field] > b[field] ? -1 : 1);
     } 
     return (a, b) => (a[field] > b[field] ? 1 : -1);
   };
 
-  sortByDate = () => {
-    this.setState(({ isSorted }) => ({ isSorted: !isSorted, sortBy: 'date' }));
+  const sortByDate = () => {
+    setIsSorted((sorted) => (!sorted));
+    setSortBy('date');
   };
 
-  sortById = () => {
-    this.setState(({ isSorted }) => ({ isSorted: !isSorted, sortBy: 'id' }));
+  const sortById = () => {
+    setIsSorted((sorted) => (!sorted));
+    setSortBy('id');
   };
 
-  // handleShowAddForm = () => {
-  //   this.setState(({ showAddForm }) => ({ showAddForm: !showAddForm }));
-  // };
-
-  addPost = (post) => {
-    const { postCardData } = this.state;
-    this.setState({ postCardData: [...postCardData, post] });
+  const addPost = (post) => {
+    setPostCardData([...postCardData, post]);
   };
 
-  deleteImage = (pos) => {
-    const { postCardData } = this.state;
-    this.setState({
-      postCardData: postCardData.map((item, index) => {
-        if (index === pos) {
-          const { imageUrl, ...otherData } = item;
-          return otherData;
-        }
-        return item;
-      }),
-    });
+  const deleteImage = (pos) => {
+    setPostCardData(postCardData.map((item, index) => {
+      if (index === pos) {
+        const { imageUrl, ...otherData } = item;
+        return otherData;
+      }
+      return item;
+    }));
   };
 
-  // TODO: remove after solving warnings eslint
-  addComment = (pos, comment) => {
-    const { postCardData } = this.state;
-    // const temp = { comment: prompt('Write your comment', '') }; // eslint-disable-line no-alert
-    this.setState({
-      postCardData: postCardData.map((item, index) => {
-        if (index === pos) {
-          return { ...item, ...comment };
-        }
-        return item;
-      }),
-    });
+  const addComment = (pos, comment) => {
+    setPostCardData(postCardData.map((item, index) => {
+      if (index === pos) {
+        return { ...item, ...comment };
+      }
+      return item;
+    }));
   };
 
-  deletePost = (pos) => {
-    const { postCardData } = this.state;
+  const deletePost = (pos) => {
     const temp = [...postCardData];
     temp.splice(pos, 1);
 
-    this.setState({ postCardData: temp });
+    setPostCardData(temp);
   };
 
-  handleActivePost = (pos) => {
-    const { onActivePost } = this.state;
+  const handleActivePost = (pos) => {
     let temp = pos;
     if (onActivePost === temp) {
       temp = null;
     }
-    this.setState({ onActivePost: temp });
+    setOnActivePost(temp);
   };
 
-  goToNextPost = (e) => {
-    const { onActivePost, postCardData } = this.state;
-    if (e.key === 'ArrowDown') {
-      const temp = onActivePost;
-      if (temp === postCardData.length - 1) {
-        return null;
-      }
-      this.setState({ onActivePost: temp + 1 });
-      this.sctrollToCard();
-    }
-    return null;
-  };
-
-  goToPrevPost = (e) => {
-    const { onActivePost } = this.state;
-    if (e.key === 'ArrowUp') {
-      const temp = onActivePost;
-      if (temp === 0) {
-        return null;
-      }
-      this.setState({ onActivePost: temp - 1 });
-      this.sctrollToCard();
-    }
-    return null;
-  };
-
-  sctrollToCard = () => {
-    const card = this.activePostElement.current;
+  const scrollToCard = () => {
+    const card = activePostElement.current;
     if (card === null) {
       return null;
     }
@@ -142,44 +87,88 @@ class Articles extends React.Component {
     return null;
   };
 
-  deselectActivePost = (e) => {
-    if (e.key === 'Escape') {
-      this.handleActivePost();
+  const goToNextPost = () => {
+    const temp = onActivePost;
+    if (temp === postCardData.length - 1) {
+      return null;
     }
+    setOnActivePost(temp + 1);
+    scrollToCard();
+    return null;
   };
 
-  render() {
-    const { 
-      postCardData, sortBy, onActivePost 
-    } = this.state;
-    const { showModal, showModalHandler } = this.context;
+  const goToPrevPost = () => {
+    const temp = onActivePost;
+    if (temp === 0) {
+      return null;
+    }
+    setOnActivePost(temp - 1);
+    scrollToCard();
+    return null;
+  };
 
-    return (
-      <ArticlesView
-        showModal={showModal}
-        showModalHandler={showModalHandler}
-        handleActivePost={this.handleActivePost}
-        addPost={this.addPost}
-        lastOrder={postCardData.length}
-        sortByDate={this.sortByDate}
-        sortById={this.sortById}
-        postCardData={postCardData}
-        byField={this.byField}
-        sortBy={sortBy}
-        onActivePost={onActivePost}
-        deletePost={this.deletePost}
-        deleteImage={this.deleteImage}
-        addComment={this.addComment}
-        activePostElement={this.activePostElement}
-      />
-    );
-  }
+  /** TODO: possible to combine into one useEffect 
+   * Вопрос: нужно ли здесь условие при котором useEffect срабатывает не при каждом рендере
+  */
+  useEffect(() => {
+    const handleArrowDown = (e) => {
+      if (e.key === 'ArrowDown') {
+        goToNextPost();
+      }
+    };
+
+    window.addEventListener('keyup', handleArrowDown);
+
+    return () => window.removeEventListener('keyup', handleArrowDown);
+  }, [onActivePost]);
+
+  useEffect(() => {
+    const handleArrowUp = (e) => {
+      if (e.key === 'ArrowUp') {
+        goToPrevPost();
+      }
+    };
+
+    window.addEventListener('keyup', handleArrowUp);
+
+    return () => window.removeEventListener('keyup', handleArrowUp);
+  }, [onActivePost]);
+
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        handleActivePost();
+      }
+    };
+
+    window.addEventListener('keyup', handleEscape);
+
+    return () => window.removeEventListener('keyup', handleEscape);
+  }, [onActivePost]);
+
+  return (
+    <ArticlesView
+      showModal={showModal}
+      showModalHandler={showModalHandler}
+      handleActivePost={handleActivePost}
+      addPost={addPost}
+      lastOrder={postCardData.length}
+      sortByDate={sortByDate}
+      sortById={sortById}
+      postCardData={postCardData}
+      byField={byField}
+      sortBy={sortBy}
+      onActivePost={onActivePost}
+      deletePost={deletePost}
+      deleteImage={deleteImage}
+      addComment={addComment}
+      activePostElement={activePostElement}
+    />
+  );
 }
 
 Articles.propTypes = {
   dataFromServer: PropTypes.arrayOf(PropTypes.shape).isRequired,
 };
-
-Articles.contextType = ModalContext;
 
 export default withRequest(Articles, postsRequestUrl);
