@@ -2,39 +2,11 @@ import './Travels.scss';
 
 import { useState } from 'react';
 
-import spain from '../../assets/images/travels/spain.jpg';
-import france from '../../assets/images/travels/france.jpg';
-import germany from '../../assets/images/travels/germany.jpg';
-import england from '../../assets/images/travels/england.jpg';
 import TravelsView from './TravelsView';
+import countries from '../../constants/countries';
 
 export default function Travels() {
-  const [data, setData] = useState([
-    {
-      id: 1,
-      order: 3,
-      name: 'Spain',
-      img: spain,
-    },
-    {
-      id: 2,
-      order: 1,
-      name: 'France',
-      img: france,
-    },
-    {
-      id: 3,
-      order: 2,
-      name: 'Germany',
-      img: germany,
-    },
-    {
-      id: 4,
-      order: 4,
-      name: 'England',
-      img: england,
-    },
-  ]);
+  const [data, setData] = useState(countries);
 
   const [currentCard, setCurrentCard] = useState(null);
   const [cls, setCls] = useState();
