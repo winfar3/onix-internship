@@ -2,7 +2,6 @@ import './Articles.scss';
 
 import { 
   useContext, 
-  useRef, 
   useState, 
   useEffect 
 } from 'react';
@@ -13,13 +12,14 @@ import { postsRequestUrl } from '../../constants/requestUrls';
 import withRequest from '../../hocs/withRequest';
 import ModalContext from '../../context/ModalContext';
 import useSortBy from '../../hooks/useSortBy';
+import useScrollTo from '../../hooks/useScrollTo';
 
 function Articles({ dataFromServer }) {
-  const activePostElement = useRef(null);
   const { showModal, showModalHandler } = useContext(ModalContext);
   const [postCardData, setPostCardData] = useState([...dataFromServer]);
   const [onActivePost, setOnActivePost] = useState(null);
   const [isSorted, sortBy, sornOnPage] = useSortBy('date', true);
+  const [card, scrollTo] = useScrollTo();
 
   const addPost = (post) => {
     setPostCardData([...postCardData, post]);
@@ -59,24 +59,13 @@ function Articles({ dataFromServer }) {
     setOnActivePost(temp);
   };
 
-  const scrollToCard = () => {
-    const card = activePostElement.current;
-    if (card === null) {
-      return null;
-    }
-    card.scrollIntoView({
-      block: 'center',
-    });
-    return null;
-  };
-
   const goToNextPost = () => {
     const temp = onActivePost;
     if (temp === postCardData.length - 1) {
       return null;
     }
     setOnActivePost(temp + 1);
-    scrollToCard();
+    scrollTo(card, 'center', 'auto');
     return null;
   };
 
@@ -86,13 +75,11 @@ function Articles({ dataFromServer }) {
       return null;
     }
     setOnActivePost(temp - 1);
-    scrollToCard();
+    scrollTo(card, 'center', 'auto');
     return null;
   };
 
-  /** TODO: possible to combine into one useEffect 
-   * Вопрос: нужно ли здесь условие при котором useEffect срабатывает не при каждом рендере
-  */
+  /** TODO: possible to combine into one useEffect */
   useEffect(() => {
     const handleArrowDown = (e) => {
       if (e.key === 'ArrowDown') {
@@ -144,7 +131,7 @@ function Articles({ dataFromServer }) {
       deletePost={deletePost}
       deleteImage={deleteImage}
       addComment={addComment}
-      activePostElement={activePostElement}
+      activePostElement={card}
     />
   );
 }

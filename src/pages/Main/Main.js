@@ -1,12 +1,12 @@
 import './Main.scss';
 
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import MainView from './MainView';
 import { postsRequestUrl } from '../../constants/requestUrls';
 import withRequest from '../../hocs/withRequest';
-import scrollToTop from '../../helpers/scrollToTop';
+import useScrollTo from '../../hooks/useScrollTo';
 
 function Main({ dataFromServer }) {
   const [postCardData] = useState(dataFromServer);
@@ -19,22 +19,22 @@ function Main({ dataFromServer }) {
   const firstPostIndex = lastPostIndex - postsPerPage;
   const currentPosts = postCardData.slice(firstPostIndex, lastPostIndex);
 
-  const mainRef = useRef(null);
+  const [mainRef, scrollTo] = useScrollTo();
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
-    scrollToTop(mainRef);
+    scrollTo(mainRef);
   };
   const prevPage = () => {
     if (currentPage > 1) {
       setCurrentPage((prev) => prev - 1);
-      scrollToTop(mainRef);
+      scrollTo(mainRef);
     }
   };
   const nextPage = () => {
     if (currentPage < maxPageNumber) {
       setCurrentPage((prev) => prev + 1);
-      scrollToTop(mainRef);
+      scrollTo(mainRef);
     }
   };
 
