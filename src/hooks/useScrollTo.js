@@ -3,10 +3,10 @@ import { useRef } from 'react';
 const useScrollTo = () => {
   const element = useRef(null);
 
-  const scrollTo = (toElement, position = 'start') => {
+  const scrollTo = (toElement, position = 'start', transition = 'smooth') => {
     toElement.current.scrollIntoView({
       block: position,
-      behavior: 'smooth',
+      behavior: transition,
     });
   };
 
