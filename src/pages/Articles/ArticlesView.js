@@ -20,11 +20,11 @@ function ArticlesView({
   handleActivePost,
   activePostElement,
   showModalHandler,
-  showModal,
+  place,
 }) {
   return (
     <main className="main">
-      {showModal && (
+      {place === 'addPostForm' && (
         <Modal>
           <AddPostForm
             showModalHandler={showModalHandler}
@@ -46,7 +46,7 @@ function ArticlesView({
           styles="button button_article"
         />
         <Button
-          logic={showModalHandler}
+          logic={() => showModalHandler('addPostForm')}
           content="Add post"
           styles="button button_article"
         />
@@ -62,6 +62,7 @@ function ArticlesView({
           addComment={() => addComment(pos)}
           handleActivePost={() => handleActivePost(pos)}
           activePostElement={onActivePost === pos ? activePostElement : null}
+          showModalHandler={showModalHandler}
         />
       ))}
     </main>
@@ -82,7 +83,7 @@ ArticlesView.propTypes = {
   handleActivePost: PropTypes.func.isRequired,
   activePostElement: PropTypes.shape().isRequired,
   showModalHandler: PropTypes.func.isRequired,
-  showModal: PropTypes.bool.isRequired,
+  place: PropTypes.string.isRequired,
 };
 
 ArticlesView.defaultProps = {

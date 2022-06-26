@@ -15,6 +15,7 @@ import Layout from './layout/Layout';
 import ThemeContext from './context/ThemeContext';
 import useLocalStorage from './hooks/useLocalStorage';
 import ModalContext from './context/ModalContext';
+import useModal from './hooks/useModal';
 
 /** TODO: decompose code 
  * Fix bug with displaying 2 modals on one page. Make the context more local.
@@ -28,11 +29,8 @@ function App() {
   }, [isDark]);
   const value = useMemo(() => ({ isDark, setIsDark }), [isDark]);
 
-  const [showModal, setShowModal] = useState(false);
-  const showModalHandler = () => {
-    setShowModal((shows) => !shows);
-  };
-  const modalValue = useMemo(() => ({ showModal, setShowModal, showModalHandler }), [showModal]);
+  const [place, showModalHandler] = useModal();
+  const modalValue = useMemo(() => ({ place, showModalHandler }), [place]);
 
   return (
     <ThemeContext.Provider value={value}>

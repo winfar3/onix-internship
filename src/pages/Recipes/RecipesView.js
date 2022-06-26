@@ -1,6 +1,5 @@
 import {
   arrayOf, 
-  bool, 
   func, 
   string 
 } from 'prop-types';
@@ -10,7 +9,7 @@ import Modal from '../../components/Modal/Modal';
 
 function RecipesView({
   comments,
-  showModal,
+  place,
   showModalHandler,
   addComment,
 }) {
@@ -18,12 +17,13 @@ function RecipesView({
     <div className="recipes">
       <h2 className="recipes__title">Hello world!</h2>
       <ul className="recipes__list">
+        {/* Disabled the rule because comments are added in an order that doesn't change later. */}
         {/* eslint-disable-next-line react/no-array-index-key */}
         {comments.map((item, index) => (<li key={index} className="recipes__item">{item}</li>))}
       </ul>
-      {showModal && (<Modal><AddCommentForm addComment={addComment} /></Modal>)}
+      {place === 'recipes' && (<Modal><AddCommentForm addComment={addComment} /></Modal>)}
       <Button 
-        logic={() => showModalHandler()}
+        logic={() => showModalHandler('recipes')}
         styles="button recipes__btn"
         content="Add comment"
       />
@@ -33,14 +33,14 @@ function RecipesView({
 
 RecipesView.propTypes = {
   comments: arrayOf(string),
-  showModal: bool,
+  place: string,
   showModalHandler: func,
   addComment: func,
 };
 
 RecipesView.defaultProps = {
   comments: [''],
-  showModal: false,
+  place: '',
   showModalHandler() {},
   addComment() {},
 };

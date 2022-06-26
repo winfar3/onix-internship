@@ -60,7 +60,7 @@ function AddPostForm({
     };
 
     addPost(post);
-    showModalHandler();
+    showModalHandler('');
   };
 
   useEffect(() => {
@@ -78,7 +78,7 @@ function AddPostForm({
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') {
-        showModalHandler();
+        showModalHandler('');
       }
     };
 

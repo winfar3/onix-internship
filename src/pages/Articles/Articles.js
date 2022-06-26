@@ -15,7 +15,7 @@ import useSortBy from '../../hooks/useSortBy';
 import useScrollTo from '../../hooks/useScrollTo';
 
 function Articles({ dataFromServer }) {
-  const { showModal, showModalHandler } = useContext(ModalContext);
+  const { place, showModalHandler } = useContext(ModalContext);
   const [postCardData, setPostCardData] = useState([...dataFromServer]);
   const [onActivePost, setOnActivePost] = useState(null);
   const [isSorted, sortBy, sornOnPage] = useSortBy('date', true);
@@ -118,7 +118,7 @@ function Articles({ dataFromServer }) {
 
   return (
     <ArticlesView
-      showModal={showModal}
+      place={place}
       showModalHandler={showModalHandler}
       handleActivePost={handleActivePost}
       addPost={addPost}

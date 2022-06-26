@@ -7,7 +7,7 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 import RecipesView from './RecipesView';
 
 function Recipes() {
-  const { showModal, showModalHandler } = useContext(ModalContext);
+  const { place, showModalHandler } = useContext(ModalContext);
   const [comments, setComments] = useLocalStorage([], 'comments');
 
   const addComment = (comment) => {
@@ -17,7 +17,7 @@ function Recipes() {
   return (
     <RecipesView 
       comments={comments}
-      showModal={showModal}
+      place={place}
       showModalHandler={showModalHandler}
       addComment={addComment}
     />

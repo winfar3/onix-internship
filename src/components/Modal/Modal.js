@@ -12,7 +12,7 @@ function Modal({ children }) {
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') {
-        showModalHandler();
+        showModalHandler('');
       }
     };
 
