@@ -21,12 +21,9 @@ function Articles({ dataFromServer }) {
   const [isSorted, setIsSorted] = useState(false);
   const [sortBy, setSortBy] = useState('date');
 
-  const byField = (field) => {
-    if (isSorted) {
-      return (a, b) => (a[field] > b[field] ? -1 : 1);
-    } 
-    return (a, b) => (a[field] > b[field] ? 1 : -1);
-  };
+  // const byField = (field) => {
+    
+  // };
 
   const sortByDate = () => {
     setIsSorted((sorted) => (!sorted));
@@ -156,7 +153,7 @@ function Articles({ dataFromServer }) {
       sortByDate={sortByDate}
       sortById={sortById}
       postCardData={postCardData}
-      byField={byField}
+      isSorted={isSorted}
       sortBy={sortBy}
       onActivePost={onActivePost}
       deletePost={deletePost}

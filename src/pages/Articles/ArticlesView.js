@@ -4,6 +4,7 @@ import AddPostForm from '../../components/AddPostForm/AddPostForm';
 import Button from '../../components/Button/Button';
 import Modal from '../../components/Modal/Modal';
 import PostCard from '../../components/PostCard/PostCard';
+import byField from '../../helpers/byField';
 
 function ArticlesView({
   addPost,
@@ -11,7 +12,7 @@ function ArticlesView({
   sortByDate,
   sortById,
   postCardData,
-  byField,
+  isSorted,
   sortBy,
   onActivePost,
   deletePost,
@@ -51,7 +52,7 @@ function ArticlesView({
           styles="button button_article"
         />
       </div>
-      {postCardData.sort(byField(sortBy)).map((postCardItem, pos) => (
+      {postCardData.sort(byField(sortBy, isSorted)).map((postCardItem, pos) => (
         <PostCard
           post={postCardItem}
           key={postCardItem.id}
@@ -74,7 +75,7 @@ ArticlesView.propTypes = {
   sortByDate: PropTypes.func.isRequired,
   sortById: PropTypes.func.isRequired,
   postCardData: PropTypes.arrayOf(PropTypes.shape).isRequired,
-  byField: PropTypes.func.isRequired,
+  isSorted: PropTypes.bool.isRequired,
   sortBy: PropTypes.string.isRequired,
   onActivePost: PropTypes.number,
   deletePost: PropTypes.func.isRequired,
