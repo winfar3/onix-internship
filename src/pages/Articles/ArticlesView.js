@@ -9,8 +9,7 @@ import byField from '../../helpers/byField';
 function ArticlesView({
   addPost,
   lastOrder,
-  sortByDate,
-  sortById,
+  sornOnPage,
   postCardData,
   isSorted,
   sortBy,
@@ -37,12 +36,12 @@ function ArticlesView({
 
       <div className="buttonsWrap">
         <Button
-          logic={sortByDate}
+          logic={() => sornOnPage('date')}
           content="Sort by date"
           styles="button button_article"
         />
         <Button
-          logic={sortById}
+          logic={() => sornOnPage('id')}
           content="Sort by id"
           styles="button button_article"
         />
@@ -72,8 +71,7 @@ function ArticlesView({
 ArticlesView.propTypes = {
   addPost: PropTypes.func.isRequired,
   lastOrder: PropTypes.number.isRequired,
-  sortByDate: PropTypes.func.isRequired,
-  sortById: PropTypes.func.isRequired,
+  sornOnPage: PropTypes.func.isRequired,
   postCardData: PropTypes.arrayOf(PropTypes.shape).isRequired,
   isSorted: PropTypes.bool.isRequired,
   sortBy: PropTypes.string.isRequired,

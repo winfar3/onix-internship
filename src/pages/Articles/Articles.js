@@ -12,28 +12,14 @@ import ArticlesView from './ArticlesView';
 import { postsRequestUrl } from '../../constants/requestUrls';
 import withRequest from '../../hocs/withRequest';
 import ModalContext from '../../context/ModalContext';
+import useSortBy from '../../hooks/useSortBy';
 
 function Articles({ dataFromServer }) {
   const activePostElement = useRef(null);
   const { showModal, showModalHandler } = useContext(ModalContext);
   const [postCardData, setPostCardData] = useState([...dataFromServer]);
   const [onActivePost, setOnActivePost] = useState(null);
-  const [isSorted, setIsSorted] = useState(false);
-  const [sortBy, setSortBy] = useState('date');
-
-  // const byField = (field) => {
-    
-  // };
-
-  const sortByDate = () => {
-    setIsSorted((sorted) => (!sorted));
-    setSortBy('date');
-  };
-
-  const sortById = () => {
-    setIsSorted((sorted) => (!sorted));
-    setSortBy('id');
-  };
+  const [isSorted, sortBy, sornOnPage] = useSortBy('date', true);
 
   const addPost = (post) => {
     setPostCardData([...postCardData, post]);
@@ -150,8 +136,7 @@ function Articles({ dataFromServer }) {
       handleActivePost={handleActivePost}
       addPost={addPost}
       lastOrder={postCardData.length}
-      sortByDate={sortByDate}
-      sortById={sortById}
+      sornOnPage={sornOnPage}
       postCardData={postCardData}
       isSorted={isSorted}
       sortBy={sortBy}
