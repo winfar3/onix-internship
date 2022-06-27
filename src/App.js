@@ -18,7 +18,6 @@ import ModalContext from './context/ModalContext';
 import useModal from './hooks/useModal';
 
 /** TODO: decompose code 
- * Fix bug with displaying 2 modals on one page. Make the context more local.
  * Combine routes with menu.
 */
 function App() {
