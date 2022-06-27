@@ -39,9 +39,9 @@ function PostCardViev({
         </Link>
       </div>
       {cardSize !== 'listSize' && (
-        <a href="!#" className="postcard__category uppercase">
+        <Link to={`/onix-internship/articles/${post.category}`} className="postcard__category uppercase">
           {post.category}
-        </a>
+        </Link>
       )}
       <h2 className="postcard__title">
         <Link to={`/onix-internship/article/${post.id}`}>{post.title}</Link>
