@@ -6,7 +6,7 @@ function ModalView({ children, showModalHandler }) {
     <>
       <div className="modal">
         <Button 
-          logic={() => showModalHandler()}
+          logic={() => showModalHandler('')}
           styles="button_close"
           content="&nbsp;"
         />

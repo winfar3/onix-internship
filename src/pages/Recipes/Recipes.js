@@ -10,7 +10,7 @@ function Recipes() {
   const { place, showModalHandler } = useContext(ModalContext);
   const [comments, setComments] = useLocalStorage([], 'comments');
 
-  const addComment = (comment) => {
+  const addComment = (commentedPostPos, comment) => {
     setComments([...comments, comment]);
   };
 

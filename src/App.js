@@ -30,7 +30,13 @@ function App() {
   const value = useMemo(() => ({ isDark, setIsDark }), [isDark]);
 
   const [place, showModalHandler] = useModal();
-  const modalValue = useMemo(() => ({ place, showModalHandler }), [place]);
+  const [commentedPostPos, setCommentedPostPos] = useState();
+  const modalValue = useMemo(() => ({ 
+    place, 
+    showModalHandler, 
+    commentedPostPos, 
+    setCommentedPostPos 
+  }), [place, commentedPostPos]);
 
   return (
     <ThemeContext.Provider value={value}>

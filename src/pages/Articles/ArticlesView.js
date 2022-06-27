@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import AddCommentForm from '../../components/AddCommentForm/AddCommentForm';
 
 import AddPostForm from '../../components/AddPostForm/AddPostForm';
 import Button from '../../components/Button/Button';
@@ -31,6 +32,11 @@ function ArticlesView({
             addPost={addPost}
             lastOrder={lastOrder}
           />
+        </Modal>
+      )}
+      {place === 'addPostComment' && (
+        <Modal>
+          <AddCommentForm addComment={addComment} />
         </Modal>
       )}
 

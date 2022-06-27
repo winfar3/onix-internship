@@ -15,7 +15,7 @@ import useSortBy from '../../hooks/useSortBy';
 import useScrollTo from '../../hooks/useScrollTo';
 
 function Articles({ dataFromServer }) {
-  const { place, showModalHandler } = useContext(ModalContext);
+  const { place, showModalHandler, setCommentedPostPos } = useContext(ModalContext);
   const [postCardData, setPostCardData] = useState([...dataFromServer]);
   const [onActivePost, setOnActivePost] = useState(null);
   const [isSorted, sortBy, sornOnPage] = useSortBy('date', true);
@@ -35,13 +35,19 @@ function Articles({ dataFromServer }) {
     }));
   };
 
-  const addComment = (pos, comment) => {
-    setPostCardData(postCardData.map((item, index) => {
-      if (index === pos) {
-        return { ...item, ...comment };
-      }
-      return item;
-    }));
+  const addComment = (pos, writtenComment) => {
+    setCommentedPostPos(pos);
+    if (writtenComment === undefined) {
+      showModalHandler('addPostComment');
+    } else {
+      const objComment = { comment: writtenComment };
+      setPostCardData(postCardData.map((item, index) => {
+        if (index === pos) {
+          return { ...item, ...objComment };
+        }
+        return item;
+      }));
+    }
   };
 
   const deletePost = (pos) => {

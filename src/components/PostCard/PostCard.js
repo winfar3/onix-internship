@@ -15,6 +15,7 @@ function PostCard({
   onActivePost,
   deletePost,
   deleteImage,
+  addComment,
   activePostElement,
 }) {
   const cardSize = forcedCardSize || post.cardSize;
@@ -53,6 +54,7 @@ function PostCard({
       dateYear={dateObject.getFullYear()}
       deletePost={deletePost}
       deleteImage={deleteImage}
+      addComment={addComment}
       cardSize={cardSize}
       activePostElement={activePostElement}
       showModal={showModal}
@@ -77,6 +79,7 @@ PostCard.propTypes = {
   onActivePost: PropTypes.bool,
   deletePost: PropTypes.func,
   deleteImage: PropTypes.func,
+  addComment: PropTypes.func,
   activePostElement: PropTypes.shape(),
 };
 
@@ -84,6 +87,7 @@ PostCard.defaultProps = {
   handleActivePost: null,
   deletePost: null,
   deleteImage: null,
+  addComment: null,
   onActivePost: false,
   activePostElement: null,
 };

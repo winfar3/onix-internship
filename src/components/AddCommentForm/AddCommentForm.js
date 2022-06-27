@@ -6,7 +6,7 @@ import ModalContext from '../../context/ModalContext';
 
 function AddCommentForm({ addComment }) {
   const [commentText, setCommentText] = useState('');
-  const { showModalHandler } = useContext(ModalContext);
+  const { showModalHandler, commentedPostPos } = useContext(ModalContext);
 
   const handleCommentText = (e) => {
     setCommentText(e.target.value);
@@ -16,7 +16,7 @@ function AddCommentForm({ addComment }) {
     e.preventDefault();
     const comment = commentText;
     if (comment.length > 0) {
-      addComment(comment);
+      addComment(commentedPostPos, comment);
     }
     showModalHandler();
   };
