@@ -8,27 +8,32 @@ function withRequest(Component, apiUrl) {
       super(props);
       this.state = {
         requstedData: [],
-        isPanding: true,
+        isPending: true,
       };
     }
 
     componentDidMount() {
-      this.setState({ isPanding: true });
+      this.setState({ isPending: true });
       this.get();
     }
     
     get = () => {
-      SendAxiosRequest(apiUrl).then((data) => {
-        this.setState({ requstedData: data, isPanding: false });
-      });
+      SendAxiosRequest(apiUrl)
+        .then((data) => {
+          this.setState({ requstedData: data, isPending: false });
+        })
+        .catch(() => this.setState({ requstedData: [], isPending: false }));
     };
     
     render() {
-      const { requstedData, isPanding } = this.state;
-      if (isPanding) {
+      const { requstedData, isPending } = this.state;
+      if (isPending) {
         return (
           <Loader />
         );
+      }
+      if (requstedData.length === 0) {
+        return <p className="fz-2">Sorry, cant find posts</p>;
       }
       /* eslint-disable react/jsx-props-no-spreading */
       return <Component dataFromServer={requstedData} {...this.props} />;

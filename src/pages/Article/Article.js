@@ -22,7 +22,8 @@ function Article() {
       .then((data) => {
         setPostData(data);
         setIsPending(false);
-      });
+      })
+      .catch(() => setIsPending(false));
   }, [params]);
 
   if (isPending) {
@@ -31,6 +32,9 @@ function Article() {
         <ThreeDots stroke="#06bcee" fill="#06bcee" />
       </div>
     );
+  }
+  if (Object.keys(postData).length === 0) {
+    return <p className="fz-2">Sorry, cant find post</p>;
   }
   return (
     <ArticleView
