@@ -4,9 +4,9 @@ import { func } from 'prop-types';
 import AddCommentFormView from './AddCommentFormView';
 import ModalContext from '../../context/ModalContext';
 
-function AddCommentForm({ addComment }) {
+function AddCommentForm({ addComment, toggleModal }) {
   const [commentText, setCommentText] = useState('');
-  const { showModalHandler, commentedPostPos } = useContext(ModalContext);
+  const { commentedPostPos } = useContext(ModalContext);
 
   const handleCommentText = (e) => {
     setCommentText(e.target.value);
@@ -18,7 +18,7 @@ function AddCommentForm({ addComment }) {
     if (comment.length > 0) {
       addComment(commentedPostPos, comment);
     }
-    showModalHandler();
+    toggleModal();
   };
 
   // TODO: Separate a repeating function
@@ -45,10 +45,12 @@ function AddCommentForm({ addComment }) {
 
 AddCommentForm.propTypes = {
   addComment: func,
+  toggleModal: func,
 };
 
 AddCommentForm.defaultProps = {
   addComment() {},
+  toggleModal() {},
 };
 
 export default AddCommentForm;

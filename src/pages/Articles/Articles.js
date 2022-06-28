@@ -13,13 +13,15 @@ import withRequest from '../../hocs/withRequest';
 import ModalContext from '../../context/ModalContext';
 import useSortBy from '../../hooks/useSortBy';
 import useScrollTo from '../../hooks/useScrollTo';
+import useModal from '../../hooks/useModal';
 
 function Articles({ dataFromServer }) {
-  const { place, showModalHandler, setCommentedPostPos } = useContext(ModalContext);
+  const { setCommentedPostPos } = useContext(ModalContext);
   const [postCardData, setPostCardData] = useState([...dataFromServer]);
   const [onActivePost, setOnActivePost] = useState(null);
   const [isSorted, sortBy, sornOnPage] = useSortBy('date', true);
   const [card, scrollTo] = useScrollTo();
+  const [showWhen, toggleModal] = useModal();
 
   const addPost = (post) => {
     setPostCardData([...postCardData, post]);
@@ -38,7 +40,7 @@ function Articles({ dataFromServer }) {
   const addComment = (pos, writtenComment) => {
     setCommentedPostPos(pos);
     if (writtenComment === undefined) {
-      showModalHandler('addPostComment');
+      toggleModal('addPostCommentForm');
     } else {
       const objComment = { comment: writtenComment };
       setPostCardData(postCardData.map((item, index) => {
@@ -124,8 +126,8 @@ function Articles({ dataFromServer }) {
 
   return (
     <ArticlesView
-      place={place}
-      showModalHandler={showModalHandler}
+      showWhen={showWhen}
+      toggleModal={toggleModal}
       handleActivePost={handleActivePost}
       addPost={addPost}
       lastOrder={postCardData.length}

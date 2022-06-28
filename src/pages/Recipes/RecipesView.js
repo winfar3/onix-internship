@@ -9,8 +9,8 @@ import Modal from '../../components/Modal/Modal';
 
 function RecipesView({
   comments,
-  place,
-  showModalHandler,
+  showWhen,
+  toggleModal,
   addComment,
 }) {
   return (
@@ -21,9 +21,15 @@ function RecipesView({
         {/* eslint-disable-next-line react/no-array-index-key */}
         {comments.map((item, index) => (<li key={index} className="recipes__item">{item}</li>))}
       </ul>
-      {place === 'recipes' && (<Modal><AddCommentForm addComment={addComment} /></Modal>)}
+      {showWhen === 'addCommentForm' && (
+        <Modal 
+          toggleModal={toggleModal}
+        >
+          <AddCommentForm addComment={addComment} toggleModal={toggleModal} />
+        </Modal>
+      )}
       <Button 
-        logic={() => showModalHandler('recipes')}
+        logic={() => toggleModal('addCommentForm')}
         styles="button recipes__btn"
         content="Add comment"
       />
@@ -33,15 +39,15 @@ function RecipesView({
 
 RecipesView.propTypes = {
   comments: arrayOf(string),
-  place: string,
-  showModalHandler: func,
+  showWhen: string,
+  toggleModal: func,
   addComment: func,
 };
 
 RecipesView.defaultProps = {
   comments: [''],
-  place: '',
-  showModalHandler() {},
+  showWhen: '',
+  toggleModal() {},
   addComment() {},
 };
 

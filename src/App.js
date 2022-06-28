@@ -15,7 +15,6 @@ import Layout from './layout/Layout';
 import ThemeContext from './context/ThemeContext';
 import useLocalStorage from './hooks/useLocalStorage';
 import ModalContext from './context/ModalContext';
-import useModal from './hooks/useModal';
 
 /** TODO: decompose code 
  * Combine routes with menu.
@@ -28,14 +27,11 @@ function App() {
   }, [isDark]);
   const value = useMemo(() => ({ isDark, setIsDark }), [isDark]);
 
-  const [place, showModalHandler] = useModal();
   const [commentedPostPos, setCommentedPostPos] = useState();
   const modalValue = useMemo(() => ({ 
-    place, 
-    showModalHandler, 
     commentedPostPos, 
     setCommentedPostPos 
-  }), [place, commentedPostPos]);
+  }), [commentedPostPos]);
 
   return (
     <ThemeContext.Provider value={value}>

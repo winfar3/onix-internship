@@ -2,12 +2,12 @@ import './Article.scss';
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ThreeDots } from 'react-loading-icons';
 
 import SendAxiosRequest from '../../helpers/SendAxiosRequest';
 import { postsRequestUrl } from '../../constants/requestUrls';
 import months from '../../constants/months';
 import ArticleView from './ArticleView';
+import Loader from '../../components/Loader/Loader';
 
 function Article() {
   const params = useParams();
@@ -29,7 +29,7 @@ function Article() {
   if (isPending) {
     return (
       <div className="loader">
-        <ThreeDots stroke="#06bcee" fill="#06bcee" />
+        <Loader />
       </div>
     );
   }

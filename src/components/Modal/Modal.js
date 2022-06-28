@@ -1,18 +1,15 @@
 import './Modal.scss';
 
-import { useContext, useEffect } from 'react';
-import { element } from 'prop-types';
+import { useEffect } from 'react';
+import { element, func } from 'prop-types';
 
 import ModalView from './ModalView';
-import ModalContext from '../../context/ModalContext';
 
-function Modal({ children }) {
-  const { showModalHandler } = useContext(ModalContext);
-
+function Modal({ toggleModal, children }) {
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') {
-        showModalHandler('');
+        toggleModal();
       }
     };
 
@@ -21,14 +18,16 @@ function Modal({ children }) {
     return () => window.removeEventListener('keyup', handleEscape);
   });
 
-  return <ModalView showModalHandler={showModalHandler}>{children}</ModalView>;
+  return <ModalView toggleModal={toggleModal}>{children}</ModalView>;
 }
 
 Modal.propTypes = {
+  toggleModal: func,
   children: element,
 };
 
 Modal.defaultProps = {
+  toggleModal() {},
   children: null,
 };
 

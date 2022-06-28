@@ -1,13 +1,11 @@
 import './Recipes.scss';
 
-import { useContext } from 'react';
-
-import ModalContext from '../../context/ModalContext';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import RecipesView from './RecipesView';
+import useModal from '../../hooks/useModal';
 
 function Recipes() {
-  const { place, showModalHandler } = useContext(ModalContext);
+  const [showWhen, toggleModal] = useModal();
   const [comments, setComments] = useLocalStorage([], 'comments');
 
   const addComment = (commentedPostPos, comment) => {
@@ -17,8 +15,8 @@ function Recipes() {
   return (
     <RecipesView 
       comments={comments}
-      place={place}
-      showModalHandler={showModalHandler}
+      showWhen={showWhen}
+      toggleModal={toggleModal}
       addComment={addComment}
     />
   );

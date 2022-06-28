@@ -1,12 +1,12 @@
 import { element, func } from 'prop-types';
 import Button from '../Button/Button';
 
-function ModalView({ children, showModalHandler }) {
+function ModalView({ children, toggleModal }) {
   return (
     <>
       <div className="modal">
         <Button 
-          logic={() => showModalHandler('')}
+          logic={() => toggleModal('')}
           styles="button_close"
           content="&nbsp;"
         />
@@ -19,12 +19,12 @@ function ModalView({ children, showModalHandler }) {
 
 ModalView.propTypes = {
   children: element,
-  showModalHandler: func,
+  toggleModal: func,
 };
 
 ModalView.defaultProps = {
   children: null,
-  showModalHandler() {},
+  toggleModal() {},
 };
 
 export default ModalView;

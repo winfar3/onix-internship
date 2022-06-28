@@ -1,17 +1,17 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 const useModal = () => {
-  const [modalPlace, setModalPlace] = useState('');
+  const [showWhen, setShowWhen] = useState('');
 
-  const showModalHandler = (place) => {
-    if (modalPlace === '') {
-      setModalPlace(place);
+  const toggleModal = useCallback((place) => {
+    if (showWhen === '') {
+      setShowWhen(place);
     } else {
-      setModalPlace('');
+      setShowWhen('');
     }
-  };
+  }, [showWhen]);
 
-  return [modalPlace, showModalHandler];
+  return [showWhen, toggleModal];
 };
 
 export default useModal;

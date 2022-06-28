@@ -20,23 +20,23 @@ function ArticlesView({
   addComment,
   handleActivePost,
   activePostElement,
-  showModalHandler,
-  place,
+  toggleModal,
+  showWhen,
 }) {
   return (
     <main className="main">
-      {place === 'addPostForm' && (
-        <Modal>
+      {showWhen === 'addPostForm' && (
+        <Modal toggleModal={toggleModal}>
           <AddPostForm
-            showModalHandler={showModalHandler}
+            toggleModal={toggleModal}
             addPost={addPost}
             lastOrder={lastOrder}
           />
         </Modal>
       )}
-      {place === 'addPostComment' && (
-        <Modal>
-          <AddCommentForm addComment={addComment} />
+      {showWhen === 'addPostCommentForm' && (
+        <Modal toggleModal={toggleModal}>
+          <AddCommentForm addComment={addComment} toggleModal={toggleModal} />
         </Modal>
       )}
 
@@ -52,7 +52,7 @@ function ArticlesView({
           styles="button button_article"
         />
         <Button
-          logic={() => showModalHandler('addPostForm')}
+          logic={() => toggleModal('addPostForm')}
           content="Add post"
           styles="button button_article"
         />
@@ -68,7 +68,7 @@ function ArticlesView({
           addComment={() => addComment(pos)}
           handleActivePost={() => handleActivePost(pos)}
           activePostElement={onActivePost === pos ? activePostElement : null}
-          showModalHandler={showModalHandler}
+          toggleModal={toggleModal}
         />
       ))}
     </main>
@@ -88,8 +88,8 @@ ArticlesView.propTypes = {
   addComment: PropTypes.func.isRequired,
   handleActivePost: PropTypes.func.isRequired,
   activePostElement: PropTypes.shape().isRequired,
-  showModalHandler: PropTypes.func.isRequired,
-  place: PropTypes.string.isRequired,
+  toggleModal: PropTypes.func.isRequired,
+  showWhen: PropTypes.string.isRequired,
 };
 
 ArticlesView.defaultProps = {
