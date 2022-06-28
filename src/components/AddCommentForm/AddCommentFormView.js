@@ -14,7 +14,7 @@ function AddCommentFormView({
           name="comment"
           placeholder="Your comment"
           autoComplete="off"
-          cols={60}
+          cols={25}
           rows={10}
           value={commentText}
           onChange={handleCommentText}
