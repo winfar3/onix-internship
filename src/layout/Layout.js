@@ -1,32 +1,35 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
-import Header from '../components/Header/Header';
-import Sidebar from '../components/Sidebar/Sidebar';
-import InstagramGallery from '../components/InstagramGallery/InstagramGallery';
-import Footer from '../components/Footer/Footer';
 import useScrollTo from '../hooks/useScrollTo';
+import withRequest from '../hocs/withRequest';
+import LayoutView from './LayoutView';
 
 function Layout({ children, renderContent }) {
+  /** When we go to articles with a certain category, a new component is created instead 
+  of a child with a different api request. In theory, when opening one article, it should 
+  show incorrect data, but everything is rendered correctly. 
+  I haven't figured out yet why this works. */
+  const params = useParams();
+  const paramKey = Object.keys(params)[0];
+  const paramValue = Object.values(params)[0];
+  const Element = withRequest(
+    children.type, 
+    `https://61fc04453f1e34001792c787.mockapi.io/posts?${paramKey}=${paramValue}`
+  );
+  
   const [mainRef, scrollTo] = useScrollTo();
   useEffect(() => {
     scrollTo(mainRef);
   }, [useLocation().pathname]);
   
   return (
-    <>
-      <Header mainRef={mainRef} />
-      {renderContent}
-      <div className="container">
-        <div className="content-wrapper">
-          {children}
-          <Sidebar />
-        </div>
-      </div>
-      <InstagramGallery />
-      <Footer />
-    </>
+    <LayoutView 
+      child={Object.keys(params).length === 0 ? children : <Element />}
+      renderContent={renderContent}
+      mainRef={mainRef}
+    />
   );
 }
 

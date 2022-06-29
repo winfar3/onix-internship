@@ -51,6 +51,7 @@ function App() {
               element={<Layout><Recipes /></Layout>} 
             />
             <Route path="/onix-internship/articles" element={<Layout><Articles /></Layout>} />
+            <Route path="/onix-internship/articles/:category" element={<Layout><Articles /></Layout>} />
             <Route path="/onix-internship/article/:id" element={<Layout><Article /></Layout>} />
             <Route path="/onix-internship/users" element={<Layout><Users /></Layout>} />
             <Route path="/onix-internship/travels" element={<Layout><Travels /></Layout>} />
