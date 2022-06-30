@@ -36,6 +36,19 @@ const translationsUa = {
   instagram_title: 'Слідкуйте за нами ',
   instagram_name: '@інстаграм_ім\'я',
   footer_copyright: 'Дизайн @ 2019 Logwork | Проект @ 2022 Цегельник Богдан',
+  recipes_title: 'Привіт Світ!',
+  button_addComment: 'Додати коментар',
+  button_sortDate: 'Сортувати за датою',
+  button_sordId: 'Сортувати за id',
+  button_addPost: 'Додати пост',
+  Spain: 'Іспанія',
+  France: 'Франція',
+  Germany: 'Німеччина',
+  England: 'Англія',
+  Category: 'Категорія',
+  Posted: 'Опубліковано',
+  postErr: 'Вибачте, не можу знайти пост',
+  pageNotFound: 'Вибачте, сторінку не знайдено',
 };
 
 export default translationsUa;

@@ -35,6 +35,19 @@ const translationsEn = {
   instagram_title: 'Follow our ',
   instagram_name: '@instagram_name',
   footer_copyright: 'Desing @ 2019 Logwork | Project @ 2022 Tsegelnik Bogdan',
+  recipes_title: 'Hello world!',
+  button_addComment: 'Add comment',
+  button_sortDate: 'Sort by date',
+  button_sordId: 'Sort by id',
+  button_addPost: 'Add post',
+  Spain: 'Spain',
+  France: 'France',
+  Germany: 'Germany',
+  England: 'England',
+  Category: 'Category',
+  Posted: 'Posted',
+  postErr: 'Sorry, cant find post',
+  pageNotFound: 'Sorry, page not found',
 };
 
 export default translationsEn;

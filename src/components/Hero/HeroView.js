@@ -9,6 +9,8 @@ function HeroView({
   dateYear,
   author,
   imageUrl,
+  by,
+  comments,
 }) {
   return (
     <section className="hero">
@@ -22,11 +24,11 @@ function HeroView({
           <div className="hero__info hero-info">
             <p className="hero-info__date">{`${dateMonth} ${dateDay}, ${dateYear}`}</p>
             <a href="!#" className="hero-info__author">
-              <span>By &nbsp;</span> 
+              <span>{`${by} `}</span> 
               {`${author.firstName} ${author.lastName}`}
             </a>
             <a href="!#" className="hero-info__comments">
-              4 comments
+              {`4 ${comments}`}
             </a>
           </div>
           <div className="hero__image">
@@ -53,6 +55,8 @@ HeroView.propTypes = {
     lastName: PropTypes.string,
   }).isRequired,
   imageUrl: PropTypes.string.isRequired,
+  by: PropTypes.string.isRequired,
+  comments: PropTypes.string.isRequired,
 };
 
 export default HeroView;

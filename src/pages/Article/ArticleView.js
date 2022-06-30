@@ -10,23 +10,26 @@ function ArticleView({
   author,
   description,
   fullText,
+  by,
+  textCategory,
+  textPosted,
 }) {
   return (
     <article className="article">
       <h2 className="article__title">{title}</h2>
       <ul className="article__info article-info">
         <li className="article-info__item">
-          <span>By</span>
+          <span>{by}</span>
           &nbsp; 
           {`${author.firstName} ${author.lastName}`}
         </li>
         <li className="article-info__item capitalize">
-          <span>Category:</span>
+          <span>{`${textCategory}:`}</span>
           &nbsp;
           {category}
         </li>
         <li className="article-info__item">
-          <span>Posted:</span>
+          <span>{`${textPosted}:`}</span>
           &nbsp;
           {`${dateMonth} ${dateDay}, ${dateYear}`}
         </li>
@@ -59,6 +62,9 @@ ArticleView.propTypes = {
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string),
   ]),
+  by: PropTypes.string,
+  textCategory: PropTypes.string,
+  textPosted: PropTypes.string,
 };
 
 ArticleView.defaultProps = {
@@ -71,6 +77,9 @@ ArticleView.defaultProps = {
   author: {},
   description: '',
   fullText: ['Sorry not write yet'],
+  by: '',
+  textCategory: '',
+  textPosted: '',
 };
 
 export default ArticleView;

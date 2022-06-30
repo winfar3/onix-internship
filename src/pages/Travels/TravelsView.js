@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import useLocalization from '../../hooks/useLocalization';
+
 function TravelsView({
   data,
   sordCards,
@@ -10,6 +12,8 @@ function TravelsView({
   dragOverHandler,
   dropHandler,
 }) {
+  const [t] = useLocalization();
+
   return (
     <div className="travels">
       {data.sort(sordCards).map((card, pos) => (
@@ -28,7 +32,7 @@ function TravelsView({
           <div className="travels-card__image">
             <img src={card.img} alt="country" />
           </div>
-          {card.name}
+          {t(card.name)}
         </div>
       ))}
     </div>

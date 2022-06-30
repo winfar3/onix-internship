@@ -14,8 +14,10 @@ import ModalContext from '../../context/ModalContext';
 import useSortBy from '../../hooks/useSortBy';
 import useScrollTo from '../../hooks/useScrollTo';
 import useModal from '../../hooks/useModal';
+import useLocalization from '../../hooks/useLocalization';
 
 function Articles({ dataFromServer }) {
+  const [t] = useLocalization();
   const { setCommentedPostPos } = useContext(ModalContext);
   const [postCardData, setPostCardData] = useState([...dataFromServer]);
   const [onActivePost, setOnActivePost] = useState(null);
@@ -140,6 +142,9 @@ function Articles({ dataFromServer }) {
       deleteImage={deleteImage}
       addComment={addComment}
       activePostElement={card}
+      buttonDate={t('button_sortDate')}
+      buttonId={t('button_sordId')}
+      buttonPost={t('button_addPost')}
     />
   );
 }

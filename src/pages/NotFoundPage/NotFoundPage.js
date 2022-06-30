@@ -1,5 +1,9 @@
+import useLocalization from '../../hooks/useLocalization';
+
 function NotFoundPage() {
-  return <h2 className="page__title">Sorry, page not found</h2>;
+  const [t] = useLocalization();
+
+  return <h2 className="page__title">{t('pageNotFound')}</h2>;
 }
 
 export default NotFoundPage;

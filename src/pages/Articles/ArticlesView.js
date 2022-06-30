@@ -22,6 +22,9 @@ function ArticlesView({
   activePostElement,
   toggleModal,
   showWhen,
+  buttonDate,
+  buttonId,
+  buttonPost,
 }) {
   return (
     <main className="main">
@@ -43,17 +46,17 @@ function ArticlesView({
       <div className="buttonsWrap">
         <Button
           logic={() => sornOnPage('date')}
-          content="Sort by date"
+          content={buttonDate}
           styles="button button_article"
         />
         <Button
           logic={() => sornOnPage('id')}
-          content="Sort by id"
+          content={buttonId}
           styles="button button_article"
         />
         <Button
           logic={() => toggleModal('addPostForm')}
-          content="Add post"
+          content={buttonPost}
           styles="button button_article"
         />
       </div>
@@ -90,6 +93,9 @@ ArticlesView.propTypes = {
   activePostElement: PropTypes.shape().isRequired,
   toggleModal: PropTypes.func.isRequired,
   showWhen: PropTypes.string.isRequired,
+  buttonDate: PropTypes.string.isRequired,
+  buttonId: PropTypes.string.isRequired,
+  buttonPost: PropTypes.string.isRequired,
 };
 
 ArticlesView.defaultProps = {

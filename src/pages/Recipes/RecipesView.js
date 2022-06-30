@@ -12,10 +12,12 @@ function RecipesView({
   showWhen,
   toggleModal,
   addComment,
+  title,
+  buttonText,
 }) {
   return (
     <div className="recipes">
-      <h2 className="recipes__title">Hello world!</h2>
+      <h2 className="recipes__title">{title}</h2>
       <ul className="recipes__list">
         {/* Disabled the rule because comments are added in an order that doesn't change later. */}
         {/* eslint-disable-next-line react/no-array-index-key */}
@@ -31,7 +33,7 @@ function RecipesView({
       <Button 
         logic={() => toggleModal('addCommentForm')}
         styles="button recipes__btn"
-        content="Add comment"
+        content={buttonText}
       />
     </div>
   );
@@ -42,6 +44,8 @@ RecipesView.propTypes = {
   showWhen: string,
   toggleModal: func,
   addComment: func,
+  title: string,
+  buttonText: string,
 };
 
 RecipesView.defaultProps = {
@@ -49,6 +53,8 @@ RecipesView.defaultProps = {
   showWhen: '',
   toggleModal() {},
   addComment() {},
+  title: '',
+  buttonText: '',
 };
 
 export default RecipesView;

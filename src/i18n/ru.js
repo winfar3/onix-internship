@@ -36,6 +36,19 @@ const translationsRu = {
   instagram_title: 'Следите за нами ',
   instagram_name: '@инстаграм_имя',
   footer_copyright: 'Дизайн @ 2019 Logwork | Проект @ 2022 Цегельник Богдан',
+  recipes_title: 'Привет, мир!',
+  button_addComment: 'Добавить комментарий',
+  button_sortDate: 'Сортировать по дате',
+  button_sordId: 'Сортировать по id',
+  button_addPost: 'Добавить пост',
+  Spain: 'Испания',
+  France: 'Франция',
+  Germany: 'Германия',
+  England: 'Англия',
+  Category: 'Категория',
+  Posted: 'Опубликовано',
+  postErr: 'Извините, не могу найти пост',
+  pageNotFound: 'Извините, страница не найдена',
 };
 
 export default translationsRu;

@@ -8,8 +8,10 @@ import { postsRequestUrl } from '../../constants/requestUrls';
 import months from '../../constants/months';
 import ArticleView from './ArticleView';
 import Loader from '../../components/Loader/Loader';
+import useLocalization from '../../hooks/useLocalization';
 
 function Article() {
+  const [t] = useLocalization();
   const params = useParams();
   const [postData, setPostData] = useState({});
   const [isPending, setIsPending] = useState(false);
@@ -34,19 +36,22 @@ function Article() {
     );
   }
   if (Object.keys(postData).length === 0) {
-    return <p className="fz-2">Sorry, cant find post</p>;
+    return <p className="fz-2">{t('postErr')}</p>;
   }
   return (
     <ArticleView
       title={postData.title}
       category={postData.category}
-      dateMonth={months[dateObject.getMonth()]}
+      dateMonth={t(months[dateObject.getMonth()])}
       dateDay={dateObject.getDate()}
       dateYear={dateObject.getFullYear()}
       imageUrl={postData.imageUrl}
       author={postData.author}
       description={postData.description}
       fullText={text}
+      by={t('by')}
+      textCategory={t('Category')}
+      textPosted={t('Posted')}
     />
   );
 }
