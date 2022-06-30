@@ -98,4 +98,17 @@
             color: var(--link-hover);
         }
     }
+
+    &__language {
+        cursor: pointer;
+        background-color: transparent;
+        
+        &:hover {
+            color: var(--secondary);
+        }
+
+        & > option {
+            background-color: var(--background-color);
+        }
+    }
 }

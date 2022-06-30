@@ -38,7 +38,7 @@ function MenuView({
             </NavLink>
           </li>
         ))}
-        <select name="language" onChange={changeLang}>
+        <select name="language" onChange={changeLang} className="header-nav__link header-nav__language">
           <option value="en">{langEn}</option>
           <option value="ua">{langUa}</option>
           <option value="ru">{langRu}</option>
