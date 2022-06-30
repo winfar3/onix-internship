@@ -38,6 +38,7 @@ function MenuView({
         <select name="language" onChange={changeLang}>
           <option value="en">English</option>
           <option value="ua">Ukraine</option>
+          <option value="ru">Russian</option>
         </select>
         <DarkModeToggle 
           onChange={themeToggle} 
