@@ -77,6 +77,9 @@ function Menu({ active, menuActiveHandler }) {
       themeToggle={themeToggle}
       isDark={isDark}
       changeLang={changeLang}
+      langEn={t('English')}
+      langUa={t('Ukraine')}
+      langRu={t('Russian')}
     />
   );
 }

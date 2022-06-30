@@ -11,6 +11,9 @@ function MenuView({
   themeToggle, 
   isDark,
   changeLang,
+  langEn,
+  langUa,
+  langRu,
 }) {
   /** Allows to call a function menuActiveHandler if the site is open on a tablet or phone 
    * Without this, the menu also opens in desktop mode
@@ -36,9 +39,9 @@ function MenuView({
           </li>
         ))}
         <select name="language" onChange={changeLang}>
-          <option value="en">English</option>
-          <option value="ua">Ukraine</option>
-          <option value="ru">Russian</option>
+          <option value="en">{langEn}</option>
+          <option value="ua">{langUa}</option>
+          <option value="ru">{langRu}</option>
         </select>
         <DarkModeToggle 
           onChange={themeToggle} 
@@ -59,6 +62,9 @@ MenuView.propTypes = {
   themeToggle: PropTypes.func.isRequired,
   isDark: PropTypes.bool.isRequired,
   changeLang: PropTypes.func.isRequired,
+  langEn: PropTypes.string.isRequired,
+  langUa: PropTypes.string.isRequired,
+  langRu: PropTypes.string.isRequired,
 };
 
 MenuView.defaultProps = {
