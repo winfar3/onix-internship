@@ -23,10 +23,11 @@ const translationsEn = {
   sidebar_featured: 'Featured posts',
   sidebar_categories: 'Categories',
   sidebar_social: 'Social media',
+  sidebar_tags: 'Tags',
   AboutAuthor_name: 'Kate Willems', 
   AboutAuthor_subtitle: 'Food & cooking bloger',
   AboutAuthor_desc: 
-    'Hi, I\'m Sonia. Cooking is the way I express my creative side to the world. Welcome to my Kitchen Corner on…',
+    'Hi, I\'m Kate. Cooking is the way I express my creative side to the world. Welcome to my Kitchen Corner on…',
   AboutAuthor_link: 'Continue Reading',
   instagram_title: 'Follow our ',
   instagram_name: '@instagram_name',

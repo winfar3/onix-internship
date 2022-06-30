@@ -10,7 +10,7 @@ import useLocalization from '../../hooks/useLocalization';
 
 function Sidebar() {
   const [t] = useLocalization();
-  
+
   return (
     <aside className="sidebar">
       <SidebarSection
@@ -33,7 +33,7 @@ function Sidebar() {
         blockClass="social-media"
         data={<SocialMedia />}
       />
-      <SidebarSection title="Tags" blockClass="tags" data={<Tags />} />
+      <SidebarSection title={t('sidebar_tags')} blockClass="tags" data={<Tags />} />
     </aside>
   );
 }
