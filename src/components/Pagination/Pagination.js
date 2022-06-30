@@ -2,10 +2,12 @@ import './Pagination.scss';
 
 import PropTypes from 'prop-types';
 import Button from '../Button/Button';
+import useLocalization from '../../hooks/useLocalization';
 
 function Pagination({ 
   maxPageNumber, prevPage, paginate, nextPage 
 }) {
+  const [t] = useLocalization();
   const pageNumbers = [...new Array(maxPageNumber)].map((item, pos) => pos + 1);
 
   return (
@@ -13,7 +15,7 @@ function Pagination({
       <Button 
         logic={prevPage}
         styles="pagination__item pagination__item_prev uppercase"
-        content="older post"
+        content={t('paginaion_prev')}
       />
       {pageNumbers.map((number) => (
         <Button 
@@ -26,7 +28,7 @@ function Pagination({
       <Button 
         logic={nextPage}
         styles="pagination__item pagination__item_next uppercase"
-        content="next post"
+        content={t('pagination_next')}
       />
     </div>
   );

@@ -5,6 +5,7 @@ import PostCardButtons from './PostCardButtons';
 
 function PostCardViev({
   post,
+  by,
   articleClassNames,
   imageClassNames,
   imgUrl,
@@ -49,7 +50,7 @@ function PostCardViev({
       <div className="postcard__info">
         <p className="postcard__date">{`${dateMonth} ${dateDay}, ${dateYear}`}</p>
         <a href="!#" className="postcard__author">
-          <span>By</span> 
+          <span>{by}</span> 
           {' '}
           {`${post.author.firstName} ${post.author.lastName}`}
         </a>
@@ -81,6 +82,7 @@ PostCardViev.propTypes = {
     description: PropTypes.string,
     comment: PropTypes.string,
   }).isRequired,
+  by: PropTypes.string.isRequired,
   articleClassNames: PropTypes.string.isRequired,
   imageClassNames: PropTypes.string.isRequired,
   imgUrl: PropTypes.string,

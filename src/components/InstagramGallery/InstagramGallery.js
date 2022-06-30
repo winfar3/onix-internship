@@ -1,13 +1,17 @@
 import './InstagramGallery.scss';
+
+import useLocalization from '../../hooks/useLocalization';
+import InstagramGalleryView from './InstagramGalleryView';
+
 import instaPhoto1 from '../../assets/images/instagramGallery/01.png';
 import instaPhoto2 from '../../assets/images/instagramGallery/02.png';
 import instaPhoto3 from '../../assets/images/instagramGallery/03.png';
 import instaPhoto4 from '../../assets/images/instagramGallery/04.png';
 import instaPhoto5 from '../../assets/images/instagramGallery/05.png';
 import instaPhoto6 from '../../assets/images/instagramGallery/06.png';
-import InstagramGalleryView from './InstagramGalleryView';
 
 function InstagramGallery() {
+  const [t] = useLocalization();
   const instagramGalleryData = [
     {
       id: '01',
@@ -46,6 +50,8 @@ function InstagramGallery() {
     <InstagramGalleryView
       instagramGalleryData={instagramGalleryData}
       instagramLink={instagramLink}
+      instagramTitle={t('instagram_title')}
+      instagramName={t('instagram_name')}
     />
   );
 }

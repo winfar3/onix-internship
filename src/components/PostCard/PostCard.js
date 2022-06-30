@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import PostCardViev from './PostCardViev';
 import months from '../../constants/months';
 import ModalContext from '../../context/ModalContext';
+import useLocalization from '../../hooks/useLocalization';
 
 function PostCard({
   post,
@@ -18,6 +19,7 @@ function PostCard({
   addComment,
   activePostElement,
 }) {
+  const [t] = useLocalization();
   const cardSize = forcedCardSize || post.cardSize;
   const dateObject = new Date(post.date);
 
@@ -35,6 +37,7 @@ function PostCard({
   return (
     <PostCardViev 
       post={post}
+      by={t('by')}
       handleActivePost={handleActivePost}
       articleClassNames={classNames(
         'postcard',
@@ -49,7 +52,7 @@ function PostCard({
       imgAlt="preview"
       imgOnLoad={imgOnLoad}
       imgOnError={imgOnError}
-      dateMonth={months[dateObject.getMonth()]}
+      dateMonth={t(months[dateObject.getMonth()])}
       dateDay={dateObject.getDate()}
       dateYear={dateObject.getFullYear()}
       deletePost={deletePost}

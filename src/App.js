@@ -1,6 +1,10 @@
 import './App.scss';
 
-import { useEffect, useMemo, useState } from 'react';
+import { 
+  useEffect, 
+  useMemo, 
+  useState, 
+} from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import Main from './pages/Main/Main';
@@ -26,7 +30,7 @@ function App() {
     setTheme(isDark);
   }, [isDark]);
   const value = useMemo(() => ({ isDark, setIsDark }), [isDark]);
-
+  
   const [commentedPostPos, setCommentedPostPos] = useState();
   const modalValue = useMemo(() => ({ 
     commentedPostPos, 
@@ -37,14 +41,11 @@ function App() {
     <ThemeContext.Provider value={value}>
       <ModalContext.Provider value={modalValue}>
         <div className="App">
+          
           <Routes>
             <Route
-              path="/onix-internship/"
-              element={<Layout renderContent={<Hero />}><Main /></Layout>}
-            />
-            <Route
               path="/onix-internship/home"
-              element={<Navigate to="/onix-internship/" />}
+              element={<Layout renderContent={<Hero />}><Main /></Layout>}
             />
             <Route 
               path="/onix-internship/comments" 
@@ -56,7 +57,11 @@ function App() {
             <Route path="/onix-internship/users" element={<Layout><Users /></Layout>} />
             <Route path="/onix-internship/travels" element={<Layout><Travels /></Layout>} />
             <Route path="/onix-internship/404" element={<Layout><NotFoundPage /></Layout>} />
-            <Route path="/" element={<Navigate to="/onix-internship/" />} />
+            <Route
+              path="/onix-internship/"
+              element={<Navigate to="/onix-internship/home" />}
+            />
+            <Route path="/" element={<Navigate to="/onix-internship/home" />} />
             <Route path="*" element={<Navigate to="/onix-internship/404" />} />
           </Routes>
         </div>

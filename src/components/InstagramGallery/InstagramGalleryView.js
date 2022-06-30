@@ -2,14 +2,18 @@ import PropTypes from 'prop-types';
 
 import GalleryItem from '../GalleryItem/GalleryItem';
 
-function InstagramGalleryView({ instagramGalleryData, instagramLink }) {
+function InstagramGalleryView({ 
+  instagramGalleryData, 
+  instagramLink, 
+  instagramTitle,
+  instagramName, 
+}) {
   return (
     <section className="instagram-gallery">
       <h2 className="instagram-gallery__title">
-        Follow our
-        {' '}
+        {instagramTitle}
         <a href={instagramLink} className="instagram-gallery__link">
-          @instagram_name
+          {instagramName}
         </a>
       </h2>
       <div className="instagram-gallery__list">
@@ -30,6 +34,8 @@ InstagramGalleryView.propTypes = {
     alt: PropTypes.string.isRequired,
   })).isRequired,
   instagramLink: PropTypes.string.isRequired,
+  instagramTitle: PropTypes.string.isRequired,
+  instagramName: PropTypes.string.isRequired,
 };
 
 export default InstagramGalleryView;

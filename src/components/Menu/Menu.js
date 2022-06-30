@@ -10,9 +10,32 @@ import PropTypes from 'prop-types';
 
 import MenuView from './MenuView';
 import ThemeContext from '../../context/ThemeContext';
+import useLocalization from '../../hooks/useLocalization';
 
 function Menu({ active, menuActiveHandler }) {
-  const navData = ['home', 'comments', 'articles', 'users', 'travels'];
+  const [t, changeLang] = useLocalization();
+  const navData = [
+    {
+      url: 'home',
+      title: t('home'), 
+    },
+    {
+      url: 'comments',
+      title: t('comments'), 
+    },
+    {
+      url: 'articles',
+      title: t('articles'), 
+    },
+    {
+      url: 'users',
+      title: t('users'), 
+    },
+    {
+      url: 'travels',
+      title: t('travels')
+    },
+  ];
   const linkRoot = '/onix-internship/';
 
   const [title, setTitle] = useState('');
@@ -53,6 +76,7 @@ function Menu({ active, menuActiveHandler }) {
       menuActiveHandler={menuActiveHandler}
       themeToggle={themeToggle}
       isDark={isDark}
+      changeLang={changeLang}
     />
   );
 }

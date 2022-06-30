@@ -9,7 +9,8 @@ function MenuView({
   setTitle, 
   menuActiveHandler, 
   themeToggle, 
-  isDark
+  isDark,
+  changeLang,
 }) {
   /** Allows to call a function menuActiveHandler if the site is open on a tablet or phone 
    * Without this, the menu also opens in desktop mode
@@ -22,16 +23,22 @@ function MenuView({
         className={classNames}
       >
         {navData.map((item) => (
-          <li key={item} className="header-nav__item">
+          <li key={item.url} className="header-nav__item">
             <NavLink
-              to={linkRoot + item}
-              onClick={mobileDisplay ? () => { setTitle(item); menuActiveHandler(); } : () => setTitle(item)}
+              to={linkRoot + item.url}
+              onClick={
+                mobileDisplay ? () => { setTitle(item.title); menuActiveHandler(); } : () => setTitle(item.title)
+              }
               className="header-nav__link capitalize"
             >
-              {item}
+              {item.title}
             </NavLink>
           </li>
         ))}
+        <select name="language" onChange={changeLang}>
+          <option value="en">English</option>
+          <option value="ua">Ukraine</option>
+        </select>
         <DarkModeToggle 
           onChange={themeToggle} 
           checked={isDark}
@@ -43,13 +50,14 @@ function MenuView({
 }
 
 MenuView.propTypes = {
-  navData: PropTypes.arrayOf(PropTypes.string).isRequired,
+  navData: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   classNames: PropTypes.string.isRequired,
   linkRoot: PropTypes.string.isRequired,
   setTitle: PropTypes.func.isRequired,
   menuActiveHandler: PropTypes.func,
   themeToggle: PropTypes.func.isRequired,
   isDark: PropTypes.bool.isRequired,
+  changeLang: PropTypes.func.isRequired,
 };
 
 MenuView.defaultProps = {

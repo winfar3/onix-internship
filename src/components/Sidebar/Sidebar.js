@@ -6,27 +6,30 @@ import FeaturedPosts from '../FeaturedPosts/FeaturedPosts';
 import Categories from '../Categories/Categories';
 import SocialMedia from '../SocialMedia/SocialMedia';
 import Tags from '../Tags/Tags';
+import useLocalization from '../../hooks/useLocalization';
 
 function Sidebar() {
+  const [t] = useLocalization();
+  
   return (
     <aside className="sidebar">
       <SidebarSection
-        title="About the author"
+        title={t('sidebar_author')}
         blockClass="about-author"
         data={<AboutAuthor />}
       />
       <SidebarSection
-        title="Featured posts"
+        title={t('sidebar_featured')}
         blockClass="featured-posts"
         data={<FeaturedPosts />}
       />
       <SidebarSection
-        title="Categories"
+        title={t('sidebar_categories')}
         blockClass="categories"
         data={<Categories />}
       />
       <SidebarSection
-        title="Social media"
+        title={t('sidebar_social')}
         blockClass="social-media"
         data={<SocialMedia />}
       />
