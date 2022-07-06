@@ -4,7 +4,11 @@ const useLocalStorage = (initialValue, key) => {
   const getValue = () => {
     const storage = localStorage.getItem(key);
     if (storage) {
-      return JSON.parse(storage);
+      try {
+        return JSON.parse(storage);
+      } catch {
+        return storage;
+      }
     }
     
     return initialValue;

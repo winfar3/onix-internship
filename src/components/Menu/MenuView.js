@@ -14,6 +14,7 @@ function MenuView({
   langEn,
   langUa,
   langRu,
+  activeLanguage,
 }) {
   /** Allows to call a function menuActiveHandler if the site is open on a tablet or phone 
    * Without this, the menu also opens in desktop mode
@@ -38,7 +39,12 @@ function MenuView({
             </NavLink>
           </li>
         ))}
-        <select name="language" onChange={changeLang} className="header-nav__link header-nav__language">
+        <select 
+          name="language" 
+          onChange={changeLang} 
+          className="header-nav__link header-nav__language"
+          defaultValue={activeLanguage}
+        >
           <option value="en">{langEn}</option>
           <option value="ua">{langUa}</option>
           <option value="ru">{langRu}</option>
@@ -65,10 +71,12 @@ MenuView.propTypes = {
   langEn: PropTypes.string.isRequired,
   langUa: PropTypes.string.isRequired,
   langRu: PropTypes.string.isRequired,
+  activeLanguage: PropTypes.string,
 };
 
 MenuView.defaultProps = {
   menuActiveHandler() {},
+  activeLanguage: null,
 };
 
 export default MenuView;

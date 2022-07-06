@@ -11,9 +11,11 @@ import PropTypes from 'prop-types';
 import MenuView from './MenuView';
 import ThemeContext from '../../context/ThemeContext';
 import useLocalization from '../../hooks/useLocalization';
+import useLocalStorage from '../../hooks/useLocalStorage';
 
 function Menu({ active, menuActiveHandler }) {
   const [t, changeLang] = useLocalization();
+  const [activeLanguage] = useLocalStorage('', 'i18nextLng');
   const navData = [
     {
       url: 'home',
@@ -80,6 +82,7 @@ function Menu({ active, menuActiveHandler }) {
       langEn={t('English')}
       langUa={t('Ukraine')}
       langRu={t('Russian')}
+      activeLanguage={activeLanguage}
     />
   );
 }
