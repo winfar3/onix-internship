@@ -5,6 +5,7 @@ import {
   useState, 
   useEffect 
 } from 'react';
+import { useParams } from 'react-router-dom';
 
 import ArticlesView from './ArticlesView';
 import { postsRequestUrl } from '../../constants/requestUrls';
@@ -17,8 +18,17 @@ import useLocalization from '../../hooks/useLocalization';
 import useRequest from '../../hooks/useRequest';
 
 function Articles() {
+  const params = useParams();
+  const paramKey = Object.keys(params)[0];
+  const paramValue = Object.values(params)[0];
+  let requestUrl;
+  if (params === {}) {
+    requestUrl = `${postsRequestUrl}`;
+  } else {
+    requestUrl = `${postsRequestUrl}?${paramKey}=${paramValue}`;
+  }
   const [t] = useLocalization();
-  const [postData, isPending] = useRequest(postsRequestUrl);
+  const [postData, isPending] = useRequest(requestUrl);
   const { setCommentedPostPos } = useContext(ModalContext);
   const [postCardData, setPostCardData] = useState([]);
   const [onActivePost, setOnActivePost] = useState(null);
@@ -26,9 +36,10 @@ function Articles() {
   const [card, scrollTo] = useScrollTo();
   const [showWhen, toggleModal] = useModal();
 
+  // TODO: send a new request to api when params change
   useEffect(() => {
     setPostCardData([...postData]);
-  }, [postData]);
+  }, [postData, params]);
 
   const addPost = (post) => {
     setPostCardData([...postCardData, post]);

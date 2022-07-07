@@ -1,3 +1,4 @@
+// TODO: split into objects by pages
 const translationsEn = {
   home: 'home',
   comments: 'comments',
