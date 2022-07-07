@@ -1,32 +1,21 @@
 import './Article.scss';
 
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import SendAxiosRequest from '../../helpers/SendAxiosRequest';
 import { postsRequestUrl } from '../../constants/requestUrls';
 import months from '../../constants/months';
 import ArticleView from './ArticleView';
 import Loader from '../../components/Loader/Loader';
 import useLocalization from '../../hooks/useLocalization';
+import useRequest from '../../hooks/useRequest';
 
+// TODO: fix page render count. There are 4 requests with all possible result options
 function Article() {
   const [t] = useLocalization();
   const params = useParams();
-  const [postData, setPostData] = useState({});
-  const [isPending, setIsPending] = useState(false);
+  const [postData, isPending] = useRequest(`${postsRequestUrl}/${params.id}`);
   const dateObject = new Date(postData.date);
   const text = postData.postBody;
-
-  useEffect(() => {
-    setIsPending(true);
-    SendAxiosRequest(`${postsRequestUrl}/${params.id}`)
-      .then((data) => {
-        setPostData(data);
-        setIsPending(false);
-      })
-      .catch(() => setIsPending(false));
-  }, [params]);
 
   if (isPending) {
     return (
