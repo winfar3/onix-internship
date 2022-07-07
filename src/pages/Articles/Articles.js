@@ -5,25 +5,30 @@ import {
   useState, 
   useEffect 
 } from 'react';
-import PropTypes from 'prop-types';
 
 import ArticlesView from './ArticlesView';
 import { postsRequestUrl } from '../../constants/requestUrls';
-import withRequest from '../../hocs/withRequest';
 import ModalContext from '../../context/ModalContext';
+import Loader from '../../components/Loader/Loader';
 import useSortBy from '../../hooks/useSortBy';
 import useScrollTo from '../../hooks/useScrollTo';
 import useModal from '../../hooks/useModal';
 import useLocalization from '../../hooks/useLocalization';
+import useRequest from '../../hooks/useRequest';
 
-function Articles({ dataFromServer }) {
+function Articles() {
   const [t] = useLocalization();
+  const [postData, isPending] = useRequest(postsRequestUrl);
   const { setCommentedPostPos } = useContext(ModalContext);
-  const [postCardData, setPostCardData] = useState([...dataFromServer]);
+  const [postCardData, setPostCardData] = useState([]);
   const [onActivePost, setOnActivePost] = useState(null);
   const [isSorted, sortBy, sornOnPage] = useSortBy('date', true);
   const [card, scrollTo] = useScrollTo();
   const [showWhen, toggleModal] = useModal();
+
+  useEffect(() => {
+    setPostCardData([...postData]);
+  }, [postData]);
 
   const addPost = (post) => {
     setPostCardData([...postCardData, post]);
@@ -126,6 +131,16 @@ function Articles({ dataFromServer }) {
     return () => window.removeEventListener('keyup', handleEscape);
   }, [onActivePost]);
 
+  if (isPending) {
+    return (
+      <div className="loader">
+        <Loader />
+      </div>
+    );
+  }
+  if (postCardData.length === 0) {
+    return <p className="fz-2">{t('postErr')}</p>;
+  }
   return (
     <ArticlesView
       showWhen={showWhen}
@@ -149,8 +164,4 @@ function Articles({ dataFromServer }) {
   );
 }
 
-Articles.propTypes = {
-  dataFromServer: PropTypes.arrayOf(PropTypes.shape).isRequired,
-};
-
-export default withRequest(Articles, postsRequestUrl);
+export default Articles;

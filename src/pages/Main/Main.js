@@ -1,15 +1,17 @@
 import './Main.scss';
 
 import { useState } from 'react';
-import PropTypes from 'prop-types';
 
 import MainView from './MainView';
 import { postsRequestUrl } from '../../constants/requestUrls';
-import withRequest from '../../hocs/withRequest';
+import Loader from '../../components/Loader/Loader';
 import useScrollTo from '../../hooks/useScrollTo';
+import useRequest from '../../hooks/useRequest';
+import useLocalization from '../../hooks/useLocalization';
 
-function Main({ dataFromServer }) {
-  const [postCardData] = useState(dataFromServer);
+function Main() {
+  const [t] = useLocalization();
+  const [postCardData, isPending] = useRequest(postsRequestUrl);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(7);
@@ -38,6 +40,16 @@ function Main({ dataFromServer }) {
     }
   };
 
+  if (isPending) {
+    return (
+      <div className="loader">
+        <Loader />
+      </div>
+    );
+  }
+  if (postCardData.length === 0) {
+    return <p className="fz-2">{t('postErr')}</p>;
+  }
   return (
     <MainView
       currentPosts={currentPosts}
@@ -51,12 +63,4 @@ function Main({ dataFromServer }) {
   );
 }
 
-Main.propTypes = {
-  dataFromServer: PropTypes.arrayOf(PropTypes.shape),
-};
-
-Main.defaultProps = {
-  dataFromServer: [],
-};
-
-export default withRequest(Main, postsRequestUrl);
+export default Main;
