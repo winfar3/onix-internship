@@ -2,7 +2,7 @@ import './Article.scss';
 
 import { useParams } from 'react-router-dom';
 
-import { postsRequestUrl } from '../../constants/requestUrls';
+import { baseUrl, postsRequestUrl } from '../../constants/requestUrls';
 import months from '../../constants/months';
 import ArticleView from './ArticleView';
 import Loader from '../../components/Loader/Loader';
@@ -13,7 +13,7 @@ import useRequest from '../../hooks/useRequest';
 function Article() {
   const [t] = useLocalization();
   const params = useParams();
-  const [postData, isPending] = useRequest(`${postsRequestUrl}/${params.id}`);
+  const [postData, isPending] = useRequest(`${baseUrl}${postsRequestUrl}/${params.id}`);
   const dateObject = new Date(postData.date);
   const text = postData.postBody;
 

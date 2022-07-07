@@ -1,6 +1,6 @@
 import './Hero.scss';
 
-import { lastRequestUrl } from '../../constants/requestUrls';
+import { baseUrl, lastRequestUrl } from '../../constants/requestUrls';
 import months from '../../constants/months';
 import useLocalization from '../../hooks/useLocalization';
 import HeroView from './HeroView';
@@ -9,7 +9,7 @@ import useRequest from '../../hooks/useRequest';
 //  TODO hide loader
 function Hero() {
   const [t] = useLocalization();
-  const [postData] = useRequest(lastRequestUrl);
+  const [postData] = useRequest(`${baseUrl}${lastRequestUrl}`);
   let dateObject;
   if (postData.length > 0) {
     dateObject = new Date(postData[0].date);

@@ -1,14 +1,14 @@
 import './Users.scss';
 
 import UsersView from './UsersView';
-import { usersRequestUrl } from '../../constants/requestUrls';
+import { baseUrl, usersRequestUrl } from '../../constants/requestUrls';
 import Loader from '../../components/Loader/Loader';
 import useRequest from '../../hooks/useRequest';
 import useLocalization from '../../hooks/useLocalization';
 
 function Users() {
   const [t] = useLocalization();
-  const [dataFromServer, isPending] = useRequest(usersRequestUrl);
+  const [dataFromServer, isPending] = useRequest(`${baseUrl}${usersRequestUrl}`);
 
   if (isPending) {
     return (

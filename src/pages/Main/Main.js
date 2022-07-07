@@ -3,7 +3,7 @@ import './Main.scss';
 import { useState } from 'react';
 
 import MainView from './MainView';
-import { postsRequestUrl } from '../../constants/requestUrls';
+import { baseUrl, postsRequestUrl } from '../../constants/requestUrls';
 import Loader from '../../components/Loader/Loader';
 import useScrollTo from '../../hooks/useScrollTo';
 import useRequest from '../../hooks/useRequest';
@@ -11,7 +11,7 @@ import useLocalization from '../../hooks/useLocalization';
 
 function Main() {
   const [t] = useLocalization();
-  const [postCardData, isPending] = useRequest(postsRequestUrl);
+  const [postCardData, isPending] = useRequest(`${baseUrl}${postsRequestUrl}`);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(7);

@@ -8,7 +8,7 @@ import {
 import { useParams } from 'react-router-dom';
 
 import ArticlesView from './ArticlesView';
-import { postsRequestUrl } from '../../constants/requestUrls';
+import { baseUrl, postsRequestUrl } from '../../constants/requestUrls';
 import ModalContext from '../../context/ModalContext';
 import Loader from '../../components/Loader/Loader';
 import useSortBy from '../../hooks/useSortBy';
@@ -23,9 +23,9 @@ function Articles() {
   const paramValue = Object.values(params)[0];
   let requestUrl;
   if (params === {}) {
-    requestUrl = `${postsRequestUrl}`;
+    requestUrl = `${baseUrl}${postsRequestUrl}`;
   } else {
-    requestUrl = `${postsRequestUrl}?${paramKey}=${paramValue}`;
+    requestUrl = `${baseUrl}${postsRequestUrl}?${paramKey}=${paramValue}`;
   }
   const [t] = useLocalization();
   const [postData, isPending] = useRequest(requestUrl);
