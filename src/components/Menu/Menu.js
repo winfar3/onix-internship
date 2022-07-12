@@ -15,7 +15,7 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 
 function Menu({ active, menuActiveHandler }) {
   const [t, changeLang] = useLocalization();
-  const [activeLanguage] = useLocalStorage('', 'i18nextLng');
+  const [activeLanguage] = useLocalStorage(null, 'i18nextLng');
   const navData = [
     {
       url: 'home',
@@ -68,7 +68,7 @@ function Menu({ active, menuActiveHandler }) {
       bodyElement.current.removeAttribute('data-theme');
     }
   }, [isDark]);
-  
+
   return (
     <MenuView 
       navData={navData}
