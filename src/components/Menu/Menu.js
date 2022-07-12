@@ -18,7 +18,7 @@ function Menu({ active, menuActiveHandler }) {
   const [activeLanguage] = useLocalStorage(null, 'i18nextLng');
   const navData = [
     {
-      url: 'home',
+      url: '',
       title: t('home'), 
     },
     {

@@ -9,7 +9,7 @@ function Header({ mainRef }) {
   return (
     <header ref={mainRef} className="header">
       <div className="header__wrapper">
-        <NavLink className="header__logo uppercase" to="/">
+        <NavLink className="header__logo uppercase" to="/onix-internship/">
           fashion
         </NavLink>
         <HeaderNav isNeedBurger />
