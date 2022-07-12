@@ -5,6 +5,7 @@
     align-content: flex-start;
     row-gap: 30px;
     column-gap: 30px;
+    padding: 60px 0;
     
     @media (min-width: 600px) and (max-width: 1023px) {
         grid-template-columns: 1fr 1fr;
