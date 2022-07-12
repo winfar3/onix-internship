@@ -6,7 +6,7 @@ const translationsEn = {
   users: 'users',
   travels: 'travels',
   English: 'English',
-  Ukraine: 'Ukraine',
+  Ukraine: 'Ukrainian',
   Russian: 'Russian',
   by: 'By',
   January: 'January',
