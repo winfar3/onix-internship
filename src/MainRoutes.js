@@ -7,31 +7,29 @@ import Article from './pages/Article/Article';
 import Users from './pages/Users/Users';
 import Travels from './pages/Travels/Travels';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import Hero from './components/Hero/Hero';
-import Layout from './layout/Layout';
 
 function MainRoutes() {
   return (
     <Routes>
       <Route
         path="/onix-internship/"
-        element={<Layout renderContent={<Hero />}><Main /></Layout>}
+        element={<Main />}
       />
       <Route 
         path="/onix-internship/comments" 
-        element={<Layout><Recipes /></Layout>} 
+        element={<Recipes />} 
       />
-      <Route path="/onix-internship/articles" element={<Layout><Articles /></Layout>} />
-      <Route path="/onix-internship/articles/:category" element={<Layout><Articles /></Layout>} />
-      <Route path="/onix-internship/article/:id" element={<Layout><Article /></Layout>} />
-      <Route path="/onix-internship/users" element={<Layout><Users /></Layout>} />
-      <Route path="/onix-internship/travels" element={<Layout><Travels /></Layout>} />
-      <Route path="/onix-internship/404" element={<Layout><NotFoundPage /></Layout>} />
+      <Route path="/onix-internship/articles" element={<Articles />} />
+      <Route path="/onix-internship/articles/:category" element={<Articles />} />
+      <Route path="/onix-internship/article/:id" element={<Article />} />
+      <Route path="/onix-internship/users" element={<Users />} />
+      <Route path="/onix-internship/travels" element={<Travels />} />
+      <Route path="/onix-internship/404" element={<NotFoundPage />} />
       <Route
         path="/onix-internship/"
         element={<Navigate to="/onix-internship/home" />}
       />
-      <Route path="/" element={<Navigate to="/onix-internship/home" />} />
+      <Route path="/" element={<Navigate to="/onix-internship/" />} />
       <Route path="*" element={<Navigate to="/onix-internship/404" />} />
     </Routes>
   );

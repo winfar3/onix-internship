@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import useLocalization from '../../hooks/useLocalization';
+import Layout from '../../layout/Layout';
 
 function TravelsView({
   data,
@@ -15,27 +16,29 @@ function TravelsView({
   const [t] = useLocalization();
 
   return (
-    <div className="travels">
-      {data.sort(sordCards).map((card, pos) => (
-        <div
-          key={card.id}
-          onDragStart={(e) => dragStartHandler(e, card)}
-          onDragLeave={(e) => dragEndHandler(e)}
-          onDragEnd={(e) => dragEndHandler(e)}
-          onDragOver={(e) => dragOverHandler(e, pos)}
-          onDrop={(e) => dropHandler(e, card)}
-          draggable
-          className={classNames('travels__card travels-card', {
-            _over: cls === pos,
-          })}
-        >
-          <div className="travels-card__image">
-            <img src={card.img} alt="country" />
+    <Layout>
+      <div className="travels">
+        {data.sort(sordCards).map((card, pos) => (
+          <div
+            key={card.id}
+            onDragStart={(e) => dragStartHandler(e, card)}
+            onDragLeave={(e) => dragEndHandler(e)}
+            onDragEnd={(e) => dragEndHandler(e)}
+            onDragOver={(e) => dragOverHandler(e, pos)}
+            onDrop={(e) => dropHandler(e, card)}
+            draggable
+            className={classNames('travels__card travels-card', {
+              _over: cls === pos,
+            })}
+          >
+            <div className="travels-card__image">
+              <img src={card.img} alt="country" />
+            </div>
+            {t(card.name)}
           </div>
-          {t(card.name)}
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </Layout>
   );
 }
 

@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 
 import Pagination from '../../components/Pagination/Pagination';
 import PostCard from '../../components/PostCard/PostCard';
+import Hero from '../../components/Hero/Hero';
+import Layout from '../../layout/Layout';
 
 function MainView({
   currentPosts,
@@ -13,22 +15,24 @@ function MainView({
   nextPage,
 }) {
   return (
-    <main className="main" ref={mainRef}>
-      {currentPosts.map((postCardItem, pos) => (
-        <PostCard
-          post={postCardItem}
-          key={postCardItem.id}
-          forcedCardSize={pos === 4 && 'big'}
+    <Layout renderContent={<Hero />}>
+      <main className="main" ref={mainRef}>
+        {currentPosts.map((postCardItem, pos) => (
+          <PostCard
+            post={postCardItem}
+            key={postCardItem.id}
+            forcedCardSize={pos === 4 && 'big'}
+          />
+        ))}
+        <Pagination
+          maxPageNumber={maxPageNumber}
+          postsPerPage={postsPerPage}
+          paginate={paginate}
+          prevPage={prevPage}
+          nextPage={nextPage}
         />
-      ))}
-      <Pagination
-        maxPageNumber={maxPageNumber}
-        postsPerPage={postsPerPage}
-        paginate={paginate}
-        prevPage={prevPage}
-        nextPage={nextPage}
-      />
-    </main>
+      </main>
+    </Layout>
   );
 }
 

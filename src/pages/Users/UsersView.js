@@ -1,14 +1,17 @@
 import PropTypes from 'prop-types';
 
 import UserCard from '../../components/UserCard/UserCard';
+import Layout from '../../layout/Layout';
 
 function UsersView({ dataFromServer }) {
   return (
-    <main className="main">
-      {dataFromServer.map((item) => (
-        <UserCard user={item} key={item.id} />
-      ))}
-    </main>
+    <Layout>
+      <main className="main">
+        {dataFromServer.map((item) => (
+          <UserCard user={item} key={item.id} />
+        ))}
+      </main>
+    </Layout>
   );
 }
 

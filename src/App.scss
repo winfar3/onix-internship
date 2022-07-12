@@ -1,3 +1,5 @@
+@import url(./styles/colors.scss);
+
 * {
   transition: all .2s linear;
 }
@@ -35,6 +37,14 @@
   @media (min-width: 1024px) {
       grid-template-columns: 2fr 270px;
   }
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
 }
 
 .fz-2 {

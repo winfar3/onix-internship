@@ -6,6 +6,7 @@ import Button from '../../components/Button/Button';
 import Modal from '../../components/Modal/Modal';
 import PostCard from '../../components/PostCard/PostCard';
 import byField from '../../helpers/byField';
+import Layout from '../../layout/Layout';
 
 function ArticlesView({
   addPost,
@@ -27,54 +28,56 @@ function ArticlesView({
   buttonPost,
 }) {
   return (
-    <main className="main">
-      {showWhen === 'addPostForm' && (
-        <Modal toggleModal={toggleModal}>
-          <AddPostForm
-            toggleModal={toggleModal}
-            addPost={addPost}
-            lastOrder={lastOrder}
-          />
-        </Modal>
-      )}
-      {showWhen === 'addPostCommentForm' && (
-        <Modal toggleModal={toggleModal}>
-          <AddCommentForm addComment={addComment} toggleModal={toggleModal} />
-        </Modal>
-      )}
+    <Layout>
+      <main className="main">
+        {showWhen === 'addPostForm' && (
+          <Modal toggleModal={toggleModal}>
+            <AddPostForm
+              toggleModal={toggleModal}
+              addPost={addPost}
+              lastOrder={lastOrder}
+            />
+          </Modal>
+        )}
+        {showWhen === 'addPostCommentForm' && (
+          <Modal toggleModal={toggleModal}>
+            <AddCommentForm addComment={addComment} toggleModal={toggleModal} />
+          </Modal>
+        )}
 
-      <div className="buttonsWrap">
-        <Button
-          logic={() => sornOnPage('date')}
-          content={buttonDate}
-          styles="button button_article"
-        />
-        <Button
-          logic={() => sornOnPage('id')}
-          content={buttonId}
-          styles="button button_article"
-        />
-        <Button
-          logic={() => toggleModal('addPostForm')}
-          content={buttonPost}
-          styles="button button_article"
-        />
-      </div>
-      {postCardData.sort(byField(sortBy, isSorted)).map((postCardItem, pos) => (
-        <PostCard
-          post={postCardItem}
-          key={postCardItem.id}
-          forcedCardSize="listSize"
-          onActivePost={onActivePost === pos}
-          deletePost={() => deletePost(pos)}
-          deleteImage={() => deleteImage(pos)}
-          addComment={() => addComment(pos)}
-          handleActivePost={() => handleActivePost(pos)}
-          activePostElement={onActivePost === pos ? activePostElement : null}
-          toggleModal={toggleModal}
-        />
-      ))}
-    </main>
+        <div className="buttonsWrap">
+          <Button
+            logic={() => sornOnPage('date')}
+            content={buttonDate}
+            styles="button button_article"
+          />
+          <Button
+            logic={() => sornOnPage('id')}
+            content={buttonId}
+            styles="button button_article"
+          />
+          <Button
+            logic={() => toggleModal('addPostForm')}
+            content={buttonPost}
+            styles="button button_article"
+          />
+        </div>
+        {postCardData.sort(byField(sortBy, isSorted)).map((postCardItem, pos) => (
+          <PostCard
+            post={postCardItem}
+            key={postCardItem.id}
+            forcedCardSize="listSize"
+            onActivePost={onActivePost === pos}
+            deletePost={() => deletePost(pos)}
+            deleteImage={() => deleteImage(pos)}
+            addComment={() => addComment(pos)}
+            handleActivePost={() => handleActivePost(pos)}
+            activePostElement={onActivePost === pos ? activePostElement : null}
+            toggleModal={toggleModal}
+          />
+        ))}
+      </main>
+    </Layout>
   );
 }
 
