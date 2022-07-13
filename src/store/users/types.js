@@ -1,0 +1,3 @@
+const USERS_HANDLER = 'USERS_HANDLER';
+
+export default USERS_HANDLER;

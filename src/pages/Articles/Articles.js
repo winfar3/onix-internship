@@ -16,6 +16,7 @@ import useScrollTo from '../../hooks/useScrollTo';
 import useModal from '../../hooks/useModal';
 import useLocalization from '../../hooks/useLocalization';
 import useRequest from '../../hooks/useRequest';
+import Layout from '../../layout/Layout';
 
 function Articles() {
   const params = useParams();
@@ -144,9 +145,11 @@ function Articles() {
 
   if (isPending) {
     return (
-      <div className="loader">
-        <Loader />
-      </div>
+      <Layout>
+        <div className="loader">
+          <Loader />
+        </div>
+      </Layout>
     );
   }
   if (postCardData.length === 0) {

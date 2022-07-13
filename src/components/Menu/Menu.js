@@ -41,9 +41,11 @@ function Menu({ active, menuActiveHandler }) {
   const linkRoot = '/onix-internship/';
 
   const [title, setTitle] = useState('');
+
+  // TODO: setTitle doesn't work and title doesn't change
   useEffect(() => {
     document.title = `Fasion ${title}`;
-  });
+  }, [title]);
 
   /**
    * Locks page scrolling when the menu is open on phones

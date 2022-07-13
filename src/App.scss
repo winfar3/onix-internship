@@ -47,6 +47,10 @@
   height: 100vh;
 }
 
+.grid-span-2 {
+  grid-column: span 2;
+}
+
 .fz-2 {
   font-size: 2rem;
 }
