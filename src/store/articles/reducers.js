@@ -8,6 +8,7 @@ function fillingStorage(state = initialState, action = { type: FILLING_STORAGE }
   switch (action.type) {
     case FILLING_STORAGE:
       return {
+        ...state,
         articles: action.storeData,
       };
     default: 

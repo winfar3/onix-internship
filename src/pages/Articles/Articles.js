@@ -5,7 +5,7 @@ import {
   useState, 
   useEffect 
 } from 'react';
-import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { useParams } from 'react-router-dom';
 
 import ArticlesView from './ArticlesView';
@@ -16,9 +16,9 @@ import useSortBy from '../../hooks/useSortBy';
 import useScrollTo from '../../hooks/useScrollTo';
 import useModal from '../../hooks/useModal';
 import useLocalization from '../../hooks/useLocalization';
-import useRequest from '../../hooks/useRequest';
 import Layout from '../../layout/Layout';
-import FILLING_STORAGE from '../../store/articles/types';
+import SendAxiosRequest from '../../helpers/SendAxiosRequest';
+import fillingStorageAction from '../../store/articles/actions';
 
 function Articles() {
   const params = useParams();
@@ -31,19 +31,35 @@ function Articles() {
     requestUrl = `${baseUrl}${postsRequestUrl}?${paramKey}=${paramValue}`;
   }
   const [t] = useLocalization();
-  const [, isPending] = useRequest(requestUrl, FILLING_STORAGE);
-  const tempData = useSelector(({ articles }) => articles.articles);
+  const dispatch = useDispatch();
+  const dataFromRedux = useSelector(({ articles }) => articles.articles);
   const { setCommentedPostPos } = useContext(ModalContext);
   const [postCardData, setPostCardData] = useState([]);
   const [onActivePost, setOnActivePost] = useState(null);
   const [isSorted, sortBy, sornOnPage] = useSortBy('date', true);
   const [card, scrollTo] = useScrollTo();
   const [showWhen, toggleModal] = useModal();
+  const [isPending, setIsPending] = useState(false);
+
+  const request = () => {
+    SendAxiosRequest(requestUrl)
+      .then((data) => {
+        dispatch(fillingStorageAction(data));
+        setIsPending(false);
+      });
+  };
+
+  useEffect(() => {
+    if (dataFromRedux === undefined || dataFromRedux.length === 0) {
+      setIsPending(true);
+      request();
+    }
+  }, []);
 
   // TODO: send a new request to api when params change
   useEffect(() => {
-    setPostCardData([...tempData]);
-  }, [tempData, params]);
+    setPostCardData([...dataFromRedux]);
+  }, [dataFromRedux, params]);
 
   const addPost = (post) => {
     setPostCardData([...postCardData, post]);
@@ -155,7 +171,7 @@ function Articles() {
       </Layout>
     );
   }
-  if (postCardData.length === 0) {
+  if (dataFromRedux.length === 0) {
     return <p className="fz-2">{t('postErr')}</p>;
   }
   return (
