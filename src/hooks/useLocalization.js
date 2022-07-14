@@ -7,7 +7,7 @@ const useLocalization = () => {
   const { t, i18n } = useTranslation();
 
   const changeLang = (event) => {
-    i18n.changeLanguage(event.target.value);
+    i18n.changeLanguage(event);
   };
 
   return [t, changeLang];

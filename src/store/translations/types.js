@@ -1,0 +1,3 @@
+const TOGGLE_LOCALE = 'TOGGLE_LOCALE';
+
+export default TOGGLE_LOCALE;

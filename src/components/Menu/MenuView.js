@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import DarkModeToggle from 'react-dark-mode-toggle';
+import toggleLocaleAction from '../../store/translations/actions';
 
 function MenuView({ 
   navData, 
@@ -10,11 +11,12 @@ function MenuView({
   menuActiveHandler, 
   themeToggle, 
   isDark,
-  changeLang,
+  // changeLang,
   langEn,
   langUa,
   langRu,
   activeLanguage,
+  dispatch,
 }) {
   /** Allows to call a function menuActiveHandler if the site is open on a tablet or phone 
    * Without this, the menu also opens in desktop mode
@@ -41,7 +43,7 @@ function MenuView({
         ))}
         <select 
           name="language" 
-          onChange={changeLang} 
+          onChange={({ target }) => dispatch(toggleLocaleAction(target.value))} 
           className="header-nav__link header-nav__language"
           defaultValue={activeLanguage}
         >
@@ -67,11 +69,12 @@ MenuView.propTypes = {
   menuActiveHandler: PropTypes.func,
   themeToggle: PropTypes.func.isRequired,
   isDark: PropTypes.bool.isRequired,
-  changeLang: PropTypes.func.isRequired,
+  // changeLang: PropTypes.func.isRequired,
   langEn: PropTypes.string.isRequired,
   langUa: PropTypes.string.isRequired,
   langRu: PropTypes.string.isRequired,
   activeLanguage: PropTypes.string,
+  dispatch: PropTypes.func.isRequired,
 };
 
 MenuView.defaultProps = {

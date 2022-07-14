@@ -6,6 +6,7 @@ import {
   useRef, 
   useState 
 } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import MenuView from './MenuView';
@@ -13,9 +14,16 @@ import ThemeContext from '../../context/ThemeContext';
 import useLocalization from '../../hooks/useLocalization';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
+// TODO: move work from localstorage to redux
 function Menu({ active, menuActiveHandler }) {
   const [t, changeLang] = useLocalization();
   const [activeLanguage] = useLocalStorage(null, 'i18nextLng');
+  const dispatch = useDispatch();
+  const locale = useSelector(({ translates }) => translates.locale);
+
+  useEffect(() => {
+    changeLang(locale);
+  }, [locale]);
   const navData = [
     {
       url: '',
@@ -85,6 +93,7 @@ function Menu({ active, menuActiveHandler }) {
       langUa={t('Ukraine')}
       langRu={t('Russian')}
       activeLanguage={activeLanguage}
+      dispatch={dispatch}
     />
   );
 }
