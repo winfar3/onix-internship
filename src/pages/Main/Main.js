@@ -1,25 +1,44 @@
 import './Main.scss';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux/es/exports';
 
 import MainView from './MainView';
 import { baseUrl, postsRequestUrl } from '../../constants/requestUrls';
 import Loader from '../../components/Loader/Loader';
 import useScrollTo from '../../hooks/useScrollTo';
-import useRequest from '../../hooks/useRequest';
 import useLocalization from '../../hooks/useLocalization';
+import SendAxiosRequest from '../../helpers/SendAxiosRequest';
+import fillingStorageAction from '../../store/articles/actions';
 
 function Main() {
   const [t] = useLocalization();
-  const [postCardData, isPending] = useRequest(`${baseUrl}${postsRequestUrl}`);
+  const dispatch = useDispatch();
+  const dataFromRedux = useSelector(({ articles }) => articles.articles);
+  const [isPending, setIsPending] = useState(false);
+
+  const request = () => {
+    SendAxiosRequest(`${baseUrl}${postsRequestUrl}`)
+      .then((data) => {
+        dispatch(fillingStorageAction(data));
+        setIsPending(false);
+      });
+  };
+
+  useEffect(() => {
+    if (dataFromRedux === undefined || dataFromRedux.length === 0) {
+      setIsPending(true);
+      request();
+    }
+  }, []);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(7);
-  const maxPageNumber = Math.ceil(postCardData.length / postsPerPage);
+  const maxPageNumber = Math.ceil(dataFromRedux.length / postsPerPage);
 
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
-  const currentPosts = postCardData.slice(firstPostIndex, lastPostIndex);
+  const currentPosts = dataFromRedux.slice(firstPostIndex, lastPostIndex);
 
   const [mainRef, scrollTo] = useScrollTo();
 
@@ -47,7 +66,7 @@ function Main() {
       </div>
     );
   }
-  if (postCardData.length === 0) {
+  if (dataFromRedux.length === 0) {
     return <p className="fz-2">{t('postErr')}</p>;
   }
   return (
