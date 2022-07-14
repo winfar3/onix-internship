@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux/es/exports';
 
 import SendAxiosRequest from '../helpers/SendAxiosRequest';
 
-const useRequest = (apiUrl, storeDirectory) => {
-  const dispatch = useDispatch();
+const useRequest = (apiUrl) => {
   const [requstedData, setRequstedData] = useState([]);
   const [isPending, setIsPending] = useState(false);
 
@@ -14,7 +12,6 @@ const useRequest = (apiUrl, storeDirectory) => {
     SendAxiosRequest(apiUrl)
       .then((data) => {
         setRequstedData(data);
-        dispatch({ type: storeDirectory, storeData: data });
         setIsPending(false);
       })
       .catch(() => {
