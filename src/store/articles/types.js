@@ -1,0 +1,3 @@
+const FILLING_STORAGE = 'FILLING_STORAGE';
+
+export default FILLING_STORAGE;

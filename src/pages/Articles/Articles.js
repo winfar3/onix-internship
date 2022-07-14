@@ -5,6 +5,7 @@ import {
   useState, 
   useEffect 
 } from 'react';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { useParams } from 'react-router-dom';
 
 import ArticlesView from './ArticlesView';
@@ -17,6 +18,7 @@ import useModal from '../../hooks/useModal';
 import useLocalization from '../../hooks/useLocalization';
 import useRequest from '../../hooks/useRequest';
 import Layout from '../../layout/Layout';
+import FILLING_STORAGE from '../../store/articles/types';
 
 function Articles() {
   const params = useParams();
@@ -29,7 +31,8 @@ function Articles() {
     requestUrl = `${baseUrl}${postsRequestUrl}?${paramKey}=${paramValue}`;
   }
   const [t] = useLocalization();
-  const [postData, isPending] = useRequest(requestUrl);
+  const [, isPending] = useRequest(requestUrl, FILLING_STORAGE);
+  const tempData = useSelector(({ articles }) => articles.articles);
   const { setCommentedPostPos } = useContext(ModalContext);
   const [postCardData, setPostCardData] = useState([]);
   const [onActivePost, setOnActivePost] = useState(null);
@@ -39,8 +42,8 @@ function Articles() {
 
   // TODO: send a new request to api when params change
   useEffect(() => {
-    setPostCardData([...postData]);
-  }, [postData, params]);
+    setPostCardData([...tempData]);
+  }, [tempData, params]);
 
   const addPost = (post) => {
     setPostCardData([...postCardData, post]);

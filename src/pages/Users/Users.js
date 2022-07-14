@@ -1,6 +1,6 @@
 import './Users.scss';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 
 import UsersView from './UsersView';
@@ -11,13 +11,14 @@ import useRequest from '../../hooks/useRequest';
 import useLocalization from '../../hooks/useLocalization';
 import usersHandler from '../../store/users/actions';
 import Layout from '../../layout/Layout';
+import USERS_HANDLER from '../../store/users/types';
 
 // TODO: Learn how to do it well, not like this
 function Users() {
   const dispatch = useDispatch();
-  const dataFromRedux = useSelector(({ users }) => users.state);
+  const [dataFromServer, isPending] = useRequest(`${baseUrl}${usersRequestUrl}`, USERS_HANDLER);
+  const dataFromRedux = useSelector(({ users }) => users.users);
   const [t] = useLocalization();
-  const [dataFromServer, isPending] = useRequest(`${baseUrl}${usersRequestUrl}`);
   const [refreshing, setRefreshing] = useState(false);
 
   const refresh = () => {
@@ -28,14 +29,6 @@ function Users() {
         setRefreshing(false);
       });
   };
-
-  const include = () => {
-    dispatch(usersHandler(dataFromServer));
-  };
-
-  useEffect(() => {
-    include();
-  }, [dataFromServer]);
 
   if (isPending) {
     return (

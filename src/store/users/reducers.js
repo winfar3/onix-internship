@@ -8,7 +8,7 @@ const refreshUsers = (state = initialState, action = { type: USERS_HANDLER }) =>
   switch (action.type) {
     case USERS_HANDLER: 
       return {
-        state: action.data
+        users: action.storeData
       };
     default:
       return state;
