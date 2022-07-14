@@ -3,7 +3,7 @@ import './Articles.scss';
 import { 
   useContext, 
   useState, 
-  useEffect 
+  useEffect, 
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { useParams } from 'react-router-dom';
@@ -25,7 +25,7 @@ function Articles() {
   const paramKey = Object.keys(params)[0];
   const paramValue = Object.values(params)[0];
   let requestUrl;
-  if (params === {}) {
+  if (Object.keys(params).length === 0) {
     requestUrl = `${baseUrl}${postsRequestUrl}`;
   } else {
     requestUrl = `${baseUrl}${postsRequestUrl}?${paramKey}=${paramValue}`;
