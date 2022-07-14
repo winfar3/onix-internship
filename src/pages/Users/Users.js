@@ -39,12 +39,12 @@ function Users() {
 
   if (isPending) {
     return (
-      <div className="loader">
+      <Layout>
         <Loader />
-      </div>
+      </Layout>
     );
   }
-  if (dataFromRedux.length === 0) {
+  if (dataFromServer.length === 0) {
   // TODO: refactoring
     return (
       <Layout>
