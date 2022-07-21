@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux/es/exports';
 import UsersView from './UsersView';
 import { baseUrl, usersRequestUrl } from '../../constants/requestUrls';
 import Loader from '../../components/Loader/Loader';
-import SendAxiosRequest from '../../helpers/SendAxiosRequest';
 import useLocalization from '../../hooks/useLocalization';
 import usersHandler from '../../store/users/actions';
 import Layout from '../../layout/Layout';
@@ -20,12 +19,7 @@ function Users() {
   const [isPending, setIsPending] = useState(false);
 
   const request = () => {
-    SendAxiosRequest(`${baseUrl}${usersRequestUrl}`)
-      .then((data) => {
-        dispatch(usersHandler(data));
-        setRefreshing(false);
-        setIsPending(false);
-      });
+    dispatch(usersHandler(`${baseUrl}${usersRequestUrl}`, setRefreshing, setIsPending));
   };
   
   const refresh = () => {
