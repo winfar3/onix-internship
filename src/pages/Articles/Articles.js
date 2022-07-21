@@ -17,7 +17,6 @@ import useScrollTo from '../../hooks/useScrollTo';
 import useModal from '../../hooks/useModal';
 import useLocalization from '../../hooks/useLocalization';
 import Layout from '../../layout/Layout';
-import SendAxiosRequest from '../../helpers/SendAxiosRequest';
 import fillingStorageAction from '../../store/articles/actions';
 
 function Articles() {
@@ -42,11 +41,7 @@ function Articles() {
   const [isPending, setIsPending] = useState(false);
 
   const request = () => {
-    SendAxiosRequest(requestUrl)
-      .then((data) => {
-        dispatch(fillingStorageAction(data));
-        setIsPending(false);
-      });
+    dispatch(fillingStorageAction(requestUrl, setIsPending));
   };
 
   useEffect(() => {

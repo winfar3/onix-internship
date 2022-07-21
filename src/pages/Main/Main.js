@@ -8,7 +8,6 @@ import { baseUrl, postsRequestUrl } from '../../constants/requestUrls';
 import Loader from '../../components/Loader/Loader';
 import useScrollTo from '../../hooks/useScrollTo';
 import useLocalization from '../../hooks/useLocalization';
-import SendAxiosRequest from '../../helpers/SendAxiosRequest';
 import fillingStorageAction from '../../store/articles/actions';
 
 function Main() {
@@ -18,11 +17,7 @@ function Main() {
   const [isPending, setIsPending] = useState(false);
 
   const request = () => {
-    SendAxiosRequest(`${baseUrl}${postsRequestUrl}`)
-      .then((data) => {
-        dispatch(fillingStorageAction(data));
-        setIsPending(false);
-      });
+    dispatch(fillingStorageAction(`${baseUrl}${postsRequestUrl}`, setIsPending));
   };
 
   useEffect(() => {

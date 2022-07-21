@@ -26,8 +26,8 @@ function MainRoutes() {
       <Route path="/onix-internship/travels" element={<Travels />} />
       <Route path="/onix-internship/404" element={<NotFoundPage />} />
       <Route
-        path="/onix-internship/"
-        element={<Navigate to="/onix-internship/home" />}
+        path="/onix-internship/home"
+        element={<Navigate to="/onix-internship/" />}
       />
       <Route path="/" element={<Navigate to="/onix-internship/" />} />
       <Route path="*" element={<Navigate to="/onix-internship/404" />} />
